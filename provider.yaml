@@ -5,10 +5,10 @@ info:
   termsOfService: None
 basePath: /
 paths:
-  /Usermanager/Validate:
+  /Controller/Validate:
     post:
       tags:
-        - Usermanager
+        - Controller
       summary: Validate information
       description: Validate the users information
       operationId: validate
@@ -36,8 +36,25 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/User'
-      deprecated: false
-  
+
+  /Controller/GetSuppliers:
+    post:
+      tags: 
+        - Controller
+      summary: Henter suppliers
+      operationId: getSupplier
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      responses:
+        '200':
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Page'
+          
 definitions:
   User:
     description: Information about the user
@@ -49,5 +66,46 @@ definitions:
       rights:
         description: The rights of the user
         type: string
+        enum: [Admin, Provia, Supplier]
+  Product:
+    description: Informations about a product
+    type: object
+    properties:
+      productName: 
+        description: The name of the product
+        type: string
+      description:
+        description: The description about the product
+        type: string
+      price:
+        description: The price of the product
+        type: string
+      packaging:
+        description: The packaging of the product
+        type: string
+  Page:
+    description: Page containing information about a supplier
+    type: object
+    properties:
+      owner:
+        description: The owner of the page => The supplier
+        type: string
+      products:
+        description: The suppliers products
+        type: array
+        items: 
+            $ref: '#/definitions/Product'
+      note:
+        $ref: '#/definitions/Note'
+  Note: 
+    description: A note on the supplier page
+    type: object
+    properties:
+      text:
+        type: string
+      creationDate:
+        type: string
+        format: date-time
+                
         
 securityDefinitions: {}
