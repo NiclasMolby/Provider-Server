@@ -28,89 +28,85 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.model.Note;
+import io.swagger.model.Product;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Information about the user
+ * Page containing information about a supplier
  */
-@ApiModel(description = "Information about the user")
+@ApiModel(description = "Page containing information about a supplier")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-16T17:01:32.921Z")
-public class User   {
-  @JsonProperty("username")
-  private String username = null;
+public class Page   {
+  @JsonProperty("owner")
+  private String owner = null;
 
-  /**
-   * The rights of the user
-   */
-  public enum RightsEnum {
-    ADMIN("Admin"),
-    
-    PROVIA("Provia"),
-    
-    SUPPLIER("Supplier");
+  @JsonProperty("products")
+  private List<Product> products = new ArrayList<Product>();
 
-    private String value;
+  @JsonProperty("note")
+  private Note note = null;
 
-    RightsEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static RightsEnum fromValue(String text) {
-      for (RightsEnum b : RightsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("rights")
-  private RightsEnum rights = null;
-
-  public User username(String username) {
-    this.username = username;
+  public Page owner(String owner) {
+    this.owner = owner;
     return this;
   }
 
    /**
-   * The username of the user
-   * @return username
+   * The owner of the page => The supplier
+   * @return owner
   **/
-  @ApiModelProperty(value = "The username of the user")
-  public String getUsername() {
-    return username;
+  @ApiModelProperty(value = "The owner of the page => The supplier")
+  public String getOwner() {
+    return owner;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setOwner(String owner) {
+    this.owner = owner;
   }
 
-  public User rights(RightsEnum rights) {
-    this.rights = rights;
+  public Page products(List<Product> products) {
+    this.products = products;
+    return this;
+  }
+
+  public Page addProductsItem(Product productsItem) {
+    this.products.add(productsItem);
     return this;
   }
 
    /**
-   * The rights of the user
-   * @return rights
+   * The suppliers products
+   * @return products
   **/
-  @ApiModelProperty(value = "The rights of the user")
-  public RightsEnum getRights() {
-    return rights;
+  @ApiModelProperty(value = "The suppliers products")
+  public List<Product> getProducts() {
+    return products;
   }
 
-  public void setRights(RightsEnum rights) {
-    this.rights = rights;
+  public void setProducts(List<Product> products) {
+    this.products = products;
+  }
+
+  public Page note(Note note) {
+    this.note = note;
+    return this;
+  }
+
+   /**
+   * Get note
+   * @return note
+  **/
+  @ApiModelProperty(value = "")
+  public Note getNote() {
+    return note;
+  }
+
+  public void setNote(Note note) {
+    this.note = note;
   }
 
 
@@ -122,24 +118,26 @@ public class User   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return Objects.equals(this.username, user.username) &&
-        Objects.equals(this.rights, user.rights);
+    Page page = (Page) o;
+    return Objects.equals(this.owner, page.owner) &&
+        Objects.equals(this.products, page.products) &&
+        Objects.equals(this.note, page.note);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, rights);
+    return Objects.hash(owner, products, note);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
+    sb.append("class Page {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
+    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();
   }

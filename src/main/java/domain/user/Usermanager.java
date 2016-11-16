@@ -1,6 +1,6 @@
 package domain.user;
 
-import domain.db.DatabaseDriver;
+import domain.database.DatabaseDriver;
 import io.swagger.model.*;
 /**
  * Created by niclasmolby on 14/11/2016.

@@ -28,89 +28,56 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.Date;
 
 /**
- * Information about the user
+ * A note on the supplier page
  */
-@ApiModel(description = "Information about the user")
+@ApiModel(description = "A note on the supplier page")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-16T17:01:32.921Z")
-public class User   {
-  @JsonProperty("username")
-  private String username = null;
+public class Note   {
+  @JsonProperty("text")
+  private String text = null;
 
-  /**
-   * The rights of the user
-   */
-  public enum RightsEnum {
-    ADMIN("Admin"),
-    
-    PROVIA("Provia"),
-    
-    SUPPLIER("Supplier");
+  @JsonProperty("creationDate")
+  private Date creationDate = null;
 
-    private String value;
-
-    RightsEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static RightsEnum fromValue(String text) {
-      for (RightsEnum b : RightsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("rights")
-  private RightsEnum rights = null;
-
-  public User username(String username) {
-    this.username = username;
+  public Note text(String text) {
+    this.text = text;
     return this;
   }
 
    /**
-   * The username of the user
-   * @return username
+   * Get text
+   * @return text
   **/
-  @ApiModelProperty(value = "The username of the user")
-  public String getUsername() {
-    return username;
+  @ApiModelProperty(value = "")
+  public String getText() {
+    return text;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setText(String text) {
+    this.text = text;
   }
 
-  public User rights(RightsEnum rights) {
-    this.rights = rights;
+  public Note creationDate(Date creationDate) {
+    this.creationDate = creationDate;
     return this;
   }
 
    /**
-   * The rights of the user
-   * @return rights
+   * Get creationDate
+   * @return creationDate
   **/
-  @ApiModelProperty(value = "The rights of the user")
-  public RightsEnum getRights() {
-    return rights;
+  @ApiModelProperty(value = "")
+  public Date getCreationDate() {
+    return creationDate;
   }
 
-  public void setRights(RightsEnum rights) {
-    this.rights = rights;
+  public void setCreationDate(Date creationDate) {
+    this.creationDate = creationDate;
   }
 
 
@@ -122,24 +89,24 @@ public class User   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return Objects.equals(this.username, user.username) &&
-        Objects.equals(this.rights, user.rights);
+    Note note = (Note) o;
+    return Objects.equals(this.text, note.text) &&
+        Objects.equals(this.creationDate, note.creationDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, rights);
+    return Objects.hash(text, creationDate);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
+    sb.append("class Note {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
