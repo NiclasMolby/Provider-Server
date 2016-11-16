@@ -14,6 +14,9 @@ public class Pagemanager {
 	}
 	
 	public ArrayList<Page> getSuppliers(){
+		for(Page p : database.getSuppliers()){
+			System.out.println(p.getOwner());
+		}
 		return database.getSuppliers();
 	}
 }

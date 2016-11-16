@@ -14,7 +14,7 @@ public class Usermanager {
     }
     public User validate(String username, String password){
     	try{
-        System.out.println(database.getLogin(username, password).getUsername());
+        System.out.println("# Bruger "+database.getLogin(username, password).getUsername()+" er logget ind!");
         return database.getLogin(username, password);
     	}
     	catch(NullPointerException e){

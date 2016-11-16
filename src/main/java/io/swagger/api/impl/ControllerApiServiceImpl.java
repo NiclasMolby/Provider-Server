@@ -13,6 +13,8 @@ import java.io.InputStream;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
+import domain.controller.Controller;
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
@@ -21,11 +23,11 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     @Override
     public Response getSupplier(SecurityContext securityContext) throws NotFoundException {
         // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+        return Response.ok().entity(Controller.getController().getSuppliers()).build();
     }
     @Override
     public Response validate(String username, String password, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+        return Response.ok().entity(Controller.getController().validate(username, password)).build();
     }
 }

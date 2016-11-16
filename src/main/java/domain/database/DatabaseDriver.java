@@ -47,7 +47,7 @@ public class DatabaseDriver {
     public ArrayList<Page> getSuppliers()
     {
         String query = "SELECT public.user.username, public.note.text, public.note.date FROM public.user " +
-                            "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights=2";
+                            "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights='Supplier'";
         ArrayList<Page> pageList = new ArrayList<Page>();
         try
         {
@@ -57,15 +57,15 @@ public class DatabaseDriver {
             while (result.next())
             {
                 //if(read.IsDBNull(1) && read.IsDBNull(2))
-                if(result.getString(1) == null && result.getDate(2) == null)	
-                {
-                    page = new Page().owner(result.getString(0));
-                }
+                //if(result.getString(1) == null && result.getDate(2) == null)	
+                //{
+                    page = new Page().owner(result.getString(1));
+                /*}
                 else
                 {
                     page = new Page().owner(result.getString(0));//, new Note(read.GetString(1), read.GetDateTime(2)));
 
-                }
+                }*/
                 pageList.add(page);
             }
         }
