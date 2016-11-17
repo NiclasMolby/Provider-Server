@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.User;
 import io.swagger.model.User.RightsEnum;
@@ -57,15 +58,15 @@ public class DatabaseDriver {
             while (result.next())
             {
                 //if(read.IsDBNull(1) && read.IsDBNull(2))
-                //if(result.getString(1) == null && result.getDate(2) == null)	
-                //{
+                if(result.getString(2) == null && result.getDate(3) == null)	
+                {
                     page = new Page().owner(result.getString(1));
-                /*}
+                }
                 else
                 {
-                    page = new Page().owner(result.getString(0));//, new Note(read.GetString(1), read.GetDateTime(2)));
+                    page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)));
 
-                }*/
+                }
                 pageList.add(page);
             }
         }
