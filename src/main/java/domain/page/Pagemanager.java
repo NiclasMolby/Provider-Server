@@ -16,7 +16,7 @@ public class Pagemanager {
 	public ArrayList<Page> getSuppliers(){
 		for(Page p : database.getSuppliers()){
 			System.out.println("#Supplier "+p.getOwner());
-			System.out.println(p.getNote() != null ? "#SupplierNote "+p.getNote().getText()+"\n" : "");
+			System.out.println(p.getNote() != null ? "#SupplierNote "+p.getNote().getText()+" "+p.getNote().getCreationDate()+"\n" : "");
 		}
 		return database.getSuppliers();
 	}

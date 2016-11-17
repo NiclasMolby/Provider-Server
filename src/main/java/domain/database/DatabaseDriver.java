@@ -64,7 +64,7 @@ public class DatabaseDriver {
                 }
                 else
                 {
-                    page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)));
+                    page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)));
 
                 }
                 pageList.add(page);
