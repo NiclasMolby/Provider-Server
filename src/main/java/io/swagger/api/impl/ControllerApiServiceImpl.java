@@ -22,12 +22,10 @@ import javax.ws.rs.core.SecurityContext;
 public class ControllerApiServiceImpl extends ControllerApiService {
     @Override
     public Response getSupplier(SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
         return Response.ok().entity(Controller.getController().getSuppliers()).build();
     }
     @Override
     public Response validate(String username, String password, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
         return Response.ok().entity(Controller.getController().validate(username, password)).build();
     }
 }
