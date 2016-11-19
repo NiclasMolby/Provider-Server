@@ -13,11 +13,11 @@ public class Usermanager {
 
     public User validate(String username, String password) {
         try {
-            System.out.println("# Bruger " + database.getLogin(username, password).getUsername() + " er logget ind");
+            System.out.println("[INFO] #Bruger " + database.getLogin(username, password).getUsername() + " er logget ind");
             return database.getLogin(username, password);
         }
         catch (NullPointerException e) {
-            System.out.println("Der gik noget galt under login");
+            System.out.println("[ERROR] Der gik noget galt under login af " + username);
             return null;
         }
         //return new User(username, password);
