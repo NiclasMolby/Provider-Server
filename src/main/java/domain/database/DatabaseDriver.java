@@ -42,7 +42,7 @@ public class DatabaseDriver {
     }
 
     public ArrayList<Page> getSuppliers() {
-        String query = "SELECT public.user.username, public.note.text, public.note.date FROM public.user "
+        String query = "SELECT public.user.username, public.note.text, public.note.date, public.note.lasteditor FROM public.user "
                 + "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights='Supplier'";
         ArrayList<Page> pageList = new ArrayList<Page>();
         try {
@@ -54,7 +54,7 @@ public class DatabaseDriver {
                 if (result.getString(2) == null && result.getDate(3) == null) {
                     page = new Page().owner(result.getString(1));
                 } else {
-                    page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)));
+                    page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)).editor(result.getString(4)));
 
                 }
                 pageList.add(page);
@@ -67,7 +67,7 @@ public class DatabaseDriver {
     }
     
     public void addNoteToSupplier(String supplierName, Note note) {
-    	String query = "INSERT INTO public.note(supplier, text, date) VALUES ('" + supplierName + "', '" + note.getText() + "', '" + note.getCreationDate() + "');";
+    	String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES ('" + supplierName + "', '" + note.getText() + "', '" + note.getCreationDate() + "', '" + note.getEditor() + "');";
     	try {
     		stmt = connection.createStatement();
     		stmt.execute(query);
@@ -78,7 +78,7 @@ public class DatabaseDriver {
     }
     
     public void editNoteOnSupplier(String supplierName, Note note) {
-    	String query = "UPDATE public.note SET text = '" + note.getText() + "', date = '" + note.getCreationDate() + "' WHERE public.note.supplier = '" + supplierName + "';";
+    	String query = "UPDATE public.note SET text = '" + note.getText() + "', date = '" + note.getCreationDate() + "', lasteditor = '" + note.getEditor() + "' WHERE public.note.supplier = '" + supplierName + "';";
     	try {
     		stmt = connection.createStatement();
     		stmt.execute(query);

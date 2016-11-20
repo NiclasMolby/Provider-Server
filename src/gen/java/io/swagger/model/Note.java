@@ -36,10 +36,13 @@ import java.util.Date;
  * A note on the supplier page
  */
 @ApiModel(description = "A note on the supplier page")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-20T00:54:43.083Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-20T12:18:51.162Z")
 public class Note   {
   @JsonProperty("text")
   private String text = null;
+
+  @JsonProperty("editor")
+  private String editor = null;
 
   @JsonProperty("creationDate")
   private Date creationDate = null;
@@ -60,6 +63,24 @@ public class Note   {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  public Note editor(String editor) {
+    this.editor = editor;
+    return this;
+  }
+
+   /**
+   * Get editor
+   * @return editor
+  **/
+  @ApiModelProperty(value = "")
+  public String getEditor() {
+    return editor;
+  }
+
+  public void setEditor(String editor) {
+    this.editor = editor;
   }
 
   public Note creationDate(Date creationDate) {
@@ -91,12 +112,13 @@ public class Note   {
     }
     Note note = (Note) o;
     return Objects.equals(this.text, note.text) &&
+        Objects.equals(this.editor, note.editor) &&
         Objects.equals(this.creationDate, note.creationDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, creationDate);
+    return Objects.hash(text, editor, creationDate);
   }
 
 
@@ -106,6 +128,7 @@ public class Note   {
     sb.append("class Note {\n");
     
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    editor: ").append(toIndentedString(editor)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("}");
     return sb.toString();

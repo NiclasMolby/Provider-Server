@@ -31,7 +31,7 @@ public class Controller {
         return pagemanager.getSuppliers();
     }
     
-    public void addNoteToSupplier(String supplierName, String text) {
-    	pagemanager.addNoteToSupplier(supplierName, text);
+    public void addNoteToSupplier(String supplierName, String editor, String text) {
+    	pagemanager.addNoteToSupplier(supplierName, editor, text);
     }
 }

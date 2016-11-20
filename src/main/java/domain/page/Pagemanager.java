@@ -29,8 +29,8 @@ public class Pagemanager {
 		return pages;
 	}
 	
-	public void addNoteToSupplier(String supplierName, String text) {
-		Note note = new Note().text(text).creationDate(Date.valueOf(LocalDate.now()));
+	public void addNoteToSupplier(String supplierName, String editor, String text) {
+		Note note = new Note().text(text).editor(editor).creationDate(Date.valueOf(LocalDate.now()));
 		
 		if(pages.get(supplierName).getNote() == null) {
 			database.addNoteToSupplier(supplierName, note);			
