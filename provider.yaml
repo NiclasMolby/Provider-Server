@@ -54,6 +54,33 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Page'
+              
+  /Controller/AddNoteToSupplier:
+    post:
+      tags:
+        - Controller
+      summary: TilfÃ¸jer en note til en supplier
+      operationId: addNoteToSupplier
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: supplierName
+          in: query
+          required: true
+          type: string
+        - name: editor
+          in: query
+          required: true
+          type: string
+        - name: text
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ok
           
 definitions:
   User:
@@ -102,6 +129,8 @@ definitions:
     type: object
     properties:
       text:
+        type: string
+      editor:
         type: string
       creationDate:
         type: string
