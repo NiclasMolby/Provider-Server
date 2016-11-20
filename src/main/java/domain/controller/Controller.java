@@ -30,4 +30,8 @@ public class Controller {
     public ArrayList<Page> getSuppliers() {
         return pagemanager.getSuppliers();
     }
+    
+    public void addNoteToSupplier(String supplierName, String text) {
+    	pagemanager.addNoteToSupplier(supplierName, text);
+    }
 }

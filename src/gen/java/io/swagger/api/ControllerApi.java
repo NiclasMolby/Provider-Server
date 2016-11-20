@@ -27,10 +27,23 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-17T10:47:02.780Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-20T00:54:43.083Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
+    @POST
+    @Path("/AddNoteToSupplier")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Tilføjer en note til en supplier", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response addNoteToSupplier(@ApiParam(value = "",required=true) @QueryParam("supplierName") String supplierName
+,@ApiParam(value = "",required=true) @QueryParam("text") String text
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.addNoteToSupplier(supplierName,text,securityContext);
+    }
     @POST
     @Path("/GetSuppliers")
     

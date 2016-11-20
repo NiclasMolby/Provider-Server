@@ -1,7 +1,10 @@
 package domain.database;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+
 import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.User;
@@ -61,5 +64,27 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return pageList;
+    }
+    
+    public void addNoteToSupplier(String supplierName, Note note) {
+    	String query = "INSERT INTO public.note(supplier, text, date) VALUES ('" + supplierName + "', '" + note.getText() + "', '" + note.getCreationDate() + "');";
+    	try {
+    		stmt = connection.createStatement();
+    		stmt.execute(query);
+    	}
+    	catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void editNoteOnSupplier(String supplierName, Note note) {
+    	String query = "UPDATE public.note SET text = '" + note.getText() + "', date = '" + note.getCreationDate() + "' WHERE public.note.supplier = '" + supplierName + "';";
+    	try {
+    		stmt = connection.createStatement();
+    		stmt.execute(query);
+    	}
+    	catch (SQLException e) {
+    		e.printStackTrace();
+    	}
     }
 }

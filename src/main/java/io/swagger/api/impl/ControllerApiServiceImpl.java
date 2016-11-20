@@ -28,4 +28,9 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     public Response validate(String username, String password, SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().validate(username, password)).build();
     }
+	@Override
+	public Response addNoteToSupplier(String supplierName, String text, SecurityContext securityContext) {
+		Controller.getController().addNoteToSupplier(supplierName, text);
+		return Response.ok().build();
+	}
 }
