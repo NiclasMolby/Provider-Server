@@ -7,6 +7,7 @@ import java.util.Date;
 
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
+import io.swagger.model.Post.TypesEnum;
 
 public class DatabaseDriver {
 
@@ -70,6 +71,37 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return pageList;
+    }
+    
+    public ArrayList<Post> getPosts() {
+        String query = "SELECT * FROM public.post";
+        ArrayList<Post> postList = new ArrayList<>();
+        try {
+            stmt = connection.createStatement();
+            result = stmt.executeQuery(query);
+            while (result.next()) {
+                TypesEnum type;
+                switch(result.getString(5)) {
+                    case "Warning":
+                        type = TypesEnum.WARNING;
+                        break;
+                    case "Request":
+                        type = TypesEnum.REQUEST;
+                        break;
+                    case "Offer":
+                        type = TypesEnum.OFFER;
+                        break;
+                    default:
+                        type = TypesEnum.NOTAVAILABE;
+                        break;
+                }
+                postList.add(new Post().owner(result.getString(1)).title(result.getString(4)).description(result.getString(2)).types(type).creationDate(result.getDate(3)).id(result.getInt(6)));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return postList;
     }
     
     public void addNoteToSupplier(String supplierName, Note note) {

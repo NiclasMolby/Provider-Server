@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import domain.page.Pagemanager;
 import domain.user.Usermanager;
 import io.swagger.model.*;
+import java.util.List;
 public class Controller {
 
     private static Controller instance;
@@ -31,6 +32,10 @@ public class Controller {
 
     public ArrayList<Page> getSuppliers() {
         return pagemanager.getSuppliers();
+    }
+    
+    public List<Post> getAllPosts() {
+        return bulletinboard.getAllPosts();
     }
     
     public void addNoteToSupplier(String supplierName, String editor, String text) {

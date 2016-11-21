@@ -38,7 +38,12 @@ public class Bulletinboard {
         return null;
     }
 
-    public List<Post> viewAllPosts() {
+    public List<Post> getAllPosts() {
+        List<Post> posts = DatabaseDriver.getInstance().getPosts();
+        for (Post post : posts) {
+            System.out.println("[INFO] #Post " + post.getTitle() + ":\n" + post.getDescription());
+            this.posts.add(post);
+        }
         return posts;
     }
 

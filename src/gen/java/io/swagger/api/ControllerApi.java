@@ -7,6 +7,7 @@ import io.swagger.api.factories.ControllerApiServiceFactory;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
+import io.swagger.model.Post;
 import io.swagger.model.Page;
 import io.swagger.model.User;
 
@@ -27,7 +28,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-20T12:18:51.162Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-21T21:59:16.354Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -35,7 +36,7 @@ public class ControllerApi  {
     @Path("/AddNoteToSupplier")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Tilføjer en note til en supplier", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "TilfÃ¸jer en note til en supplier", notes = "", response = void.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response addNoteToSupplier(@ApiParam(value = "",required=true) @QueryParam("supplierName") String supplierName
@@ -44,6 +45,31 @@ public class ControllerApi  {
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.addNoteToSupplier(supplierName,editor,text,securityContext);
+    }
+    @POST
+    @Path("/EditPost")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Ændrer en eksisterende post.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response editPost(@ApiParam(value = "" ,required=true) Post post
+,@ApiParam(value = "",required=true) @QueryParam("newDescription") String newDescription
+,@ApiParam(value = "",required=true) @QueryParam("newTitle") String newTitle
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.editPost(post,newDescription,newTitle,securityContext);
+    }
+    @POST
+    @Path("/GetAllPosts")
+    
+    @Produces({ "text/plain", "application/json", "text/json" })
+    @io.swagger.annotations.ApiOperation(value = "Gets all the posts", notes = "", response = Post.class, responseContainer = "List", tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class, responseContainer = "List") })
+    public Response getAllPosts(@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.getAllPosts(securityContext);
     }
     @POST
     @Path("/GetSuppliers")

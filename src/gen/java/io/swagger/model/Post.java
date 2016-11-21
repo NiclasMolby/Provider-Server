@@ -37,7 +37,7 @@ import java.util.Date;
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-21T13:00:30.548Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-21T21:59:16.354Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;
@@ -55,7 +55,7 @@ public class Post   {
    * Gets or Sets types
    */
   public enum TypesEnum {
-    ADMINWARNING("AdminWarning"),
+    WARNING("Warning"),
     
     REQUEST("Request"),
     
