@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import io.swagger.model.*;
+import io.swagger.model.User.RightsEnum;
 
 public class DatabaseDriver {
 
@@ -87,7 +88,7 @@ public class DatabaseDriver {
     
     public void updatePost(String owner, Post post){    
         
-        String query = "UPDATE public.post SET text = '" + post.g + "', title = '" + post.title + "' WHERE id = " + post.id + ";";
+        String query = "UPDATE public.post SET text = '" + post.getDescription() + "', title = '" + post.getTitle() + "' WHERE id = " + post.getId() + ";";
         
         try { 
             stmt = connection.createStatement();
