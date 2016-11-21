@@ -28,7 +28,7 @@ public class Bulletinboard {
         Post postFound = posts.stream().filter(p -> p == post).findFirst().get();
         postFound.setDescription(newDescription);
         postFound.setTitle(newTitle);
-        //Database.instance.UpdatePost(post.owner, post); //TODO: opdater posten i databasen
+        DatabaseDriver.instance.UpdatePost(post.owner, post); //TODO: opdater posten i databasen
     }
 
     private List<Post> getPosts(PostTypes type) {
