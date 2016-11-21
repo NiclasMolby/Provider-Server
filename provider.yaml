@@ -82,6 +82,34 @@ paths:
         '200':
           description: ok
           
+  /Controller/EditPost:
+    post:
+      tags:
+        - Controller
+      summary: Ændrer en eksisterende post. 
+      operationId: editPost
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: post
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Post'
+        - name: newDescription
+          in: query
+          required: true
+          type: string
+        - name: newTitle
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ok
+          
 definitions:
   User:
     description: Information about the user
@@ -135,6 +163,26 @@ definitions:
       creationDate:
         type: string
         format: date
+  Post: 
+    description: A short description of the post.
+    type: object
+    properties:
+      id:
+        type: integer
+      owner: 
+        type: string
+      creationDate:
+        type: string
+        format: date
+      description: 
+        type: string
+      types:
+        type: string
+        enum: [AdminWarning,Request,Offer,NotAvailabe]
+      title: 
+        type: string
+        
+      
                 
         
 securityDefinitions: {}
