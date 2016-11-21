@@ -5,10 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-import io.swagger.model.Note;
-import io.swagger.model.Page;
-import io.swagger.model.User;
-import io.swagger.model.User.RightsEnum;
+import io.swagger.model.*;
 
 public class DatabaseDriver {
 
@@ -87,4 +84,18 @@ public class DatabaseDriver {
     		e.printStackTrace();
     	}
     }
+    
+    public void updatePost(String owner, Post post){    
+        
+        String query = "UPDATE public.post SET text = '" + post.g + "', title = '" + post.title + "' WHERE id = " + post.id + ";";
+        
+        try { 
+            stmt = connection.createStatement();
+            stmt.execute(query);
+        } 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
