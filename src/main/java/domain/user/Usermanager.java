@@ -8,7 +8,7 @@ public class Usermanager {
     DatabaseDriver database;
 
     public Usermanager() {
-        database = new DatabaseDriver();
+        database = DatabaseDriver.getInstance();
     }
 
     public User validate(String username, String password) {

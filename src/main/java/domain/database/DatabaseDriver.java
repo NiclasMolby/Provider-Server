@@ -10,9 +10,17 @@ import io.swagger.model.User.RightsEnum;
 
 public class DatabaseDriver {
 
+    private static DatabaseDriver instance;
     private Connection connection;
     private Statement stmt;
     private ResultSet result;
+
+    public static DatabaseDriver getInstance() {
+        if(instance == null)
+            instance = new DatabaseDriver();
+
+        return instance;
+    }
 
     public DatabaseDriver() {
         try {

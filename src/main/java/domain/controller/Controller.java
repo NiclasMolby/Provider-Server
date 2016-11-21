@@ -37,8 +37,7 @@ public class Controller {
     	pagemanager.addNoteToSupplier(supplierName, editor, text);
     }
     
-    public void editPost(Post post, String newDescription, String newTitle)
-        {
-            bulletinboard.EditPost(post, newDescription, newTitle);
-        }
+    public void editPost(Post post, String newDescription, String newTitle) {
+        bulletinboard.editPost(post, newDescription, newTitle);
+    }
 }

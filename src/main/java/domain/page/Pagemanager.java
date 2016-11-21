@@ -15,7 +15,7 @@ public class Pagemanager {
 	private HashMap<String, Page> pages = new HashMap<String, Page>();
 	
 	public Pagemanager(){
-		database = new DatabaseDriver();
+		database = DatabaseDriver.getInstance();
 	}
 	
 	public ArrayList<Page> getSuppliers(){
