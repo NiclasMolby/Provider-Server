@@ -92,7 +92,7 @@ public class DatabaseDriver {
                         type = PostType.NOTAVAILABLE;
                         break;
                 }
-                postList.add(new Post().owner(result.getString(1)).title(result.getString(4)).description(result.getString(2)).type(type).creationDate(result.getDate(3)).id(result.getInt(6)));
+                postList.add(new Post().owner(result.getString(1)).title(result.getString(4)).description(result.getString(2)).type(type).date(result.getDate(3)).id(result.getInt(6)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,7 +134,7 @@ public class DatabaseDriver {
 
     public int addPost(String owner, Post post) {
         String query = "INSERT INTO public.post(username, type, text, \"creationDate\", title) "
-                + "VALUES('" + owner + "', '" + post.getType() + "', '" + post.getDescription() + "', '" + post.getCreationDate() + "', '" + post.getTitle() + "') "
+                + "VALUES('" + owner + "', '" + post.getType() + "', '" + post.getDescription() + "', '" + post.getDate() + "', '" + post.getTitle() + "') "
                 + "RETURNING id;";
 
         int id = (int) (Math.random() * Integer.MAX_VALUE);

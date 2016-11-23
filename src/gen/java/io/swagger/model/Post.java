@@ -37,7 +37,7 @@ import java.util.Date;
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:30:12.404Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:47:20.723Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;
@@ -45,8 +45,8 @@ public class Post   {
   @JsonProperty("owner")
   private String owner = null;
 
-  @JsonProperty("creationDate")
-  private Date creationDate = null;
+  @JsonProperty("date")
+  private Date date = null;
 
   @JsonProperty("description")
   private String description = null;
@@ -93,22 +93,22 @@ public class Post   {
     this.owner = owner;
   }
 
-  public Post creationDate(Date creationDate) {
-    this.creationDate = creationDate;
+  public Post date(Date date) {
+    this.date = date;
     return this;
   }
 
    /**
-   * Get creationDate
-   * @return creationDate
+   * Get date
+   * @return date
   **/
   @ApiModelProperty(value = "")
-  public Date getCreationDate() {
-    return creationDate;
+  public Date getDate() {
+    return date;
   }
 
-  public void setCreationDate(Date creationDate) {
-    this.creationDate = creationDate;
+  public void setDate(Date date) {
+    this.date = date;
   }
 
   public Post description(String description) {
@@ -177,7 +177,7 @@ public class Post   {
     Post post = (Post) o;
     return Objects.equals(this.id, post.id) &&
         Objects.equals(this.owner, post.owner) &&
-        Objects.equals(this.creationDate, post.creationDate) &&
+        Objects.equals(this.date, post.date) &&
         Objects.equals(this.description, post.description) &&
         Objects.equals(this.type, post.type) &&
         Objects.equals(this.title, post.title);
@@ -185,7 +185,7 @@ public class Post   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, creationDate, description, type, title);
+    return Objects.hash(id, owner, date, description, type, title);
   }
 
 
@@ -196,7 +196,7 @@ public class Post   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");

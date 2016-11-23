@@ -115,6 +115,11 @@ paths:
           in: query
           required: true
           type: string
+        - name: date
+          in: query
+          required: true
+          type: string
+          format: date
         - name: title
           in: query
           required: true
@@ -223,7 +228,7 @@ definitions:
         type: integer
       owner: 
         type: string
-      creationDate:
+      date:
         type: string
         format: date
       description: 

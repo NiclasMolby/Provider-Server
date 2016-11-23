@@ -4,6 +4,7 @@ import domain.database.DatabaseDriver;
 import java.util.ArrayList;
 import java.util.List;
 import io.swagger.model.*;
+import java.util.Date;
 
 public class Bulletinboard {
 
@@ -13,8 +14,8 @@ public class Bulletinboard {
         posts = new ArrayList<>();
     }
 
-    public Post createPost(String owner, String title, String description, PostType type) {
-        Post post = new Post().owner(owner).title(title).description(description).type(type);
+    public Post createPost(String owner, Date date, String title, String description, PostType type) {
+        Post post = new Post().owner(owner).date(date).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
         posts.add(post);
         return post;

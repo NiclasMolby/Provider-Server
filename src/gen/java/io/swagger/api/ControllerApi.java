@@ -9,6 +9,7 @@ import io.swagger.jaxrs.*;
 
 import io.swagger.model.PostType;
 import io.swagger.model.Post;
+import java.util.Date;
 import io.swagger.model.Page;
 import io.swagger.model.User;
 
@@ -29,7 +30,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:30:12.404Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:47:20.723Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -55,12 +56,13 @@ public class ControllerApi  {
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class) })
     public Response createPost(@ApiParam(value = "",required=true) @QueryParam("owner") String owner
+,@ApiParam(value = "",required=true) @QueryParam("date") Date date
 ,@ApiParam(value = "",required=true) @QueryParam("title") String title
 ,@ApiParam(value = "",required=true) @QueryParam("description") String description
 ,@ApiParam(value = "" ,required=true) PostType type
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.createPost(owner,title,description,type,securityContext);
+        return delegate.createPost(owner,date,title,description,type,securityContext);
     }
     @POST
     @Path("/EditPost")
@@ -80,7 +82,7 @@ public class ControllerApi  {
     @Path("/GetAllPosts")
     
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Gets alle suppliers", notes = "", response = Post.class, responseContainer = "List", tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Henter all posts", notes = "", response = Post.class, responseContainer = "List", tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class, responseContainer = "List") })
     public Response getAllPosts(@Context SecurityContext securityContext)
