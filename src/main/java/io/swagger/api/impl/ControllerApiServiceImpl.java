@@ -32,7 +32,6 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     }
     @Override
     public Response editPost(Post post, String newDescription, String newTitle, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
