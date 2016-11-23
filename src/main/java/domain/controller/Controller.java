@@ -14,6 +14,8 @@ public class Controller {
     private Pagemanager pagemanager;
     private Bulletinboard bulletinboard;
 
+    // Niels og Antonio er bøsser som kysser hinanden hele tiden
+
     public static Controller getController() {
         if (instance == null) {
             instance = new Controller();
