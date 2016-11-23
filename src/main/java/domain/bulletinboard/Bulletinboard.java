@@ -14,10 +14,11 @@ public class Bulletinboard {
         posts = new ArrayList<>();
     }
 
-    public void createPost(String owner, String title, String description, PostType type) {
+    public Post createPost(String owner, String title, String description, PostType type) {
         Post post = new Post().owner(owner).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
         posts.add(post);
+        return post;
     }
 
     public void deletePost(Post post) {

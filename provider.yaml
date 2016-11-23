@@ -82,6 +82,40 @@ paths:
         '200':
           description: ok
           
+  /Controller/CreatePost:
+    post:
+      tags:
+        - Controller
+      summary: Opretter en post.
+      operationId: createPost
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: owner
+          in: query
+          required: true
+          type: string
+        - name: title
+          in: query
+          required: true
+          type: string
+        - name: description
+          in: query
+          required: true
+          type: string
+        - name: type
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PostType'
+      responses:
+        '200':
+          description: ok
+          schema:
+            $ref: '#/definitions/Post'
+          
   /Controller/EditPost:
     post:
       tags:
@@ -176,12 +210,17 @@ definitions:
         format: date
       description: 
         type: string
-      types:
-        type: string
-        enum: [AdminWarning,Request,Offer,NotAvailabe]
+      type:
+        $ref: '#/definitions/PostType'
       title: 
         type: string
-        
+  PostType:
+    type: string
+    enum:
+      - Warning
+      - Request
+      - Offer
+      - NotAvailable
       
                 
         

@@ -19,7 +19,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-22T16:22:57.556Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
 public class ControllerApiServiceImpl extends ControllerApiService {
     @Override
     public Response addNoteToSupplier(String supplierName, String editor, String text, SecurityContext securityContext) throws NotFoundException {
@@ -28,8 +28,7 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     }
     @Override
     public Response createPost(String owner, String title, String description, PostType type, SecurityContext securityContext) throws NotFoundException {
-        Controller.getController().CreatePost(owner, title, description, type);
-        return Response.ok().build();
+        return Response.ok().entity(Controller.getController().CreatePost(owner, title, description, type)).build();
     }
     @Override
     public Response editPost(Post post, String newDescription, String newTitle, SecurityContext securityContext) throws NotFoundException {

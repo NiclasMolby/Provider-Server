@@ -36,7 +36,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Information about the user
  */
 @ApiModel(description = "Information about the user")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-22T16:22:57.556Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
 public class User   {
   @JsonProperty("username")
   private String username = null;

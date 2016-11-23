@@ -29,7 +29,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-22T16:22:57.556Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -51,9 +51,9 @@ public class ControllerApi  {
     @Path("/CreatePost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Opretter en post.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Opretter en post.", notes = "", response = Post.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class) })
     public Response createPost(@ApiParam(value = "",required=true) @QueryParam("owner") String owner
 ,@ApiParam(value = "",required=true) @QueryParam("title") String title
 ,@ApiParam(value = "",required=true) @QueryParam("description") String description
