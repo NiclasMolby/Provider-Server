@@ -55,6 +55,24 @@ paths:
             items:
               $ref: '#/definitions/Page'
               
+  /Controller/GetAllPosts:
+    post:
+      tags: 
+        - Controller
+      summary: Henter all posts
+      operationId: getAllPosts
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      responses:
+        '200':
+          description: ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Post'
+              
   /Controller/AddNoteToSupplier:
     post:
       tags:
