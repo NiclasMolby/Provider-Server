@@ -9,7 +9,6 @@ import io.swagger.jaxrs.*;
 
 import io.swagger.model.PostType;
 import io.swagger.model.Post;
-import java.util.Date;
 import io.swagger.model.Page;
 import io.swagger.model.User;
 
@@ -30,7 +29,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:47:20.723Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T13:04:29.094Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -51,18 +50,17 @@ public class ControllerApi  {
     @POST
     @Path("/CreatePost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
-    
+    @Produces({ "text/plain", "application/json", "text/json" })
     @io.swagger.annotations.ApiOperation(value = "Opretter en post.", notes = "", response = Post.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class) })
     public Response createPost(@ApiParam(value = "",required=true) @QueryParam("owner") String owner
-,@ApiParam(value = "",required=true) @QueryParam("date") Date date
 ,@ApiParam(value = "",required=true) @QueryParam("title") String title
 ,@ApiParam(value = "",required=true) @QueryParam("description") String description
 ,@ApiParam(value = "" ,required=true) PostType type
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.createPost(owner,date,title,description,type,securityContext);
+        return delegate.createPost(owner,title,description,type,securityContext);
     }
     @POST
     @Path("/EditPost")

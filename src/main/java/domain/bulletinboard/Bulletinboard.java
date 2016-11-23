@@ -1,6 +1,8 @@
 package domain.bulletinboard;
 
 import domain.database.DatabaseDriver;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import io.swagger.model.*;
@@ -14,8 +16,8 @@ public class Bulletinboard {
         posts = new ArrayList<>();
     }
 
-    public Post createPost(String owner, Date date, String title, String description, PostType type) {
-        Post post = new Post().owner(owner).date(date).title(title).description(description).type(type);
+    public Post createPost(String owner, String title, String description, PostType type) {
+        Post post = new Post().owner(owner).date(new Date()).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
         posts.add(post);
         return post;
@@ -39,12 +41,13 @@ public class Bulletinboard {
     }
 
     public List<Post> getAllPosts() {
+        this.posts.clear();
         List<Post> posts = DatabaseDriver.getInstance().getPosts();
-        for (Post post : posts) {
+        posts.parallelStream().forEach(post -> {
             System.out.println("[INFO] #Post " + post.getTitle() + ":\n" + post.getDescription());
             this.posts.add(post);
-        }
-        return posts;
+        });
+        return this.posts;
     }
 
     /*public List<Post> viewWarningPosts() {
