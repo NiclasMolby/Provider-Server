@@ -42,7 +42,7 @@ public class Controller {
     	pagemanager.addNoteToSupplier(supplierName, editor, text);
     }
     
-    public Post CreatePost(String owner, String title, String description, PostType type){
+    public Post createPost(String owner, String title, String description, PostType type){
         return bulletinboard.createPost(owner, title, description, type);
     }
     

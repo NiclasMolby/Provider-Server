@@ -37,7 +37,7 @@ import java.util.Date;
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:30:12.404Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;

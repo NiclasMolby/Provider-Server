@@ -18,11 +18,12 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:30:12.404Z")
 public abstract class ControllerApiService {
     public abstract Response addNoteToSupplier(String supplierName,String editor,String text,SecurityContext securityContext) throws NotFoundException;
     public abstract Response createPost(String owner,String title,String description,PostType type,SecurityContext securityContext) throws NotFoundException;
     public abstract Response editPost(Post post,String newDescription,String newTitle,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response getAllPosts(SecurityContext securityContext) throws NotFoundException;
     public abstract Response getSupplier(SecurityContext securityContext) throws NotFoundException;
     public abstract Response validate(String username,String password,SecurityContext securityContext) throws NotFoundException;
 }

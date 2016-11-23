@@ -3,7 +3,6 @@ package domain.bulletinboard;
 import domain.database.DatabaseDriver;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import io.swagger.model.*;
 
 public class Bulletinboard {

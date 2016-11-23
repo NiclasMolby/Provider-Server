@@ -29,7 +29,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:30:12.404Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -75,6 +75,17 @@ public class ControllerApi  {
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.editPost(post,newDescription,newTitle,securityContext);
+    }
+    @POST
+    @Path("/GetAllPosts")
+    
+    @Produces({ "text/plain", "application/json", "text/json" })
+    @io.swagger.annotations.ApiOperation(value = "Gets alle suppliers", notes = "", response = Post.class, responseContainer = "List", tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class, responseContainer = "List") })
+    public Response getAllPosts(@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.getAllPosts(securityContext);
     }
     @POST
     @Path("/GetSuppliers")
