@@ -28,16 +28,16 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.model.PostType;
 import java.util.Date;
 
 /**
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-21T21:59:16.354Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T10:08:25.390Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;
@@ -51,43 +51,8 @@ public class Post   {
   @JsonProperty("description")
   private String description = null;
 
-  /**
-   * Gets or Sets types
-   */
-  public enum TypesEnum {
-    WARNING("Warning"),
-    
-    REQUEST("Request"),
-    
-    OFFER("Offer"),
-    
-    NOTAVAILABE("NotAvailabe");
-
-    private String value;
-
-    TypesEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypesEnum fromValue(String text) {
-      for (TypesEnum b : TypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("types")
-  private TypesEnum types = null;
+  @JsonProperty("type")
+  private PostType type = null;
 
   @JsonProperty("title")
   private String title = null;
@@ -164,22 +129,22 @@ public class Post   {
     this.description = description;
   }
 
-  public Post types(TypesEnum types) {
-    this.types = types;
+  public Post type(PostType type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * Get types
-   * @return types
+   * Get type
+   * @return type
   **/
   @ApiModelProperty(value = "")
-  public TypesEnum getTypes() {
-    return types;
+  public PostType getType() {
+    return type;
   }
 
-  public void setTypes(TypesEnum types) {
-    this.types = types;
+  public void setType(PostType type) {
+    this.type = type;
   }
 
   public Post title(String title) {
@@ -214,13 +179,13 @@ public class Post   {
         Objects.equals(this.owner, post.owner) &&
         Objects.equals(this.creationDate, post.creationDate) &&
         Objects.equals(this.description, post.description) &&
-        Objects.equals(this.types, post.types) &&
+        Objects.equals(this.type, post.type) &&
         Objects.equals(this.title, post.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, creationDate, description, types, title);
+    return Objects.hash(id, owner, creationDate, description, type, title);
   }
 
 
@@ -233,7 +198,7 @@ public class Post   {
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    types: ").append(toIndentedString(types)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
