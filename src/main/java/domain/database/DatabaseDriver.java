@@ -7,7 +7,6 @@ import java.util.Date;
 
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
-import io.swagger.model.Post.TypesEnum;
 
 public class DatabaseDriver {
 
@@ -17,8 +16,9 @@ public class DatabaseDriver {
     private ResultSet result;
 
     public static DatabaseDriver getInstance() {
-        if(instance == null)
+        if (instance == null) {
             instance = new DatabaseDriver();
+        }
 
         return instance;
     }
@@ -26,8 +26,7 @@ public class DatabaseDriver {
     public DatabaseDriver() {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", "group_2", "MDI5NTli");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -41,8 +40,7 @@ public class DatabaseDriver {
                 return new User().username(result.getString(1)).rights(RightsEnum.PROVIA);
             }
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -66,13 +64,12 @@ public class DatabaseDriver {
                 }
                 pageList.add(page);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return pageList;
     }
-    
+
     public ArrayList<Post> getPosts() {
         String query = "SELECT * FROM public.post";
         ArrayList<Post> postList = new ArrayList<>();
@@ -80,63 +77,77 @@ public class DatabaseDriver {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
             while (result.next()) {
-                TypesEnum type;
-                switch(result.getString(5)) {
+                PostType type;
+                switch (result.getString(5)) {
                     case "Warning":
-                        type = TypesEnum.WARNING;
+                        type = PostType.WARNING;
                         break;
                     case "Request":
-                        type = TypesEnum.REQUEST;
+                        type = PostType.REQUEST;
                         break;
                     case "Offer":
-                        type = TypesEnum.OFFER;
+                        type = PostType.OFFER;
                         break;
                     default:
-                        type = TypesEnum.NOTAVAILABE;
+                        type = PostType.NOTAVAILABLE;
                         break;
                 }
-                postList.add(new Post().owner(result.getString(1)).title(result.getString(4)).description(result.getString(2)).types(type).creationDate(result.getDate(3)).id(result.getInt(6)));
+                postList.add(new Post().owner(result.getString(1)).title(result.getString(4)).description(result.getString(2)).type(type).creationDate(result.getDate(3)).id(result.getInt(6)));
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return postList;
     }
-    
+
     public void addNoteToSupplier(String supplierName, Note note) {
-    	String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES ('" + supplierName + "', '" + note.getText() + "', '" + note.getCreationDate() + "', '" + note.getEditor() + "');";
-    	try {
-    		stmt = connection.createStatement();
-    		stmt.execute(query);
-    	}
-    	catch (SQLException e) {
-    		e.printStackTrace();
-    	}
-    }
-    
-    public void editNoteOnSupplier(String supplierName, Note note) {
-    	String query = "UPDATE public.note SET text = '" + note.getText() + "', date = '" + note.getCreationDate() + "', lasteditor = '" + note.getEditor() + "' WHERE public.note.supplier = '" + supplierName + "';";
-    	try {
-    		stmt = connection.createStatement();
-    		stmt.execute(query);
-    	}
-    	catch (SQLException e) {
-    		e.printStackTrace();
-    	}
-    }
-    
-    public void updatePost(String owner, Post post){    
-        
-        String query = "UPDATE public.post SET text = '" + post.getDescription() + "', title = '" + post.getTitle() + "' WHERE id = " + post.getId() + ";";
-        
-        try { 
+        String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES ('" + supplierName + "', '" + note.getText() + "', '" + note.getCreationDate() + "', '" + note.getEditor() + "');";
+        try {
             stmt = connection.createStatement();
             stmt.execute(query);
-        } 
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
+    public void editNoteOnSupplier(String supplierName, Note note) {
+        String query = "UPDATE public.note SET text = '" + note.getText() + "', date = '" + note.getCreationDate() + "', lasteditor = '" + note.getEditor() + "' WHERE public.note.supplier = '" + supplierName + "';";
+        try {
+            stmt = connection.createStatement();
+            stmt.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updatePost(String owner, Post post) {
+
+        String query = "UPDATE public.post SET text = '" + post.getDescription() + "', title = '" + post.getTitle() + "' WHERE id = " + post.getId() + ";";
+
+        try {
+            stmt = connection.createStatement();
+            stmt.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int addPost(String owner, Post post) {
+        String query = "INSERT INTO public.post(username, type, text, \"creationDate\", title) "
+                + "VALUES('" + owner + "', '" + post.getType() + "', '" + post.getDescription() + "', '" + post.getCreationDate() + "', '" + post.getTitle() + "') "
+                + "RETURNING id;";
+
+        int id = (int) (Math.random() * Integer.MAX_VALUE);
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+            result = stmt.getGeneratedKeys();
+            result.next();
+            id = result.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 }

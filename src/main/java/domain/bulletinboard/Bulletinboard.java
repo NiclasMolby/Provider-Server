@@ -1,7 +1,6 @@
 package domain.bulletinboard;
 
 import domain.database.DatabaseDriver;
-import domain.util.PostTypes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,10 +14,10 @@ public class Bulletinboard {
         posts = new ArrayList<>();
     }
 
-    public void createPost(String owner, String title, String description, PostTypes type) {
-        //Post post = new Post(owner, title, description, type);
-        //post.setId(Database.instance.AddPost(owner, post)); //TODO: hent id fra databasen når en post bliver oprettet
-        //posts.add(post);
+    public void createPost(String owner, String title, String description, PostType type) {
+        Post post = new Post().owner(owner).title(title).description(description).type(type);
+        post.setId(DatabaseDriver.getInstance().addPost(owner, post));
+        posts.add(post);
     }
 
     public void deletePost(Post post) {
@@ -33,7 +32,7 @@ public class Bulletinboard {
         DatabaseDriver.getInstance().updatePost(post.getOwner(), post); //TODO: opdater posten i databasen
     }
 
-    private List<Post> getPosts(PostTypes type) {
+    private List<Post> getPosts(PostType type) {
         //return posts.stream().filter(p -> p.getType() == type).collect(Collectors.toList());
         return null;
     }
@@ -47,7 +46,7 @@ public class Bulletinboard {
         return posts;
     }
 
-    public List<Post> viewWarningPosts() {
+    /*public List<Post> viewWarningPosts() {
         return getPosts(PostTypes.Warning);
     }
 
@@ -57,6 +56,6 @@ public class Bulletinboard {
 
     public List<Post> viewOfferPosts() {
         return getPosts(PostTypes.Offer);
-    }
+    }*/
 
 }
