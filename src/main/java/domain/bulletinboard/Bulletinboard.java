@@ -2,7 +2,6 @@ package domain.bulletinboard;
 
 import domain.database.DatabaseDriver;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import io.swagger.model.*;
@@ -24,7 +23,7 @@ public class Bulletinboard {
     }
 
     public void deletePost(Post post) {
-        //Database.instance.DeletePost(post); // TODO: slet post fra databasen
+        DatabaseDriver.getInstance().deletePost(post);
         posts.remove(post);
     }
 

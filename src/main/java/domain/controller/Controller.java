@@ -27,7 +27,7 @@ public class Controller {
         bulletinboard = new Bulletinboard();
     }
 
-    public void deletePost(Post post){
+    public void deletePost(Post post) {
         bulletinboard.deletePost(post);
     }
 
@@ -47,7 +47,7 @@ public class Controller {
     	pagemanager.addNoteToSupplier(supplierName, editor, text);
     }
     
-    public Post createPost(String owner, String title, String description, PostType type){
+    public Post createPost(String owner, String title, String description, PostType type) {
         return bulletinboard.createPost(owner, title, description, type);
     }
     

@@ -56,13 +56,12 @@ public class ControllerApi  {
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class) })
     public Response createPost(@ApiParam(value = "",required=true) @QueryParam("owner") String owner
-,@ApiParam(value = "",required=true) @QueryParam("date") Date date
 ,@ApiParam(value = "",required=true) @QueryParam("title") String title
 ,@ApiParam(value = "",required=true) @QueryParam("description") String description
 ,@ApiParam(value = "" ,required=true) PostType type
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.createPost(owner,date,title,description,type,securityContext);
+        return delegate.createPost(owner,title,description,type,securityContext);
     }
     @POST
     @Path("/DeletePost")
