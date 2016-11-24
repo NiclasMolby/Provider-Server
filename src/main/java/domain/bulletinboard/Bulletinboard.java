@@ -29,7 +29,8 @@ public class Bulletinboard {
     }
 
     public void editPost(Post post, String newDescription, String newTitle) {
-        Post postFound = posts.stream().filter(p -> p == post).findFirst().get();
+        Post postFound = posts.parallelStream()
+                                .filter(p -> p == post).findFirst().get();
         postFound.setDescription(newDescription);
         postFound.setTitle(newTitle);
         DatabaseDriver.getInstance().updatePost(post.getOwner(), post); //TODO: opdater posten i databasen
