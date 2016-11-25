@@ -27,10 +27,6 @@ public class Controller {
         bulletinboard = new Bulletinboard();
     }
 
-    public void deletePost(Post post){
-        bulletinboard.deletePost(post);
-    }
-
     public User validate(String username, String password) {
         return usermanager.validate(username, password);
     }
@@ -46,7 +42,10 @@ public class Controller {
     public void addNoteToSupplier(String supplierName, String editor, String text) {
     	pagemanager.addNoteToSupplier(supplierName, editor, text);
     }
-    
+
+    public void deletePost(Post post){
+        bulletinboard.deletePost(post);
+    }
     public Post createPost(String owner, String title, String description, PostType type){
         return bulletinboard.createPost(owner, title, description, type);
     }

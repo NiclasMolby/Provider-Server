@@ -39,7 +39,7 @@ import java.util.List;
  * Page containing information about a supplier
  */
 @ApiModel(description = "Page containing information about a supplier")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T18:03:00.493Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T18:46:54.291Z")
 public class Page   {
   @JsonProperty("owner")
   private String owner = null;
