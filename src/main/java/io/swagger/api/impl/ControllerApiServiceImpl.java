@@ -37,7 +37,7 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         return Response.ok().entity(Controller.getController().getAllPosts()).build();
     }
     @Override
-    public Response getSupplier(SecurityContext securityContext) throws NotFoundException {
+    public Response getSuppliers(SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().getSuppliers()).build();
     }
     @Override
@@ -54,5 +54,6 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         Controller.getController().deletePost(post);
         return Response.ok().build();
     }
+
 }
 
