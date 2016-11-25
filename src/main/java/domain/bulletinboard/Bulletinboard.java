@@ -2,7 +2,6 @@ package domain.bulletinboard;
 
 import domain.database.DatabaseDriver;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import io.swagger.model.*;
@@ -17,22 +16,20 @@ public class Bulletinboard {
     }
 
     public Post createPost(String owner, String title, String description, PostType type) {
-        Post post = new Post().owner(owner).date(new Date()).title(title).description(description).type(type);
+        Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
         posts.add(post);
         return post;
     }
 
     public void deletePost(Post post) {
-        //Database.instance.DeletePost(post); // TODO: slet post fra databasen
+        DatabaseDriver.getInstance().deletePost(post);
         posts.remove(post);
     }
 
     public void editPost(Post post, String newDescription, String newTitle) {
-        Post postFound = posts.parallelStream()
-                                .filter(p -> p == post).findFirst().get();
-        postFound.setDescription(newDescription);
-        postFound.setTitle(newTitle);
+        post.setDescription(newDescription);
+        post.setTitle(newTitle);
         DatabaseDriver.getInstance().updatePost(post.getOwner(), post); //TODO: opdater posten i databasen
     }
 

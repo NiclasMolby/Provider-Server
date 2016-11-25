@@ -115,11 +115,6 @@ paths:
           in: query
           required: true
           type: string
-        - name: date
-          in: query
-          required: true
-          type: string
-          format: date-time
         - name: title
           in: query
           required: true
@@ -163,6 +158,26 @@ paths:
           in: query
           required: true
           type: string
+      responses:
+        '200':
+          description: ok
+  
+  /Controller/DeletePost:
+    post:
+      tags:
+        - Controller
+      summary: Sletter en eksisterende post. 
+      operationId: deletePost
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: post
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Post'
       responses:
         '200':
           description: ok

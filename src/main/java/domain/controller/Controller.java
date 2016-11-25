@@ -27,6 +27,10 @@ public class Controller {
         bulletinboard = new Bulletinboard();
     }
 
+    public void deletePost(Post post){
+        bulletinboard.deletePost(post);
+    }
+
     public User validate(String username, String password) {
         return usermanager.validate(username, password);
     }

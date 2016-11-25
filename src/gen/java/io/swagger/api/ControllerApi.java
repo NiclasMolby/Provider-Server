@@ -29,7 +29,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T13:04:29.094Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-25T12:23:56.533Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -37,7 +37,7 @@ public class ControllerApi  {
     @Path("/AddNoteToSupplier")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "TilfÃ¸jer en note til en supplier", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Adds a note to a supplier", notes = "", response = void.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response addNoteToSupplier(@ApiParam(value = "",required=true) @QueryParam("supplierName") String supplierName
@@ -50,8 +50,8 @@ public class ControllerApi  {
     @POST
     @Path("/CreatePost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
-    @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Opretter en post.", notes = "", response = Post.class, tags={ "Controller", })
+    
+    @io.swagger.annotations.ApiOperation(value = "Creates a post", notes = "", response = Post.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class) })
     public Response createPost(@ApiParam(value = "",required=true) @QueryParam("owner") String owner
@@ -63,10 +63,22 @@ public class ControllerApi  {
         return delegate.createPost(owner,title,description,type,securityContext);
     }
     @POST
+    @Path("/DeletePost")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Deletes a post", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response deletePost(@ApiParam(value = "" ,required=true) Post post
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.deletePost(post,securityContext);
+    }
+    @POST
     @Path("/EditPost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Ændrer en eksisterende post.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Edits a posts", notes = "", response = void.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response editPost(@ApiParam(value = "" ,required=true) Post post
@@ -80,7 +92,7 @@ public class ControllerApi  {
     @Path("/GetAllPosts")
     
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Henter all posts", notes = "", response = Post.class, responseContainer = "List", tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Gets all posts", notes = "", response = Post.class, responseContainer = "List", tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class, responseContainer = "List") })
     public Response getAllPosts(@Context SecurityContext securityContext)
@@ -91,18 +103,18 @@ public class ControllerApi  {
     @Path("/GetSuppliers")
     
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Henter suppliers", notes = "", response = Page.class, responseContainer = "List", tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Gets all suppliers", notes = "", response = Page.class, responseContainer = "List", tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Page.class, responseContainer = "List") })
-    public Response getSupplier(@Context SecurityContext securityContext)
+    public Response getSuppliers(@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.getSupplier(securityContext);
+        return delegate.getSuppliers(securityContext);
     }
     @POST
     @Path("/Validate")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Validate information", notes = "Validate the users information", response = User.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Validate information", notes = "", response = User.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = User.class) })
     public Response validate(@ApiParam(value = "Username to login",required=true) @QueryParam("username") String username

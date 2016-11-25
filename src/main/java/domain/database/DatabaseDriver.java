@@ -23,7 +23,7 @@ public class DatabaseDriver {
         return instance;
     }
 
-    public DatabaseDriver() {
+    private DatabaseDriver() {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", "group_2", "MDI5NTli");
         } catch (Exception e) {
@@ -78,7 +78,7 @@ public class DatabaseDriver {
             result = stmt.executeQuery(query);
             while (result.next()) {
                 PostType type;
-                switch (result.getString(5)) {
+                switch (result.getString(4)) {
                     case "Warning":
                         type = PostType.WARNING;
                         break;
@@ -92,7 +92,7 @@ public class DatabaseDriver {
                         type = PostType.NOTAVAILABLE;
                         break;
                 }
-                postList.add(new Post().owner(result.getString(1)).title(result.getString(4)).description(result.getString(2)).type(type).date(result.getDate(3)).id(result.getInt(6)));
+                postList.add(new Post().owner(result.getString(1)).title(result.getString(3)).description(result.getString(2)).type(type).date(result.getString(6)).id(result.getInt(5)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -122,7 +122,8 @@ public class DatabaseDriver {
 
     public void updatePost(String owner, Post post) {
 
-        String query = "UPDATE public.post SET text = '" + post.getDescription() + "', title = '" + post.getTitle() + "' WHERE id = " + post.getId() + ";";
+        Date date = new Date();
+        String query = "UPDATE public.post SET text = '" + post.getDescription() + "', title = '" + post.getTitle() + "', date = '" + date.toString() + "' WHERE id = " + post.getId() + ";";
 
         try {
             stmt = connection.createStatement();
@@ -133,7 +134,7 @@ public class DatabaseDriver {
     }
 
     public int addPost(String owner, Post post) {
-        String query = "INSERT INTO public.post(username, type, text, \"creationDate\", title) "
+        String query = "INSERT INTO public.post(username, type, text, date, title) "
                 + "VALUES('" + owner + "', '" + post.getType() + "', '" + post.getDescription() + "', '" + post.getDate() + "', '" + post.getTitle() + "') "
                 + "RETURNING id;";
 
@@ -148,6 +149,16 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return id;
+    }
+
+    public void deletePost(Post post){
+        String query = "DELETE FROM public.post WHERE public.post.id = " + post.getId() + ";";
+        try {
+            stmt = connection.createStatement();
+            stmt.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

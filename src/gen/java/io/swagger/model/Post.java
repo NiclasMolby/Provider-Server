@@ -31,13 +31,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.PostType;
-import java.util.Date;
 
 /**
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-23T13:04:29.094Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-25T12:23:56.533Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;
@@ -46,7 +45,7 @@ public class Post   {
   private String owner = null;
 
   @JsonProperty("date")
-  private Date date = null;
+  private String date = null;
 
   @JsonProperty("description")
   private String description = null;
@@ -93,7 +92,7 @@ public class Post   {
     this.owner = owner;
   }
 
-  public Post date(Date date) {
+  public Post date(String date) {
     this.date = date;
     return this;
   }
@@ -103,11 +102,11 @@ public class Post   {
    * @return date
   **/
   @ApiModelProperty(value = "")
-  public Date getDate() {
+  public String getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(String date) {
     this.date = date;
   }
 
