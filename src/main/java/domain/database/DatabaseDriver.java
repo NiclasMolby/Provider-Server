@@ -23,7 +23,7 @@ public class DatabaseDriver {
         return instance;
     }
 
-    public DatabaseDriver() {
+    private DatabaseDriver() {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", "group_2", "MDI5NTli");
         } catch (Exception e) {
@@ -148,6 +148,16 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return id;
+    }
+
+    public void deletePost(Post post){
+        String query = "DELETE FROM public.post WHERE public.post.id = " + post.getId() + ";";
+        try {
+            stmt = connection.createStatement();
+            stmt.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
