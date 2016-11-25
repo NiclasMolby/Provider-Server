@@ -16,7 +16,7 @@ public class Bulletinboard {
     }
 
     public Post createPost(String owner, String title, String description, PostType type) {
-        Post post = new Post().owner(owner).date(new Date()).title(title).description(description).type(type);
+        Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
         posts.add(post);
         return post;
