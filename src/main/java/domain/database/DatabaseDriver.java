@@ -13,6 +13,7 @@ public class DatabaseDriver {
     private static DatabaseDriver instance;
     private Connection connection;
     private Statement stmt;
+    private PreparedStatement preparedStatement;
     private ResultSet result;
 
     public static DatabaseDriver getInstance() {
@@ -32,7 +33,13 @@ public class DatabaseDriver {
     }
 
     public User getLogin(String username, String password) throws NullPointerException {
+        String query = "SELECT * FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
         try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            result = preparedStatement.executeQuery();
+
             stmt = connection.createStatement();
             result = stmt.executeQuery("SELECT * FROM public.user WHERE public.user.username = '" + username + "' AND public.user.password = '" + password + "'");
 
@@ -101,20 +108,28 @@ public class DatabaseDriver {
     }
 
     public void addNoteToSupplier(String supplierName, Note note) {
-        String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES ('" + supplierName + "', '" + note.getText() + "', '" + note.getCreationDate() + "', '" + note.getEditor() + "');";
+        String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES (?, ?, ?, ?);";
         try {
-            stmt = connection.createStatement();
-            stmt.execute(query);
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, supplierName);
+            preparedStatement.setString(2, note.getText());
+            preparedStatement.setDate(3, (java.sql.Date) note.getCreationDate());
+            preparedStatement.setString(4, note.getEditor());
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void editNoteOnSupplier(String supplierName, Note note) {
-        String query = "UPDATE public.note SET text = '" + note.getText() + "', date = '" + note.getCreationDate() + "', lasteditor = '" + note.getEditor() + "' WHERE public.note.supplier = '" + supplierName + "';";
+        String query = "UPDATE public.note SET text = ?, date = ?, lasteditor = ? WHERE public.note.supplier = ?;";
         try {
-            stmt = connection.createStatement();
-            stmt.execute(query);
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, note.getText());
+            preparedStatement.setDate(2, (java.sql.Date) note.getCreationDate());
+            preparedStatement.setString(3, note.getEditor());
+            preparedStatement.setString(4, supplierName);
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -123,11 +138,15 @@ public class DatabaseDriver {
     public void updatePost(String owner, Post post) {
 
         Date date = new Date();
-        String query = "UPDATE public.post SET text = '" + post.getDescription() + "', title = '" + post.getTitle() + "', date = '" + date.toString() + "' WHERE id = " + post.getId() + ";";
+        String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
 
         try {
-            stmt = connection.createStatement();
-            stmt.execute(query);
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, post.getDescription());
+            preparedStatement.setString(2, post.getTitle());
+            preparedStatement.setString(3, post.getDate());
+            preparedStatement.setInt(4, post.getId());
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -135,14 +154,20 @@ public class DatabaseDriver {
 
     public int addPost(String owner, Post post) {
         String query = "INSERT INTO public.post(username, type, text, date, title) "
-                + "VALUES('" + owner + "', '" + post.getType() + "', '" + post.getDescription() + "', '" + post.getDate() + "', '" + post.getTitle() + "') "
+                + "VALUES(?, ?, ?, ?, ?) "
                 + "RETURNING id;";
 
         int id = (int) (Math.random() * Integer.MAX_VALUE);
         try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
-            result = stmt.getGeneratedKeys();
+            preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, owner);
+            preparedStatement.setString(2, post.getType().toString());
+            preparedStatement.setString(3, post.getDescription());
+            preparedStatement.setString(4, post.getDate());
+            preparedStatement.setString(5, post.getTitle());
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys();
+
             result.next();
             id = result.getInt(1);
         } catch (SQLException e) {
@@ -152,10 +177,11 @@ public class DatabaseDriver {
     }
 
     public void deletePost(Post post){
-        String query = "DELETE FROM public.post WHERE public.post.id = " + post.getId() + ";";
+        String query = "DELETE FROM public.post WHERE public.post.id = ?;";
         try {
-            stmt = connection.createStatement();
-            stmt.execute(query);
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, post.getId());
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
