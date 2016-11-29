@@ -35,10 +35,10 @@ public class DatabaseDriver {
     public User getLogin(String username, String password) throws NullPointerException {
         String query = "SELECT * FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
         try {
-            preparedStatement = connection.prepareStatement(query);
+            /*preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            result = preparedStatement.executeQuery();
+            result = preparedStatement.executeQuery();*/
 
             stmt = connection.createStatement();
             result = stmt.executeQuery("SELECT * FROM public.user WHERE public.user.username = '" + username + "' AND public.user.password = '" + password + "'");
