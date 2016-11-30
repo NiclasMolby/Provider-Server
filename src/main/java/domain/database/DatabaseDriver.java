@@ -56,18 +56,16 @@ public class DatabaseDriver {
     public ArrayList<Page> getSuppliers() {
         String query = "SELECT public.user.username, public.note.text, public.note.date, public.note.lasteditor FROM public.user "
                 + "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights='Supplier'";
-        ArrayList<Page> pageList = new ArrayList<Page>();
+        ArrayList<Page> pageList = new ArrayList<>();
         try {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
             Page page;
             while (result.next()) {
-                //if(read.IsDBNull(1) && read.IsDBNull(2))
                 if (result.getString(2) == null && result.getDate(3) == null) {
                     page = new Page().owner(result.getString(1));
                 } else {
                     page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)).editor(result.getString(4)));
-
                 }
                 pageList.add(page);
             }
@@ -75,6 +73,29 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return pageList;
+    }
+
+    public ArrayList<Product> getProducts(String page) {
+        String query = "SELECT public.product.id, public.product.\"productName\", public.product.description, " +
+                "public.product.price, public.product.packaging, public.product.\"chemicalName\", public.product.density, " +
+                "public.product.\"deliveryTime\" FROM public.product " +
+                "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE public.pageproducts.page = ?;";
+        ArrayList<Product> productList = new ArrayList<>();
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, page);
+
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+                productList.add(new Product().productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)));
+
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productList;
     }
 
     public ArrayList<Post> getPosts() {
