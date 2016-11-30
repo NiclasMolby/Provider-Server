@@ -68,6 +68,7 @@ public class DatabaseDriver {
                 } else {
                     page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)).editor(result.getString(4)));
                 }
+                page.location(result.getString(5)).description(result.getString(6)).contactInformation(result.getString(7));
                 pageList.add(page);
             }
         } catch (SQLException e) {
