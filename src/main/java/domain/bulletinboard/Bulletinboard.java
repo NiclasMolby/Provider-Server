@@ -33,11 +33,6 @@ public class Bulletinboard {
         DatabaseDriver.getInstance().updatePost(post.getOwner(), post); //TODO: opdater posten i databasen
     }
 
-    private List<Post> getPosts(PostType type) {
-        //return posts.stream().filter(p -> p.getType() == type).collect(Collectors.toList());
-        return null;
-    }
-
     public List<Post> getAllPosts() {
         this.posts.clear();
         List<Post> posts = DatabaseDriver.getInstance().getPosts();
@@ -46,17 +41,4 @@ public class Bulletinboard {
         });
         return this.posts;
     }
-
-    /*public List<Post> viewWarningPosts() {
-        return getPosts(PostTypes.Warning);
-    }
-
-    public List<Post> viewRequestPosts() {
-        return getPosts(PostTypes.Request);
-    }
-
-    public List<Post> viewOfferPosts() {
-        return getPosts(PostTypes.Offer);
-    }*/
-
 }

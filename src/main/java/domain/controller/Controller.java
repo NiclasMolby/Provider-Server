@@ -1,7 +1,6 @@
 package domain.controller;
 
 import domain.bulletinboard.Bulletinboard;
-import java.util.ArrayList;
 import domain.page.Pagemanager;
 import domain.user.Usermanager;
 import io.swagger.model.*;

@@ -35,10 +35,19 @@ import io.swagger.annotations.ApiModelProperty;
  * Informations about a product
  */
 @ApiModel(description = "Informations about a product")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-25T12:23:56.533Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-30T11:56:05.841Z")
 public class Product   {
+  @JsonProperty("producer")
+  private String producer = null;
+
   @JsonProperty("productName")
   private String productName = null;
+
+  @JsonProperty("chemicalName")
+  private String chemicalName = null;
+
+  @JsonProperty("molWeight")
+  private String molWeight = null;
 
   @JsonProperty("description")
   private String description = null;
@@ -48,6 +57,27 @@ public class Product   {
 
   @JsonProperty("packaging")
   private String packaging = null;
+
+  @JsonProperty("deliveryTime")
+  private String deliveryTime = null;
+
+  public Product producer(String producer) {
+    this.producer = producer;
+    return this;
+  }
+
+   /**
+   * The producer of the product
+   * @return producer
+  **/
+  @ApiModelProperty(value = "The producer of the product")
+  public String getProducer() {
+    return producer;
+  }
+
+  public void setProducer(String producer) {
+    this.producer = producer;
+  }
 
   public Product productName(String productName) {
     this.productName = productName;
@@ -65,6 +95,42 @@ public class Product   {
 
   public void setProductName(String productName) {
     this.productName = productName;
+  }
+
+  public Product chemicalName(String chemicalName) {
+    this.chemicalName = chemicalName;
+    return this;
+  }
+
+   /**
+   * The chemical name of the product
+   * @return chemicalName
+  **/
+  @ApiModelProperty(value = "The chemical name of the product")
+  public String getChemicalName() {
+    return chemicalName;
+  }
+
+  public void setChemicalName(String chemicalName) {
+    this.chemicalName = chemicalName;
+  }
+
+  public Product molWeight(String molWeight) {
+    this.molWeight = molWeight;
+    return this;
+  }
+
+   /**
+   * The mol weight of the product
+   * @return molWeight
+  **/
+  @ApiModelProperty(value = "The mol weight of the product")
+  public String getMolWeight() {
+    return molWeight;
+  }
+
+  public void setMolWeight(String molWeight) {
+    this.molWeight = molWeight;
   }
 
   public Product description(String description) {
@@ -121,6 +187,24 @@ public class Product   {
     this.packaging = packaging;
   }
 
+  public Product deliveryTime(String deliveryTime) {
+    this.deliveryTime = deliveryTime;
+    return this;
+  }
+
+   /**
+   * The delivery time of the product
+   * @return deliveryTime
+  **/
+  @ApiModelProperty(value = "The delivery time of the product")
+  public String getDeliveryTime() {
+    return deliveryTime;
+  }
+
+  public void setDeliveryTime(String deliveryTime) {
+    this.deliveryTime = deliveryTime;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -131,15 +215,19 @@ public class Product   {
       return false;
     }
     Product product = (Product) o;
-    return Objects.equals(this.productName, product.productName) &&
+    return Objects.equals(this.producer, product.producer) &&
+        Objects.equals(this.productName, product.productName) &&
+        Objects.equals(this.chemicalName, product.chemicalName) &&
+        Objects.equals(this.molWeight, product.molWeight) &&
         Objects.equals(this.description, product.description) &&
         Objects.equals(this.price, product.price) &&
-        Objects.equals(this.packaging, product.packaging);
+        Objects.equals(this.packaging, product.packaging) &&
+        Objects.equals(this.deliveryTime, product.deliveryTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productName, description, price, packaging);
+    return Objects.hash(producer, productName, chemicalName, molWeight, description, price, packaging, deliveryTime);
   }
 
 
@@ -148,10 +236,14 @@ public class Product   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Product {\n");
     
+    sb.append("    producer: ").append(toIndentedString(producer)).append("\n");
     sb.append("    productName: ").append(toIndentedString(productName)).append("\n");
+    sb.append("    chemicalName: ").append(toIndentedString(chemicalName)).append("\n");
+    sb.append("    molWeight: ").append(toIndentedString(molWeight)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    packaging: ").append(toIndentedString(packaging)).append("\n");
+    sb.append("    deliveryTime: ").append(toIndentedString(deliveryTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

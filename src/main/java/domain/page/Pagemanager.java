@@ -27,7 +27,7 @@ public class Pagemanager {
             p.products(database.getProducts(p.getOwner()));
             //System.out.println("[INFO] " + p.getNote() != null ? "#SupplierNote " +p.getNote().getText()+" " +p.getNote().getCreationDate() : "");
         }
-        System.out.println(pages.toString());
+        //System.out.println(pages.toString());
         return pages;
     }
 

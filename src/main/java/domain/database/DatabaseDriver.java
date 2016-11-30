@@ -86,8 +86,9 @@ public class DatabaseDriver {
             preparedStatement.setString(1, page);
 
             result = preparedStatement.executeQuery();
-            while(result.next()) {
-                productList.add(new Product().productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)));
+            while (result.next()) {
+                productList.add(new Product().productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)).chemicalName(result.getString(6)).molWeight(result.getString(7)).deliveryTime(result.getString(8)).producer(page));
+
             }
         }
         catch(SQLException e) {
