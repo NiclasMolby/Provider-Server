@@ -22,12 +22,12 @@ public class Pagemanager {
         ArrayList<Page> pages = database.getSuppliers();
         for (Page p : pages) {
 
-            System.out.println("[INFO] #Supplier " + p.getOwner());
+            //System.out.println("[INFO] #Supplier " + p.getOwner());
             this.pages.put(p.getOwner(), p);
             p.products(database.getProducts(p.getOwner()));
             //System.out.println("[INFO] " + p.getNote() != null ? "#SupplierNote " +p.getNote().getText()+" " +p.getNote().getCreationDate() : "");
         }
-        System.out.println(pages.toString());
+        //System.out.println(pages.toString());
         return pages;
     }
 

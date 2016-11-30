@@ -39,10 +39,19 @@ import java.util.List;
  * Page containing information about a supplier
  */
 @ApiModel(description = "Page containing information about a supplier")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-25T12:23:56.533Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-30T11:56:05.841Z")
 public class Page   {
   @JsonProperty("owner")
   private String owner = null;
+
+  @JsonProperty("description")
+  private String description = null;
+
+  @JsonProperty("contactInformation")
+  private String contactInformation = null;
+
+  @JsonProperty("location")
+  private String location = null;
 
   @JsonProperty("products")
   private List<Product> products = new ArrayList<Product>();
@@ -66,6 +75,60 @@ public class Page   {
 
   public void setOwner(String owner) {
     this.owner = owner;
+  }
+
+  public Page description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The description of the page owner
+   * @return description
+  **/
+  @ApiModelProperty(value = "The description of the page owner")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Page contactInformation(String contactInformation) {
+    this.contactInformation = contactInformation;
+    return this;
+  }
+
+   /**
+   * The contactinformation of the page owner
+   * @return contactInformation
+  **/
+  @ApiModelProperty(value = "The contactinformation of the page owner")
+  public String getContactInformation() {
+    return contactInformation;
+  }
+
+  public void setContactInformation(String contactInformation) {
+    this.contactInformation = contactInformation;
+  }
+
+  public Page location(String location) {
+    this.location = location;
+    return this;
+  }
+
+   /**
+   * The location of the page owner
+   * @return location
+  **/
+  @ApiModelProperty(value = "The location of the page owner")
+  public String getLocation() {
+    return location;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
   }
 
   public Page products(List<Product> products) {
@@ -120,13 +183,16 @@ public class Page   {
     }
     Page page = (Page) o;
     return Objects.equals(this.owner, page.owner) &&
+        Objects.equals(this.description, page.description) &&
+        Objects.equals(this.contactInformation, page.contactInformation) &&
+        Objects.equals(this.location, page.location) &&
         Objects.equals(this.products, page.products) &&
         Objects.equals(this.note, page.note);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(owner, products, note);
+    return Objects.hash(owner, description, contactInformation, location, products, note);
   }
 
 
@@ -136,6 +202,9 @@ public class Page   {
     sb.append("class Page {\n");
     
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    contactInformation: ").append(toIndentedString(contactInformation)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
