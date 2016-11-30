@@ -1,5 +1,8 @@
 package domain.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -22,7 +25,18 @@ public class Logger {
     private Logger() { }
     
     public void log(LogType type, String message) {
-        System.out.println(FORMAT.format(new Date()) + " [" + type.toString() + "] " + message);
+        String msg = FORMAT.format(new Date()) + " [" + type.toString() + "] " + message;
+        System.out.println(msg);
+        logFile(msg);
     }
-    
+
+    private void logFile(String message) {
+        File file = new File("Logs/" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + ".txt");
+        try (PrintWriter printWriter = new PrintWriter(file)) {
+            printWriter.println(message);
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
