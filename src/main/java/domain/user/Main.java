@@ -1,9 +1,10 @@
 package domain.user;
 
+import domain.controller.Logger;
+
 public class Main {
 
     public static void main(String[] args) {
-        Usermanager usermanager = new Usermanager();
-        usermanager.validate("Niels", "123");
+        Logger.get().log(Logger.LogType.INFO, "test");
     }
 }

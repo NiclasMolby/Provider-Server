@@ -10,7 +10,7 @@ public class Logger {
         WARNING
     }
     private static Logger instance;
-    private final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    private final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     
     public static Logger get() {
         if(instance == null) {
