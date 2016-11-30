@@ -37,7 +37,6 @@ public class Bulletinboard {
         this.posts.clear();
         List<Post> posts = DatabaseDriver.getInstance().getPosts();
         posts.parallelStream().forEach(post -> {
-            //System.out.println("[INFO] #Post " + post.getTitle() + ":\n" + post.getDescription());
             this.posts.add(post);
         });
         return this.posts;
