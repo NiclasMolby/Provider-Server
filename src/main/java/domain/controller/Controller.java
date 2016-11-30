@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import domain.page.Pagemanager;
 import domain.user.Usermanager;
 import io.swagger.model.*;
-import java.util.Date;
 import java.util.List;
 public class Controller {
 
@@ -35,7 +34,7 @@ public class Controller {
         return usermanager.validate(username, password);
     }
 
-    public ArrayList<Page> getSuppliers() {
+    public List<Page> getSuppliers() {
         return pagemanager.getSuppliers();
     }
     

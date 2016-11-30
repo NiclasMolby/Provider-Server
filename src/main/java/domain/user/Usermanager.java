@@ -1,5 +1,6 @@
 package domain.user;
 
+import domain.controller.Logger;
 import domain.database.DatabaseDriver;
 import io.swagger.model.*;
 
@@ -13,13 +14,12 @@ public class Usermanager {
 
     public User validate(String username, String password) {
         try {
-            System.out.println("[INFO] #Bruger " + database.getLogin(username, password).getUsername() + " er logget ind");
+            Logger.get().log(Logger.LogType.INFO, "Bruger " + database.getLogin(username, password).getUsername() + " er logget ind");
             return database.getLogin(username, password);
         }
         catch (NullPointerException e) {
-            System.out.println("[ERROR] Der gik noget galt under login af " + username);
+            Logger.get().log(Logger.LogType.WARNING, "Der gik noget galt under login af " + username);
             return null;
         }
-        //return new User(username, password);
     }
 }

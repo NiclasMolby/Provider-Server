@@ -1,12 +1,12 @@
 package domain.database;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
+import java.util.List;
 
 public class DatabaseDriver {
 
@@ -17,17 +17,17 @@ public class DatabaseDriver {
     private ResultSet result;
 
     public static DatabaseDriver getInstance() {
-        if (instance == null) {
+        if(instance == null) {
             instance = new DatabaseDriver();
         }
-
         return instance;
     }
 
     private DatabaseDriver() {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", "group_2", "MDI5NTli");
-        } catch (Exception e) {
+        }
+        catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -40,70 +40,71 @@ public class DatabaseDriver {
             preparedStatement.setString(2, password);
             result = preparedStatement.executeQuery();
 
-            while (result.next()) {
+            while(result.next()) {
                 return new User().username(result.getString(1)).rights(RightsEnum.PROVIA);
             }
-
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public ArrayList<Page> getSuppliers() {
+    public List<Page> getSuppliers() {
         String query = "SELECT public.user.username, public.note.text, public.note.date, public.note.lasteditor FROM public.user "
                 + "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights='Supplier'";
-        ArrayList<Page> pageList = new ArrayList<>();
+        List<Page> pageList = new ArrayList<>();
         try {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
             Page page;
-            while (result.next()) {
-                if (result.getString(2) == null && result.getDate(3) == null) {
+            while(result.next()) {
+                if(result.getString(2) == null && result.getDate(3) == null) {
                     page = new Page().owner(result.getString(1));
-                } else {
+                }
+                else {
                     page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)).editor(result.getString(4)));
                 }
                 pageList.add(page);
             }
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
         return pageList;
     }
 
-    public ArrayList<Product> getProducts(String page) {
-        String query = "SELECT public.product.id, public.product.\"productName\", public.product.description, " +
-                "public.product.price, public.product.packaging, public.product.\"chemicalName\", public.product.density, " +
-                "public.product.\"deliveryTime\" FROM public.product " +
-                "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE public.pageproducts.page = ?;";
-        ArrayList<Product> productList = new ArrayList<>();
+    public List<Product> getProducts(String page) {
+        String query = "SELECT public.product.id, public.product.\"productName\", public.product.description, "
+                + "public.product.price, public.product.packaging, public.product.\"chemicalName\", public.product.density, "
+                + "public.product.\"deliveryTime\" FROM public.product "
+                + "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE public.pageproducts.page = ?;";
+        List<Product> productList = new ArrayList<>();
 
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, page);
 
             result = preparedStatement.executeQuery();
-            while (result.next()) {
+            while(result.next()) {
                 productList.add(new Product().productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)));
-
             }
         }
-        catch (SQLException e) {
+        catch(SQLException e) {
             e.printStackTrace();
         }
         return productList;
     }
 
-    public ArrayList<Post> getPosts() {
+    public List<Post> getPosts() {
         String query = "SELECT * FROM public.post";
-        ArrayList<Post> postList = new ArrayList<>();
+        List<Post> postList = new ArrayList<>();
         try {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
-            while (result.next()) {
+            while(result.next()) {
                 PostType type;
-                switch (result.getString(4)) {
+                switch(result.getString(4)) {
                     case "Warning":
                         type = PostType.WARNING;
                         break;
@@ -119,7 +120,8 @@ public class DatabaseDriver {
                 }
                 postList.add(new Post().owner(result.getString(1)).title(result.getString(3)).description(result.getString(2)).type(type).date(result.getString(6)).id(result.getInt(5)));
             }
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
         return postList;
@@ -134,7 +136,8 @@ public class DatabaseDriver {
             preparedStatement.setDate(3, (java.sql.Date) note.getCreationDate());
             preparedStatement.setString(4, note.getEditor());
             preparedStatement.execute();
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
     }
@@ -148,16 +151,14 @@ public class DatabaseDriver {
             preparedStatement.setString(3, note.getEditor());
             preparedStatement.setString(4, supplierName);
             preparedStatement.execute();
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void updatePost(String owner, Post post) {
-
-        Date date = new Date();
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
-
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, post.getDescription());
@@ -165,7 +166,8 @@ public class DatabaseDriver {
             preparedStatement.setString(3, post.getDate());
             preparedStatement.setInt(4, post.getId());
             preparedStatement.execute();
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
     }
@@ -188,19 +190,21 @@ public class DatabaseDriver {
 
             result.next();
             id = result.getInt(1);
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
         return id;
     }
 
-    public void deletePost(Post post){
+    public void deletePost(Post post) {
         String query = "DELETE FROM public.post WHERE public.post.id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, post.getId());
             preparedStatement.execute();
-        } catch (SQLException e) {
+        }
+        catch(SQLException e) {
             e.printStackTrace();
         }
     }
