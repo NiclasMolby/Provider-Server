@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import domain.controller.Logger;
 import domain.database.DatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
@@ -39,6 +40,7 @@ public class Pagemanager {
         else {
             database.editNoteOnSupplier(supplierName, note);
         }
+        Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
         pages.get(supplierName).setNote(note);
     }
 }
