@@ -51,9 +51,13 @@ public class DatabaseDriver {
     }
 
     public ArrayList<Page> getSuppliers() {
-        String query = "SELECT public.user.username, public.note.text, public.note.date, public.note.lasteditor FROM public.user "
-                + "LEFT JOIN public.note ON public.user.username = public.note.supplier WHERE public.user.rights='Supplier'";
         ArrayList<Page> pageList = new ArrayList<>();
+
+        String query = "SELECT public.user.username, public.note.text, public.note.date, public.note.lasteditor, public.page.location, public.page.description, public.page.contactinformation FROM public.user " +
+                "JOIN public.note ON " +
+                "public.user.username = public.note.supplier " +
+                "JOIN public.page ON public.page.supplier = public.user.username " +
+                "WHERE public.user.rights='Supplier'";
         try {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
