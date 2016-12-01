@@ -1,12 +1,11 @@
 package domain.bulletinboard;
 
-import domain.controller.Logger;
+import common.Logger;
 import domain.database.DatabaseDriver;
 
 import java.util.ArrayList;
 import java.util.List;
 import io.swagger.model.*;
-import sun.rmi.runtime.Log;
 
 import java.util.Date;
 

@@ -2,10 +2,9 @@ package domain.page;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import domain.controller.Logger;
+import common.Logger;
 import domain.database.DatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;

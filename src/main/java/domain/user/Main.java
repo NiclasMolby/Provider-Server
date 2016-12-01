@@ -1,6 +1,6 @@
 package domain.user;
 
-import domain.controller.Logger;
+import common.Logger;
 
 public class Main {
 
