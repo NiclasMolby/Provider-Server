@@ -10,7 +10,6 @@ paths:
       tags:
         - Controller
       summary: Validate information
-      description: Validate the users information
       operationId: validate
       consumes:
         - application/json
@@ -41,8 +40,8 @@ paths:
     post:
       tags: 
         - Controller
-      summary: Henter suppliers
-      operationId: getSupplier
+      summary: Gets all suppliers
+      operationId: getSuppliers
       produces:
         - text/plain
         - application/json
@@ -59,7 +58,7 @@ paths:
     post:
       tags: 
         - Controller
-      summary: Henter all posts
+      summary: Gets all posts
       operationId: getAllPosts
       produces:
         - text/plain
@@ -72,12 +71,12 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Post'
-              
+            
   /Controller/AddNoteToSupplier:
     post:
       tags:
         - Controller
-      summary: TilfÃ¸jer en note til en supplier
+      summary: Adds a note to a supplier
       operationId: addNoteToSupplier
       consumes:
         - application/json
@@ -104,7 +103,7 @@ paths:
     post:
       tags:
         - Controller
-      summary: Opretter en post.
+      summary: Creates a post
       operationId: createPost
       consumes:
         - application/json
@@ -138,7 +137,7 @@ paths:
     post:
       tags:
         - Controller
-      summary: Ændrer en eksisterende post. 
+      summary: Edits a posts
       operationId: editPost
       consumes:
         - application/json
@@ -166,7 +165,7 @@ paths:
     post:
       tags:
         - Controller
-      summary: Sletter en eksisterende post. 
+      summary: Deletes a post
       operationId: deletePost
       consumes:
         - application/json
@@ -198,8 +197,17 @@ definitions:
     description: Informations about a product
     type: object
     properties:
+      producer:
+        description: The producer of the product
+        type: string
       productName: 
         description: The name of the product
+        type: string
+      chemicalName:
+        description: The chemical name of the product
+        type: string
+      molWeight:
+        description: The mol weight of the product
         type: string
       description:
         description: The description about the product
@@ -210,12 +218,24 @@ definitions:
       packaging:
         description: The packaging of the product
         type: string
+      deliveryTime:
+        description: The delivery time of the product
+        type: string
   Page:
     description: Page containing information about a supplier
     type: object
     properties:
       owner:
         description: The owner of the page => The supplier
+        type: string
+      description:
+        description: The description of the page owner
+        type: string
+      contactInformation:
+        description: The contactinformation of the page owner 
+        type: string
+      location: 
+        description: The location of the page owner
         type: string
       products:
         description: The suppliers products
@@ -245,7 +265,6 @@ definitions:
         type: string
       date:
         type: string
-        format: date
       description: 
         type: string
       type:
