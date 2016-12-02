@@ -10,6 +10,7 @@ import io.swagger.jaxrs.*;
 import io.swagger.model.PostType;
 import io.swagger.model.Post;
 import io.swagger.model.Product;
+import java.io.File;
 import io.swagger.model.Page;
 import io.swagger.model.User;
 
@@ -30,7 +31,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T12:21:14.070Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T13:00:53.833Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -146,6 +147,21 @@ public class ControllerApi  {
     public Response getAllPosts(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.getAllPosts(securityContext);
+    }
+    @POST
+    @Path("/GetPDF")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    @Produces({ "text/plain", "application/json", "text/json", "multipart/form-data" })
+    @io.swagger.annotations.ApiOperation(value = "Get the specific PDF for the product", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response getPDF(@ApiParam(value = "",required=true) @QueryParam("productId") Integer productId
+,
+            @FormDataParam("file") InputStream fileInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.getPDF(productId,fileInputStream, fileDetail,securityContext);
     }
     @POST
     @Path("/GetSuppliers")
