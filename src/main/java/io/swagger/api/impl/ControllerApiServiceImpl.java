@@ -55,8 +55,8 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         return Response.ok().build();
     }
 
-    @Override
-    public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, SecurityContext securityContext) throws NotFoundException {
+   @Override
+    public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, SecurityContext securityContext) throws NotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -74,4 +74,6 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
+
+   
 }
