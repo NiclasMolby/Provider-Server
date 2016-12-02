@@ -33,15 +33,26 @@ public class DatabaseDriver {
     }
 
     public User getLogin(String username, String password) throws NullPointerException {
-        String query = "SELECT * FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
+        String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             result = preparedStatement.executeQuery();
-
+            RightsEnum rights = null;
             while (result.next()) {
-                return new User().username(result.getString(1)).rights(RightsEnum.PROVIA);
+                switch(result.getString(2)) {
+                    case "Provia":
+                        rights = RightsEnum.PROVIA;
+                        break;
+                    case "Supplier":
+                        rights = RightsEnum.SUPPLIER;
+                        break;
+                    case "Admin":
+                        rights = RightsEnum.ADMIN;
+                        break;
+                }
+                return new User().username(result.getString(1)).rights(rights);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -211,4 +222,7 @@ public class DatabaseDriver {
         }
     }
 
+    public void editPage(Page page) {
+
+    }
 }

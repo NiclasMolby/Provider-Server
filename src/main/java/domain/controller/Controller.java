@@ -52,4 +52,8 @@ public class Controller {
     public void editPost(Post post, String newDescription, String newTitle) {
         bulletinboard.editPost(post, newDescription, newTitle);
     }
+
+    public void updatePage(Page page) {
+        pagemanager.editPage(page);
+    }
 }

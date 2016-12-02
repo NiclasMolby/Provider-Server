@@ -42,4 +42,8 @@ public class Pagemanager {
         pages.get(supplierName).setNote(note);
         Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
     }
+
+    public void editPage(Page page) {
+        database.editPage(page);
+    }
 }
