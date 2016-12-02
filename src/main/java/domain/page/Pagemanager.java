@@ -39,7 +39,7 @@ public class Pagemanager {
         else {
             database.editNoteOnSupplier(supplierName, note);
         }
-        Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
         pages.get(supplierName).setNote(note);
+        Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
     }
 }
