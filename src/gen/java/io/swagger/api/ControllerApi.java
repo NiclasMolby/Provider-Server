@@ -9,6 +9,7 @@ import io.swagger.jaxrs.*;
 
 import io.swagger.model.PostType;
 import io.swagger.model.Post;
+import io.swagger.model.Product;
 import io.swagger.model.Page;
 import io.swagger.model.User;
 
@@ -29,7 +30,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-30T11:56:05.841Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T12:21:14.070Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -63,6 +64,22 @@ public class ControllerApi  {
         return delegate.createPost(owner,title,description,type,securityContext);
     }
     @POST
+    @Path("/CreateProduct")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Creates a product.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response createProduct(@ApiParam(value = "",required=true) @QueryParam("ProductName") String productName
+,@ApiParam(value = "",required=true) @QueryParam("ChemicalName") String chemicalName
+,@ApiParam(value = "",required=true) @QueryParam("MolWeight") String molWeight
+,@ApiParam(value = "",required=true) @QueryParam("Description") String description
+,@ApiParam(value = "",required=true) @QueryParam("Price") String price
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.createProduct(productName,chemicalName,molWeight,description,price,securityContext);
+    }
+    @POST
     @Path("/DeletePost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
@@ -73,6 +90,18 @@ public class ControllerApi  {
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.deletePost(post,securityContext);
+    }
+    @POST
+    @Path("/DeleteProduct")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Deletes an existing product.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response deleteProduct(@ApiParam(value = "" ,required=true) Product product
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.deleteProduct(product,securityContext);
     }
     @POST
     @Path("/EditPost")
@@ -87,6 +116,25 @@ public class ControllerApi  {
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.editPost(post,newDescription,newTitle,securityContext);
+    }
+    @POST
+    @Path("/EditProduct")
+    @Consumes({ "application/json", "text/json", "application/json-patch+json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Edits an existing product.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response editProduct(@ApiParam(value = "" ,required=true) Product product
+,@ApiParam(value = "",required=true) @QueryParam("newProductName") String newProductName
+,@ApiParam(value = "",required=true) @QueryParam("newChemicalName") String newChemicalName
+,@ApiParam(value = "",required=true) @QueryParam("newMolWeight") String newMolWeight
+,@ApiParam(value = "",required=true) @QueryParam("newDescription") String newDescription
+,@ApiParam(value = "",required=true) @QueryParam("newPrice") String newPrice
+,@ApiParam(value = "",required=true) @QueryParam("newPackaging") String newPackaging
+,@ApiParam(value = "",required=true) @QueryParam("newDeliveryTime") String newDeliveryTime
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.editProduct(product,newProductName,newChemicalName,newMolWeight,newDescription,newPrice,newPackaging,newDeliveryTime,securityContext);
     }
     @POST
     @Path("/GetAllPosts")

@@ -55,5 +55,20 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         return Response.ok().build();
     }
 
+    @Override
+    public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, SecurityContext securityContext) throws NotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Response deleteProduct(Product product, SecurityContext securityContext) throws NotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Response editProduct(Product product, String newProductName, String newChemicalName, String newMolWeight, String newDescription, String newPrice, String newPackaging, String newDeliveryTime, SecurityContext securityContext) throws NotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
 

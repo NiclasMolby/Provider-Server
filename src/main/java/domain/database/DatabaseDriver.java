@@ -210,5 +210,17 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
     }
+    
+    public void deleteProduct(Product product){
+        String query = "DELETE FROM public.product WHERE public.product.id = ?;";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, product.getId());
+            preparedStatement.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

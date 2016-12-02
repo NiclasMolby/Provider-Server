@@ -8,6 +8,7 @@ import common.Logger;
 import domain.database.DatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
+import io.swagger.model.Product;
 import java.util.List;
 import java.util.Map;
 
@@ -41,5 +42,9 @@ public class Pagemanager {
         }
         pages.get(supplierName).setNote(note);
         Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
+    }
+    
+    public void deleteProduct(Product product) {
+        database.deleteProduct(product);
     }
 }

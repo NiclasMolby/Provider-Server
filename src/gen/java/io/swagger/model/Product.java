@@ -35,8 +35,11 @@ import io.swagger.annotations.ApiModelProperty;
  * Informations about a product
  */
 @ApiModel(description = "Informations about a product")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-11-30T11:56:05.841Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T12:21:14.070Z")
 public class Product   {
+  @JsonProperty("id")
+  private Integer id = null;
+
   @JsonProperty("producer")
   private String producer = null;
 
@@ -60,6 +63,24 @@ public class Product   {
 
   @JsonProperty("deliveryTime")
   private String deliveryTime = null;
+
+  public Product id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * ID of the product
+   * @return id
+  **/
+  @ApiModelProperty(value = "ID of the product")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public Product producer(String producer) {
     this.producer = producer;
@@ -215,7 +236,8 @@ public class Product   {
       return false;
     }
     Product product = (Product) o;
-    return Objects.equals(this.producer, product.producer) &&
+    return Objects.equals(this.id, product.id) &&
+        Objects.equals(this.producer, product.producer) &&
         Objects.equals(this.productName, product.productName) &&
         Objects.equals(this.chemicalName, product.chemicalName) &&
         Objects.equals(this.molWeight, product.molWeight) &&
@@ -227,7 +249,7 @@ public class Product   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(producer, productName, chemicalName, molWeight, description, price, packaging, deliveryTime);
+    return Objects.hash(id, producer, productName, chemicalName, molWeight, description, price, packaging, deliveryTime);
   }
 
 
@@ -236,6 +258,7 @@ public class Product   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Product {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    producer: ").append(toIndentedString(producer)).append("\n");
     sb.append("    productName: ").append(toIndentedString(productName)).append("\n");
     sb.append("    chemicalName: ").append(toIndentedString(chemicalName)).append("\n");
