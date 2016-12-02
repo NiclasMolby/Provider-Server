@@ -286,7 +286,34 @@ paths:
         '200':
           description: ok
                     
-
+  /Controller/GetPDF:
+    post:
+      tags:
+        - Controller
+      summary: Get the specific PDF for the product 
+      operationId: getPDF
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+        - multipart/form-data
+      parameters:
+        - name: productId
+          in: query
+          required: true
+          type: integer
+        - name: file
+          in: formData
+          description: PDF file that's returned
+          required: true
+          type: file
+      responses:
+        '200':
+          description: ok
 
 definitions:
   User:
