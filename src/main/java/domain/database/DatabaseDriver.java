@@ -211,7 +211,7 @@ public class DatabaseDriver {
     }
 
     public void deletePost(Post post){
-        String query = "DELETE FROM public.post WHERE public.post.id = ?;";
+        String query = "DELETE FROM public.post WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, post.getId());
@@ -223,7 +223,7 @@ public class DatabaseDriver {
     }
     
     public void deleteProduct(Product product){
-        String query = "DELETE FROM public.product WHERE public.product.id = ?;";
+        String query = "DELETE FROM public.product WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, product.getId());
@@ -234,7 +234,18 @@ public class DatabaseDriver {
         }
     }
 
-    public void editPage(Page page) {
-
+    public void updatePage(String page, String description, String location, String contactInformation) {
+        String query = "UPDATE public.page SET description = ?, location = ?, contactinformation = ? WHERE supplier = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, description);
+            preparedStatement.setString(2, location);
+            preparedStatement.setString(3, contactInformation);
+            preparedStatement.setString(4, page);
+            preparedStatement.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

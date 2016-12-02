@@ -20,7 +20,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T13:49:11.596Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T21:31:07.749Z")
 public abstract class ControllerApiService {
     public abstract Response addNoteToSupplier(String supplierName,String editor,String text,SecurityContext securityContext) throws NotFoundException;
     public abstract Response createPost(String owner,String title,String description,PostType type,SecurityContext securityContext) throws NotFoundException;
@@ -32,5 +32,6 @@ public abstract class ControllerApiService {
     public abstract Response getAllPosts(SecurityContext securityContext) throws NotFoundException;
     public abstract Response getPDF(Integer productId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getSuppliers(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response updatePage(String page,String description,String location,String contactInformation,SecurityContext securityContext) throws NotFoundException;
     public abstract Response validate(String username,String password,SecurityContext securityContext) throws NotFoundException;
 }

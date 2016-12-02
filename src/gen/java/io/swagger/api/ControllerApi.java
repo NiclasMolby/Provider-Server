@@ -31,7 +31,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T13:49:11.596Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T21:31:07.749Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -170,6 +170,21 @@ public class ControllerApi  {
     public Response getSuppliers(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.getSuppliers(securityContext);
+    }
+    @POST
+    @Path("/UpdatePage")
+    @Consumes({ "text/plain", "application/json", "text/json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Update a supplier page", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response updatePage(@ApiParam(value = "",required=true) @QueryParam("page") String page
+,@ApiParam(value = "",required=true) @QueryParam("description") String description
+,@ApiParam(value = "",required=true) @QueryParam("location") String location
+,@ApiParam(value = "",required=true) @QueryParam("contactInformation") String contactInformation
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.updatePage(page,description,location,contactInformation,securityContext);
     }
     @POST
     @Path("/Validate")

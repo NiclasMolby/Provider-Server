@@ -17,6 +17,7 @@ import java.io.InputStream;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
+import javax.naming.ldap.Control;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
@@ -40,6 +41,13 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     public Response getSuppliers(SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().getSuppliers()).build();
     }
+
+    @Override
+    public Response updatePage(String page, String description, String location, String contactInformation, SecurityContext securityContext) throws NotFoundException {
+        Controller.getController().updatePage(page, description, location, contactInformation);
+        return Response.ok().build();
+    }
+
     @Override
     public Response validate(String username, String password, SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().validate(username, password)).build();
