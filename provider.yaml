@@ -181,6 +181,113 @@ paths:
         '200':
           description: ok
           
+          
+  /Controller/CreateProduct:
+    post:
+      tags:
+        - Controller
+      summary: Creates a product.
+      operationId: createProduct
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: ProductName
+          in: query
+          required: true
+          type: string
+        - name: ChemicalName
+          in: query
+          required: true
+          type: string
+        - name: MolWeight
+          in: query
+          required: true
+          type: string
+        - name: Description
+          in: query
+          required: true
+          type: string
+        - name: Price
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ok
+         
+  /Controller/EditProduct:
+    post:
+      tags:
+        - Controller
+      summary: Edits an existing product. 
+      operationId: editProduct
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: product
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+        - name: newProductName
+          in: query
+          required: true
+          type: string
+        - name: newChemicalName
+          in: query
+          required: true
+          type: string
+        - name: newMolWeight
+          in: query
+          required: true
+          type: string
+        - name: newDescription
+          in: query
+          required: true
+          type: string
+        - name: newPrice
+          in: query
+          required: true
+          type: string
+        - name: newPackaging
+          in: query
+          required: true
+          type: string
+        - name: newDeliveryTime
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ok
+
+
+  /Controller/DeleteProduct:
+    post:
+      tags:
+        - Controller
+      summary: Deletes an existing product. 
+      operationId: deleteProduct
+      consumes:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      parameters:
+        - name: product
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '200':
+          description: ok
+                    
+
+
 definitions:
   User:
     description: Information about the user
@@ -197,6 +304,9 @@ definitions:
     description: Informations about a product
     type: object
     properties:
+      id:
+        description: ID of the product
+        type: integer
       producer:
         description: The producer of the product
         type: string

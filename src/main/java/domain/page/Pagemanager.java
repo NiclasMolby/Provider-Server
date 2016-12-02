@@ -47,4 +47,8 @@ public class Pagemanager {
     public void deleteProduct(Product product) {
         database.deleteProduct(product);
     }
+
+    public void editPage(Page page) {
+        database.editPage(page);
+    }
 }

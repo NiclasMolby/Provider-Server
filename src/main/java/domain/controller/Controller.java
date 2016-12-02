@@ -56,4 +56,8 @@ public class Controller {
     public void deleteProduct(Product product) {
         pagemanager.deleteProduct(product);
     }
+
+    public void updatePage(Page page) {
+        pagemanager.editPage(page);
+    }
 }
