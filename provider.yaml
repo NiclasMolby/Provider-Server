@@ -306,14 +306,11 @@ paths:
           in: query
           required: true
           type: integer
-        - name: file
-          in: formData
-          description: PDF file that's returned
-          required: true
-          type: file
       responses:
         '200':
           description: ok
+          schema:
+            type: file
 
 definitions:
   User:
