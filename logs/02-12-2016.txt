@@ -1,0 +1,2 @@
+02/12/2016 14:31:38 [INFO] Bruger k er logget ind
+02/12/2016 14:33:18 [INFO] Bruger k er logget ind
