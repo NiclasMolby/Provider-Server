@@ -60,4 +60,7 @@ public class Controller {
     public void updatePage(Page page) {
         pagemanager.editPage(page);
     }
+
+    public void editProduct(Product product, String newDescription, String newChemicalName, String newMolWeight, String newDescription1, String newPrice, String newPackaging, String newDeliveryTime) {
+    }
 }
