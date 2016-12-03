@@ -6,6 +6,8 @@ import java.util.Date;
 
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.List;
 
 public class DatabaseDriver {
@@ -247,5 +249,9 @@ public class DatabaseDriver {
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public String getPDFFilePath(int productID){
+        // TODO: 03-12-2016 implement.
+        throw new NotImplementedException();
     }
 }
