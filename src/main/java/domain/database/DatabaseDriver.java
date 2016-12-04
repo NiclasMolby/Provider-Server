@@ -1,5 +1,6 @@
 package domain.database;
 
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -252,6 +253,21 @@ public class DatabaseDriver {
     }
     public String getPDFFilePath(int productID){
         // TODO: 03-12-2016 implement.
-        throw new NotImplementedException();
+        String query = "select productPDFPaht from product where id=?";
+        String productFilePaht = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, productID);
+            result = preparedStatement.executeQuery();
+            if(result != null){
+                productFilePaht = result.toString();
+            } else {
+                return null;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productFilePaht;
     }
 }
