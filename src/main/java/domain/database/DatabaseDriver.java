@@ -259,8 +259,8 @@ public class DatabaseDriver {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, productID);
             result = preparedStatement.executeQuery();
-            if(result != null){
-                productFilePaht = result.getNString(1);
+            if(result.next() != false ){
+                productFilePaht = result.getString(1);
             } else {
                 return null;
             }
