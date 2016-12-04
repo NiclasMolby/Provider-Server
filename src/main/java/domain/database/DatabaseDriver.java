@@ -171,7 +171,7 @@ public class DatabaseDriver {
         }
     }
 
-    public void updatePost(String owner, Post post) {
+    public void updatePost(String owner, Post post) { //// TODO: 05-12-2016 Should owner be used to something?
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -236,5 +236,48 @@ public class DatabaseDriver {
 
     public void editPage(Page page) {
 
+    }
+
+    public void updateProduct(Product product) {
+        String query = "UPDATE public.product SET chemicalName = ?, name = ?, description = ?, deliveryTime = ?, price = ?, packaging = ?, density = ?,  WHERE id = ?;";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, product.getChemicalName());
+            preparedStatement.setString(2, product.getProductName());
+            preparedStatement.setString(3, product.getDescription());
+            preparedStatement.setInt(4, Integer.parseInt(product.getDeliveryTime())); //// TODO: 05-12-2016 Look at datatypes so we avoid having to parse types
+            preparedStatement.setString(5, product.getPrice());
+            preparedStatement.setString(6, product.getMolWeight());
+            preparedStatement.setString(3, String.valueOf(product.getId()));
+            preparedStatement.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int addProduct(Product product) {
+        String query = "INSERT INTO public.product(chemicalName, description, deliveryTime, price, packaging, density) "
+                + "VALUES(?, ?, ?, ?, ?, ?) "
+                + "RETURNING id;";
+        int id = (int) (Math.random() * Integer.MAX_VALUE);
+        try {
+            preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, product.getChemicalName());
+            preparedStatement.setString(2, product.getDescription());
+            preparedStatement.setString(3, product.getDeliveryTime());
+            preparedStatement.setString(4, product.getPrice());
+            preparedStatement.setString(5, product.getPackaging());
+            preparedStatement.setString(6, product.getMolWeight());
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys();
+
+            result.next();
+            id = result.getInt(1);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 }
