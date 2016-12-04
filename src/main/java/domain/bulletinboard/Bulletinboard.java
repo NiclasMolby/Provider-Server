@@ -16,7 +16,6 @@ public class Bulletinboard {
     public Post createPost(String owner, String title, String description, PostType type) {
         Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
-
         Logger.get().log(Logger.LogType.INFO, post.getOwner() + " har oprettet en ny opslag med titlen: " + post.getTitle());
         return post;
     }

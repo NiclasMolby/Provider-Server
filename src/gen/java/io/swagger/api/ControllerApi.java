@@ -31,7 +31,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T13:00:53.833Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T21:31:07.749Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -152,16 +152,13 @@ public class ControllerApi  {
     @Path("/GetPDF")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     @Produces({ "text/plain", "application/json", "text/json", "multipart/form-data" })
-    @io.swagger.annotations.ApiOperation(value = "Get the specific PDF for the product", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Get the specific PDF for the product", notes = "", response = File.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = File.class) })
     public Response getPDF(@ApiParam(value = "",required=true) @QueryParam("productId") Integer productId
-,
-            @FormDataParam("file") InputStream fileInputStream,
-            @FormDataParam("file") FormDataContentDisposition fileDetail
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.getPDF(productId,fileInputStream, fileDetail,securityContext);
+        return delegate.getPDF(productId,securityContext);
     }
     @POST
     @Path("/GetSuppliers")
@@ -173,6 +170,21 @@ public class ControllerApi  {
     public Response getSuppliers(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.getSuppliers(securityContext);
+    }
+    @POST
+    @Path("/UpdatePage")
+    @Consumes({ "text/plain", "application/json", "text/json" })
+    
+    @io.swagger.annotations.ApiOperation(value = "Update a supplier page", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+    public Response updatePage(@ApiParam(value = "",required=true) @QueryParam("page") String page
+,@ApiParam(value = "",required=true) @QueryParam("description") String description
+,@ApiParam(value = "",required=true) @QueryParam("location") String location
+,@ApiParam(value = "",required=true) @QueryParam("contactInformation") String contactInformation
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.updatePage(page,description,location,contactInformation,securityContext);
     }
     @POST
     @Path("/Validate")

@@ -26,9 +26,7 @@ public class Pagemanager {
         for(Page p : pages) {
             this.pages.put(p.getOwner(), p);
             p.products(database.getProducts(p.getOwner()));
-            //System.out.println("[INFO] " + p.getNote() != null ? "#SupplierNote " +p.getNote().getText()+" " +p.getNote().getCreationDate() : "");
         }
-        //System.out.println(pages.toString());
         return pages;
     }
 
@@ -48,7 +46,8 @@ public class Pagemanager {
         database.deleteProduct(product);
     }
 
-    public void editPage(Page page) {
-        database.editPage(page);
+    public void updatePage(String page, String description, String location, String contactInformation) {
+        database.updatePage(page, description, location, contactInformation);
+        Logger.get().log(Logger.LogType.INFO, page + " har ændret sine informationer");
     }
 }

@@ -54,6 +54,37 @@ paths:
             items:
               $ref: '#/definitions/Page'
               
+  /Controller/UpdatePage:
+    post:
+      tags:
+        - Controller
+      summary: Update a supplier page
+      operationId: updatePage
+      consumes:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: page
+          in: query
+          required: true
+          type: string
+        - name: description
+          in: query
+          required: true
+          type: string
+        - name: location
+          in: query
+          required: true
+          type: string
+        - name: contactInformation
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ok
+              
   /Controller/GetAllPosts:
     post:
       tags: 
@@ -306,14 +337,11 @@ paths:
           in: query
           required: true
           type: integer
-        - name: file
-          in: formData
-          description: PDF file that's returned
-          required: true
-          type: file
       responses:
         '200':
           description: ok
+          schema:
+            type: file
 
 definitions:
   User:

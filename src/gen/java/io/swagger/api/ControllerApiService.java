@@ -20,7 +20,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T13:00:53.833Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T21:31:07.749Z")
 public abstract class ControllerApiService {
     public abstract Response addNoteToSupplier(String supplierName,String editor,String text,SecurityContext securityContext) throws NotFoundException;
     public abstract Response createPost(String owner,String title,String description,PostType type,SecurityContext securityContext) throws NotFoundException;
@@ -30,7 +30,8 @@ public abstract class ControllerApiService {
     public abstract Response editPost(Post post,String newDescription,String newTitle,SecurityContext securityContext) throws NotFoundException;
     public abstract Response editProduct(Product product,String newProductName,String newChemicalName,String newMolWeight,String newDescription,String newPrice,String newPackaging,String newDeliveryTime,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getAllPosts(SecurityContext securityContext) throws NotFoundException;
-    public abstract Response getPDF(Integer productId,InputStream fileInputStream, FormDataContentDisposition fileDetail,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response getPDF(Integer productId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getSuppliers(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response updatePage(String page,String description,String location,String contactInformation,SecurityContext securityContext) throws NotFoundException;
     public abstract Response validate(String username,String password,SecurityContext securityContext) throws NotFoundException;
 }

@@ -57,8 +57,8 @@ public class Controller {
         pagemanager.deleteProduct(product);
     }
 
-    public void updatePage(Page page) {
-        pagemanager.editPage(page);
+    public void updatePage(String page, String description, String location, String contactInformation) {
+        pagemanager.updatePage(page, description, location, contactInformation);
     }
 
     public void editProduct(Product product, String newDescription, String newChemicalName, String newMolWeight, String newDescription1, String newPrice, String newPackaging, String newDeliveryTime) {
