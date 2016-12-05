@@ -251,16 +251,17 @@ public class DatabaseDriver {
     }
 
     public void updateProduct(Product product) {
-        String query = "UPDATE public.product SET chemicalName = ?, name = ?, description = ?, deliveryTime = ?, price = ?, packaging = ?, density = ?,  WHERE id = ?;";
+        String query = "UPDATE public.product SET chemicalname = ?, productname = ?, description = ?, deliverytime = ?, price = ?, packaging = ?, density = ?  WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, product.getChemicalName());
             preparedStatement.setString(2, product.getProductName());
             preparedStatement.setString(3, product.getDescription());
-            preparedStatement.setInt(4, Integer.parseInt(product.getDeliveryTime())); //// TODO: 05-12-2016 Look at datatypes so we avoid having to parse types
+            preparedStatement.setString(4, product.getDeliveryTime()); //// TODO: 05-12-2016 Look at datatypes so we avoid having to parse types
             preparedStatement.setString(5, product.getPrice());
-            preparedStatement.setString(6, product.getMolWeight());
-            preparedStatement.setString(3, String.valueOf(product.getId()));
+            preparedStatement.setString(6, product.getPackaging());
+            preparedStatement.setString(7, product.getMolWeight());
+            preparedStatement.setInt(8, product.getId());
             preparedStatement.execute();
         }
         catch (SQLException e) {
@@ -269,8 +270,8 @@ public class DatabaseDriver {
     }
 
     public int addProduct(Product product) {
-        String query = "INSERT INTO public.product(chemicalName, description, deliveryTime, price, packaging, density, name, producer) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?) "
+        String query = "INSERT INTO public.product(chemicalname, description, deliverytime, price, packaging, density, productname) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?) "
                 + "RETURNING id;";
         int id = (int) (Math.random() * Integer.MAX_VALUE);
         try {
@@ -282,7 +283,6 @@ public class DatabaseDriver {
             preparedStatement.setString(5, product.getPackaging());
             preparedStatement.setString(6, product.getMolWeight());
             preparedStatement.setString(7, product.getProductName());
-            preparedStatement.setString(8, product.getProducer());
             preparedStatement.executeUpdate();
             result = preparedStatement.getGeneratedKeys();
 
