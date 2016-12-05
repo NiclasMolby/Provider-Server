@@ -74,15 +74,16 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         Controller.getController().editProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
         return Response.ok().build();
     }
-    @Override
-    public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, SecurityContext securityContext) throws NotFoundException {
-        String packaging = "";
-        String deliveryTime = "";
-        return Response.ok().entity(Controller.getController().createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime)).build();
-    }
+   
     @Override
     public Response getPDF(Integer productId, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+
+    @Override
+    public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer, SecurityContext securityContext) throws NotFoundException {
+       
+        return Response.ok().entity(Controller.getController().createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime)).build();
     }
 }
