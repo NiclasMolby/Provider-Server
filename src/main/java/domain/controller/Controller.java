@@ -1,9 +1,13 @@
 package domain.controller;
 
 import domain.bulletinboard.Bulletinboard;
+import domain.database.DatabaseDriver;
 import domain.page.Pagemanager;
 import domain.user.Usermanager;
 import io.swagger.model.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.io.File;
 import java.util.List;
 public class Controller {
 
@@ -42,8 +46,7 @@ public class Controller {
     }
     
     public void addNoteToSupplier(String supplierName, String editor, String text) {
-    	pagemanager.addNoteToSupplier(supplierName, editor, text);
-    }
+    	pagemanager.addNoteToSupplier(supplierName, editor, text);}
     
     public Post createPost(String owner, String title, String description, PostType type){
         return bulletinboard.createPost(owner, title, description, type);
@@ -67,5 +70,8 @@ public class Controller {
 
     public Object createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
         return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+    }
+    public File getPDF(int productID){
+        return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
     }
 }

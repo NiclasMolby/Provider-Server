@@ -1,5 +1,6 @@
 package domain.database;
 
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -101,7 +102,7 @@ public class DatabaseDriver {
 
             result = preparedStatement.executeQuery();
             while (result.next()) {
-                productList.add(new Product().productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)).chemicalName(result.getString(6)).molWeight(result.getString(7)).deliveryTime(result.getString(8)).producer(page));
+                productList.add(new Product().id(result.getInt(1)).productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)).chemicalName(result.getString(6)).molWeight(result.getString(7)).deliveryTime(result.getString(8)).producer(page));
             }
         }
         catch (SQLException e) {
@@ -171,7 +172,7 @@ public class DatabaseDriver {
         }
     }
 
-    public void updatePost(String owner, Post post) { //// TODO: 05-12-2016 Should owner be used to something?
+    public void updatePost(String owner, Post post) {
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -292,5 +293,25 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return id;
+    }
+    public String getPDFFilePath(int productID){
+        String query = "SELECT pdfpath FROM public.product WHERE id = ?";
+        String productFilePath = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, productID);
+            result = preparedStatement.executeQuery();
+            result.next();
+                if (result.getString(1) != null) {
+                    productFilePath = result.getString(1);
+                } else {
+                    return null;
+                }
+            }
+
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productFilePath;
     }
 }

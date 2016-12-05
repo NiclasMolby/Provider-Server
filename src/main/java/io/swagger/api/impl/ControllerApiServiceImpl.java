@@ -77,8 +77,7 @@ public class ControllerApiServiceImpl extends ControllerApiService {
    
     @Override
     public Response getPDF(Integer productId, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+        return Response.ok().entity(Controller.getController().getPDF(productId)).build();
     }
 
     @Override
