@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Informations about a product
  */
 @ApiModel(description = "Informations about a product")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T12:20:52.385Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T13:07:01.183Z")
 public class Product   {
   @JsonProperty("id")
   private Integer id = null;

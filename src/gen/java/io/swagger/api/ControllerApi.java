@@ -31,7 +31,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T12:20:52.385Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T13:07:01.183Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -68,9 +68,9 @@ public class ControllerApi  {
     @Path("/CreateProduct")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Creates a product.", notes = "", response = void.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiOperation(value = "Creates a product.", notes = "", response = Product.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Product.class) })
     public Response createProduct(@ApiParam(value = "",required=true) @QueryParam("ProductName") String productName
 ,@ApiParam(value = "",required=true) @QueryParam("ChemicalName") String chemicalName
 ,@ApiParam(value = "",required=true) @QueryParam("MolWeight") String molWeight
