@@ -252,19 +252,20 @@ public class DatabaseDriver {
         }
     }
     public String getPDFFilePath(int productID){
-        // TODO: 03-12-2016 implement.
-        String query = "SELECT public.pdfpath FROM product WHERE id = ?";
+        String query = "SELECT pdfpath FROM public.product WHERE id = ?";
         String productFilePath = null;
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, productID);
             result = preparedStatement.executeQuery();
-            if(result.next() != false ){
-                productFilePath = result.getString(1);
-            } else {
-                return null;
+            result.next();
+                if (result.getString(1) != null) {
+                    productFilePath = result.getString(1);
+                } else {
+                    return null;
+                }
             }
-        }
+
         catch (SQLException e) {
             e.printStackTrace();
         }
