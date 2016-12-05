@@ -253,7 +253,7 @@ public class DatabaseDriver {
     }
     public String getPDFFilePath(int productID){
         // TODO: 03-12-2016 implement.
-        String query = "SELECT pdfpath FROM product WHERE id=?";
+        String query = "SELECT public.pdfpath FROM product WHERE id = ?";
         String productFilePaht = null;
         try {
             preparedStatement = connection.prepareStatement(query);
