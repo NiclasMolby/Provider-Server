@@ -5,10 +5,10 @@ import domain.database.DatabaseDriver;
 import domain.page.Pagemanager;
 import domain.user.Usermanager;
 import io.swagger.model.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.File;
 import java.util.List;
+
 public class Controller {
 
     private static Controller instance;
@@ -29,7 +29,7 @@ public class Controller {
         bulletinboard = new Bulletinboard();
     }
 
-    public void deletePost(Post post){
+    public void deletePost(Post post) {
         bulletinboard.deletePost(post);
     }
 
@@ -40,22 +40,23 @@ public class Controller {
     public List<Page> getSuppliers() {
         return pagemanager.getSuppliers();
     }
-    
+
     public List<Post> getAllPosts() {
         return bulletinboard.getAllPosts();
     }
-    
+
     public void addNoteToSupplier(String supplierName, String editor, String text) {
-    	pagemanager.addNoteToSupplier(supplierName, editor, text);}
-    
-    public Post createPost(String owner, String title, String description, PostType type){
+        pagemanager.addNoteToSupplier(supplierName, editor, text);
+    }
+
+    public Post createPost(String owner, String title, String description, PostType type) {
         return bulletinboard.createPost(owner, title, description, type);
     }
-    
+
     public void editPost(Post post, String newDescription, String newTitle) {
         bulletinboard.editPost(post, newDescription, newTitle);
     }
-    
+
     public void deleteProduct(Product product) {
         pagemanager.deleteProduct(product);
     }
@@ -71,7 +72,8 @@ public class Controller {
     public Product createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
         return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
     }
-    public File getPDF(int productID){
+
+    public File getPDF(int productID) {
         return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
     }
 }

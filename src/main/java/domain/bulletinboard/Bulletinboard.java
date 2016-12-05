@@ -7,11 +7,11 @@ import java.util.List;
 import io.swagger.model.*;
 
 import java.util.Date;
-import java.util.stream.Collectors;
 
 public class Bulletinboard {
 
-    public Bulletinboard() { }
+    public Bulletinboard() {
+    }
 
     public Post createPost(String owner, String title, String description, PostType type) {
         Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
@@ -28,7 +28,7 @@ public class Bulletinboard {
     public void editPost(Post post, String newDescription, String newTitle) {
         post.setDescription(newDescription);
         post.setTitle(newTitle);
-        DatabaseDriver.getInstance().updatePost(post.getOwner(), post); //TODO: opdater posten i databasen
+        DatabaseDriver.getInstance().updatePost(post.getOwner(), post);
         Logger.get().log(Logger.LogType.INFO, post.getOwner() + " har redigeret opslaget med titlen: " + post.getTitle());
     }
 

@@ -1,9 +1,7 @@
 package domain.database;
 
-import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
@@ -26,10 +24,11 @@ public class DatabaseDriver {
 
     private DatabaseDriver() {
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", "group_2", "MDI5NTli");
-        }
+            connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", 
+                    "group_2", "MDI5NTli");
+        } 
         catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -42,7 +41,7 @@ public class DatabaseDriver {
             result = preparedStatement.executeQuery();
             RightsEnum rights = null;
             while (result.next()) {
-                switch(result.getString(2)) {
+                switch (result.getString(2)) {
                     case "Provia":
                         rights = RightsEnum.PROVIA;
                         break;
@@ -55,20 +54,22 @@ public class DatabaseDriver {
                 }
                 return new User().username(result.getString(1)).rights(rights);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return null;
     }
 
     public List<Page> getSuppliers() {
         List<Page> pageList = new ArrayList<>();
-
-        String query = "SELECT public.user.username, public.note.text, public.note.date, public.note.lasteditor, public.page.location, public.page.description, public.page.contactinformation FROM public.user " +
-                "JOIN public.note ON " +
-                "public.user.username = public.note.supplier " +
-                "JOIN public.page ON public.page.supplier = public.user.username " +
-                "WHERE public.user.rights='Supplier'";
+        String query = "SELECT public.user.username, public.note.text, public.note.date, "
+                + "public.note.lasteditor, public.page.location, public.page.description, "
+                + "public.page.contactinformation FROM public.user "
+                + "JOIN public.note ON "
+                + "public.user.username = public.note.supplier "
+                + "JOIN public.page ON public.page.supplier = public.user.username "
+                + "WHERE public.user.rights='Supplier'";
         try {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
@@ -78,23 +79,26 @@ public class DatabaseDriver {
                     page = new Page().owner(result.getString(1));
                 }
                 else {
-                    page = new Page().owner(result.getString(1)).note(new Note().text(result.getString(2)).creationDate(result.getDate(3)).editor(result.getString(4)));
+                    page = new Page().owner(result.getString(1)).note(new Note()
+                            .text(result.getString(2)).creationDate(result.getDate(3))
+                            .editor(result.getString(4)));
                 }
-                page.location(result.getString(5)).description(result.getString(6)).contactInformation(result.getString(7));
+                page.location(result.getString(5)).description(result.getString(6))
+                        .contactInformation(result.getString(7));
                 pageList.add(page);
             }
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return pageList;
     }
 
     public List<Product> getProducts(String page) {
-        String query = "SELECT public.product.id, public.product.\"productName\", public.product.description, " +
-                "public.product.price, public.product.packaging, public.product.\"chemicalName\", public.product.density, " +
-                "public.product.\"deliveryTime\" FROM public.product " +
-                "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE public.pageproducts.page = ?;";
+        String query = "SELECT public.product.id, public.product.\"productName\", public.product.description, "
+                + "public.product.price, public.product.packaging, public.product.\"chemicalName\", public.product.density, "
+                + "public.product.\"deliveryTime\" FROM public.product "
+                + "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE public.pageproducts.page = ?;";
         List<Product> productList = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -102,11 +106,15 @@ public class DatabaseDriver {
 
             result = preparedStatement.executeQuery();
             while (result.next()) {
-                productList.add(new Product().id(result.getInt(1)).productName(result.getString(2)).description(result.getString(3)).price(result.getString(4)).packaging(result.getString(5)).chemicalName(result.getString(6)).molWeight(result.getString(7)).deliveryTime(result.getString(8)).producer(page));
+                productList.add(new Product().id(result.getInt(1))
+                        .productName(result.getString(2)).description(result.getString(3))
+                        .price(result.getString(4)).packaging(result.getString(5))
+                        .chemicalName(result.getString(6)).molWeight(result.getString(7))
+                        .deliveryTime(result.getString(8)).producer(page));
             }
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return productList;
     }
@@ -133,11 +141,13 @@ public class DatabaseDriver {
                         type = PostType.NOTAVAILABLE;
                         break;
                 }
-                postList.add(new Post().owner(result.getString(1)).title(result.getString(3)).description(result.getString(2)).type(type).date(result.getString(6)).id(result.getInt(5)));
+                postList.add(new Post().owner(result.getString(1)).title(result.getString(3))
+                        .description(result.getString(2)).type(type)
+                        .date(result.getString(6)).id(result.getInt(5)));
             }
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return postList;
     }
@@ -153,7 +163,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -168,7 +178,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -183,7 +193,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -206,12 +216,12 @@ public class DatabaseDriver {
             id = result.getInt(1);
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return id;
     }
 
-    public void deletePost(Post post){
+    public void deletePost(Post post) {
         String query = "DELETE FROM public.post WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -219,11 +229,11 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
-    
-    public void deleteProduct(Product product){
+
+    public void deleteProduct(Product product) {
         String query = "DELETE FROM public.product WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -231,7 +241,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -246,7 +256,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -265,7 +275,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
     }
 
@@ -290,11 +300,12 @@ public class DatabaseDriver {
             id = result.getInt(1);
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return id;
     }
-    public String getPDFFilePath(int productID){
+
+    public String getPDFFilePath(int productID) {
         String query = "SELECT pdfpath FROM public.product WHERE id = ?";
         String productFilePath = null;
         try {
@@ -302,15 +313,12 @@ public class DatabaseDriver {
             preparedStatement.setInt(1, productID);
             result = preparedStatement.executeQuery();
             result.next();
-                if (result.getString(1) != null) {
-                    productFilePath = result.getString(1);
-                } else {
-                    return null;
-                }
+            if (result.getString(1) != null) {
+                productFilePath = result.getString(1);
             }
-
+        }
         catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: håndter den her exception
         }
         return productFilePath;
     }

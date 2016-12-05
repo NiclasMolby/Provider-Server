@@ -9,6 +9,7 @@ import domain.database.DatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.Product;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,12 +23,18 @@ public class Pagemanager {
     }
 
     public List<Page> getSuppliers() {
-        List<Page> pages = database.getSuppliers();
+        /*List<Page> pages = database.getSuppliers();
         for(Page p : pages) {
             this.pages.put(p.getOwner(), p);
             p.products(database.getProducts(p.getOwner()));
-        }
-        return pages;
+        }*/
+        database.getSuppliers().parallelStream()
+                .map(page -> {
+                    pages.put(page.getOwner(), page);
+                    return page;
+                }).forEach(page -> 
+                        page.products(database.getProducts(page.getOwner())));
+        return new ArrayList(pages.values());
     }
 
     public void addNoteToSupplier(String supplierName, String editor, String text) {
