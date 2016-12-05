@@ -63,8 +63,8 @@ public class Pagemanager {
         Logger.get().log(Logger.LogType.INFO, "En eller anden har redigeret productet " + product.getProductName());
     }
 
-    public Object createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime) {
-        Product product = new Product().productName(productName).chemicalName(chemicalName).molWeight(molWeight).description(description).price(price).packaging(packaging).deliveryTime(deliveryTime);
+    public Object createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
+        Product product = new Product().productName(productName).chemicalName(chemicalName).molWeight(molWeight).description(description).price(price).packaging(packaging).deliveryTime(deliveryTime).producer(producer);
         product.setId(DatabaseDriver.getInstance().addProduct(product));
 
         Logger.get().log(Logger.LogType.INFO, product.getProducer() + " har oprettet produktet, " + product.getProductName());
