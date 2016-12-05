@@ -65,16 +65,16 @@ public class ControllerApiServiceImpl extends ControllerApiService {
 
     @Override
     public Response deleteProduct(Product product, SecurityContext securityContext) throws NotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Controller.getController().deleteProduct(product);
     }
 
     @Override
     public Response editProduct(Product product, String newProductName, String newChemicalName, String newMolWeight, String newDescription, String newPrice, String newPackaging, String newDeliveryTime, SecurityContext securityContext) throws NotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Controller.getController().editProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
     }
     @Override
     public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, SecurityContext securityContext) throws NotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Controller.getController().createProduct(ProductName, ChemicalName, MolWeight, Description, Price, Packaging, DeliveryTime);
     }
     @Override
     public Response getPDF(Integer productId, SecurityContext securityContext) throws NotFoundException {
