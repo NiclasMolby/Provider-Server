@@ -65,6 +65,11 @@ public class Controller {
     }
 
     public void editProduct(Product product, String newDescription, String newChemicalName, String newMolWeight, String newDescription1, String newPrice, String newPackaging, String newDeliveryTime) {
+        pagemanager.editProduct(product, newDescription, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
+    }
+
+    public Object createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
+        return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
     }
     public File getPDF(int productID){
         return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
