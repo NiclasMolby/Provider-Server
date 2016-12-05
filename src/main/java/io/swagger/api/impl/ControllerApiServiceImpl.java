@@ -58,6 +58,11 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     }
 
     @Override
+    public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, SecurityContext securityContext) throws NotFoundException {
+        return null;
+    }
+
+    @Override
     public Response deletePost(Post post, SecurityContext securityContext) throws NotFoundException {
         Controller.getController().deletePost(post);
         return Response.ok().build();
@@ -81,9 +86,9 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
 
-    @Override
+    /*@Override
     public Response createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer, SecurityContext securityContext) throws NotFoundException {
        
-        return Response.ok().entity(Controller.getController().createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime)).build();
-    }
+        return Response.ok().entity(Controller.getController().createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer)).build();
+    } */
 }

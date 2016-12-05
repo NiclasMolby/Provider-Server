@@ -65,7 +65,7 @@ public class Controller {
         pagemanager.editProduct(product, newDescription, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
     }
 
-    public Object createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime) {
-        return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime);
+    public Object createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
+        return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
     }
 }
