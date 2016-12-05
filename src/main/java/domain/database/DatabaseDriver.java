@@ -268,7 +268,7 @@ public class DatabaseDriver {
     }
 
     public int addProduct(Product product) {
-        String query = "INSERT INTO public.product(chemicalName, description, deliveryTime, price, packaging, density) "
+        String query = "INSERT INTO public.product(chemicalName, description, deliveryTime, price, packaging, density, name) "
                 + "VALUES(?, ?, ?, ?, ?, ?) "
                 + "RETURNING id;";
         int id = (int) (Math.random() * Integer.MAX_VALUE);
@@ -280,6 +280,7 @@ public class DatabaseDriver {
             preparedStatement.setString(4, product.getPrice());
             preparedStatement.setString(5, product.getPackaging());
             preparedStatement.setString(6, product.getMolWeight());
+            preparedStatement.setString(7, product.getProductName());
             preparedStatement.executeUpdate();
             result = preparedStatement.getGeneratedKeys();
 
