@@ -254,13 +254,13 @@ public class DatabaseDriver {
     public String getPDFFilePath(int productID){
         // TODO: 03-12-2016 implement.
         String query = "SELECT public.pdfpath FROM product WHERE id = ?";
-        String productFilePaht = null;
+        String productFilePath = null;
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, productID);
             result = preparedStatement.executeQuery();
             if(result.next() != false ){
-                productFilePaht = result.getString(1);
+                productFilePath = result.getString(1);
             } else {
                 return null;
             }
@@ -268,6 +268,6 @@ public class DatabaseDriver {
         catch (SQLException e) {
             e.printStackTrace();
         }
-        return productFilePaht;
+        return productFilePath;
     }
 }
