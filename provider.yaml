@@ -244,6 +244,18 @@ paths:
           in: query
           required: true
           type: string
+        - name: Packaging
+          in: query
+          required: true
+          type: string
+        - name: DeliveryTime
+          in: query
+          required: true
+          type: string
+        - name: Producer
+          in: query
+          required: true
+          type: string
       responses:
         '200':
           description: ok

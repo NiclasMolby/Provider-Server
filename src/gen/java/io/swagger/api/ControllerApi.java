@@ -31,7 +31,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T21:31:07.749Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T12:20:52.385Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -76,9 +76,12 @@ public class ControllerApi  {
 ,@ApiParam(value = "",required=true) @QueryParam("MolWeight") String molWeight
 ,@ApiParam(value = "",required=true) @QueryParam("Description") String description
 ,@ApiParam(value = "",required=true) @QueryParam("Price") String price
+,@ApiParam(value = "",required=true) @QueryParam("Packaging") String packaging
+,@ApiParam(value = "",required=true) @QueryParam("DeliveryTime") String deliveryTime
+,@ApiParam(value = "",required=true) @QueryParam("Producer") String producer
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.createProduct(productName,chemicalName,molWeight,description,price,securityContext);
+        return delegate.createProduct(productName,chemicalName,molWeight,description,price,packaging,deliveryTime,producer,securityContext);
     }
     @POST
     @Path("/DeletePost")
