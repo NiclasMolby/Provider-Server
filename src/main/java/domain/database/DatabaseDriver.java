@@ -280,9 +280,9 @@ public class DatabaseDriver {
             preparedStatement.setString(2, product.getProductName());
             preparedStatement.setString(3, product.getDescription());
             preparedStatement.setString(4, product.getDeliveryTime()); //// TODO: 05-12-2016 Look at datatypes so we avoid having to parse types
-            preparedStatement.setString(5, product.getPrice());
+            preparedStatement.setDouble(5, Double.parseDouble(product.getPrice()));
             preparedStatement.setString(6, product.getPackaging());
-            preparedStatement.setString(7, product.getMolWeight());
+            preparedStatement.setDouble(7, Double.parseDouble(product.getMolWeight()));
             preparedStatement.setInt(8, product.getId());
             preparedStatement.execute();
         }
