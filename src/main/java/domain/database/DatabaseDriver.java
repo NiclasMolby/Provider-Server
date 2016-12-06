@@ -4,8 +4,11 @@ import common.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 
+import common.Logger;
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
+import sun.rmi.runtime.Log;
+
 import java.util.List;
 
 public class DatabaseDriver {
@@ -29,7 +32,7 @@ public class DatabaseDriver {
                     "group_2", "MDI5NTli");
         } 
         catch (Exception e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i tilslutningen til databasen.\n" + e);
         }
     }
     
@@ -65,7 +68,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            Logger.get().log(Logger.LogType.WARNING, "SQL Exception da den kalder getLogin"); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i database login metoden.\n" + e);
         }
         return null;
     }
@@ -98,15 +101,15 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hentning af leverandører.\n" + e);
         }
         return pageList;
     }
 
     public List<Product> getProducts(String page) {
-        String query = "SELECT public.product.id, public.product.\"productName\", public.product.description, "
-                + "public.product.price, public.product.packaging, public.product.\"chemicalName\", public.product.density, "
-                + "public.product.\"deliveryTime\" FROM public.product "
+        String query = "SELECT public.product.id, public.product.productname, public.product.description, "
+                + "public.product.price, public.product.packaging, public.product.chemicalname, public.product.density, "
+                + "public.product.deliverytime FROM public.product "
                 + "INNER JOIN public.pageproducts ON public.product.id = public.pageproducts.product WHERE public.pageproducts.page = ?;";
         List<Product> productList = new ArrayList<>();
         try {
@@ -123,7 +126,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hentning af produkter.\n" + e);
         }
         return productList;
     }
@@ -156,7 +159,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hentning af posts.\n" + e);
         }
         return postList;
     }
@@ -172,7 +175,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj note til leverandør.\n" + e);
         }
     }
 
@@ -187,7 +190,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved rediger note på leverandør.\n" + e);
         }
     }
 
@@ -202,7 +205,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved opdater post.\n" + e);
         }
     }
 
@@ -225,7 +228,7 @@ public class DatabaseDriver {
             id = result.getInt(1);
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj post.\n" + e);
         }
         return id;
     }
@@ -238,7 +241,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i database ved slet post.\n" + e);
         }
     }
 
@@ -250,7 +253,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i database ved slet produkt.\n" + e);
         }
     }
 
@@ -265,7 +268,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved opdater leverandørside.\n" + e);
         }
     }
 
@@ -284,7 +287,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved opdater produkt.\n" + e);
         }
     }
 
@@ -298,9 +301,9 @@ public class DatabaseDriver {
             preparedStatement.setString(1, product.getChemicalName());
             preparedStatement.setString(2, product.getDescription());
             preparedStatement.setString(3, product.getDeliveryTime());
-            preparedStatement.setString(4, product.getPrice());
+            preparedStatement.setDouble(4, Double.parseDouble(product.getPrice()));
             preparedStatement.setString(5, product.getPackaging());
-            preparedStatement.setString(6, product.getMolWeight());
+            preparedStatement.setDouble(6, Double.parseDouble(product.getMolWeight()));
             preparedStatement.setString(7, product.getProductName());
             preparedStatement.executeUpdate();
             result = preparedStatement.getGeneratedKeys();
@@ -309,7 +312,7 @@ public class DatabaseDriver {
             id = result.getInt(1);
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj produkt.\n" + e);
         }
         return id;
     }
@@ -327,8 +330,23 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hent pdf sti.\n" + e);
         }
         return productFilePath;
+    }
+
+    public void addProductToPage(Product product) {
+        String query = "INSERT INTO public.pageproducts(page, product) "
+                + "VALUES(?, ?);";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(2, product.getId());
+            preparedStatement.setString(1, product.getProducer());
+            preparedStatement.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace(); // TODO: håndter den her exception
+        }
+
     }
 }
