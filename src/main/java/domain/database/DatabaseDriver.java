@@ -3,11 +3,9 @@ package domain.database;
 import common.Logger;
 import java.sql.*;
 import java.util.ArrayList;
-
-import common.Logger;
+import java.util.ArrayList;
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
-import sun.rmi.runtime.Log;
 
 import java.util.List;
 

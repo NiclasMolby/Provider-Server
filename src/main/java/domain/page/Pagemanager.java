@@ -3,7 +3,6 @@ package domain.page;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
-
 import common.Logger;
 import domain.database.DatabaseDriver;
 import io.swagger.model.Note;
@@ -23,11 +22,6 @@ public class Pagemanager {
     }
 
     public List<Page> getSuppliers() {
-        /*List<Page> pages = database.getSuppliers();
-        for(Page p : pages) {
-            this.pages.put(p.getOwner(), p);
-            p.products(database.getProducts(p.getOwner()));
-        }*/
         database.getSuppliers().parallelStream()
                 .map(page -> {
                     pages.put(page.getOwner(), page);
