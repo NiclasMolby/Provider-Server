@@ -345,7 +345,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj produkt til product/page relationen.\n" + e);
         }
 
     }
