@@ -66,7 +66,7 @@ public class Pagemanager {
         product.setPrice(newPrice);
         product.setPackaging(newPackaging);
         product.setDeliveryTime(newDeliveryTime);
-        DatabaseDriver.getInstance().updateProduct(product); //TODO: opdater posten i databasen
+        DatabaseDriver.getInstance().updateProduct(product);
         Logger.get().log(Logger.LogType.INFO, "En eller anden har redigeret productet " + product.getProductName());
     }
 

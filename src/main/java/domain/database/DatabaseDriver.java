@@ -3,8 +3,11 @@ package domain.database;
 import java.sql.*;
 import java.util.ArrayList;
 
+import common.Logger;
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
+import sun.rmi.runtime.Log;
+
 import java.util.List;
 
 public class DatabaseDriver {
@@ -28,7 +31,7 @@ public class DatabaseDriver {
                     "group_2", "MDI5NTli");
         } 
         catch (Exception e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i tilslutningen til databasen.\n" + e);
         }
     }
 
@@ -56,7 +59,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i database login metoden.\n" + e);
         }
         return null;
     }
@@ -89,7 +92,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hentning af leverandører.\n" + e);
         }
         return pageList;
     }
@@ -114,7 +117,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hentning af produkter.\n" + e);
         }
         return productList;
     }
@@ -147,7 +150,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hentning af posts.\n" + e);
         }
         return postList;
     }
@@ -163,7 +166,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj note til leverandør.\n" + e);
         }
     }
 
@@ -178,7 +181,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved rediger note på leverandør.\n" + e);
         }
     }
 
@@ -193,7 +196,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved opdater post.\n" + e);
         }
     }
 
@@ -216,7 +219,7 @@ public class DatabaseDriver {
             id = result.getInt(1);
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj post.\n" + e);
         }
         return id;
     }
@@ -229,7 +232,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i database ved slet post.\n" + e);
         }
     }
 
@@ -241,7 +244,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i database ved slet produkt.\n" + e);
         }
     }
 
@@ -256,7 +259,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved opdater leverandørside.\n" + e);
         }
     }
 
@@ -275,7 +278,7 @@ public class DatabaseDriver {
             preparedStatement.execute();
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved opdater produkt.\n" + e);
         }
     }
 
@@ -300,7 +303,7 @@ public class DatabaseDriver {
             id = result.getInt(1);
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved tilføj produkt.\n" + e);
         }
         return id;
     }
@@ -318,7 +321,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "Fejl i databasen ved hent pdf sti.\n" + e);
         }
         return productFilePath;
     }
