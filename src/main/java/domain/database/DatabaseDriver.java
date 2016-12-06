@@ -1,5 +1,6 @@
 package domain.database;
 
+import common.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -31,7 +32,15 @@ public class DatabaseDriver {
             e.printStackTrace(); // TODO: håndter den her exception
         }
     }
-
+    
+    /**
+     * 
+     * @param username
+     * @param password
+     * Henter brugeren på databasen. 
+     * @return User som svarer overens med username og password
+     * @throws NullPointerException 
+     */
     public User getLogin(String username, String password) throws NullPointerException {
         String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
         try {
@@ -56,7 +65,7 @@ public class DatabaseDriver {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace(); // TODO: håndter den her exception
+            Logger.get().log(Logger.LogType.WARNING, "SQL Exception da den kalder getLogin"); // TODO: håndter den her exception
         }
         return null;
     }
