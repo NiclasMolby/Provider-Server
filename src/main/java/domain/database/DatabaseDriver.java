@@ -322,4 +322,19 @@ public class DatabaseDriver {
         }
         return productFilePath;
     }
+
+    public void addProductToPage(Product product) {
+        String query = "INSERT INTO public.productPage(page, product) "
+                + "VALUES(?, ?);";
+        try {
+            preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(2, String.valueOf(product.getId()));
+            preparedStatement.setString(1, product.getProducer());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace(); // TODO: håndter den her exception
+        }
+
+    }
 }
