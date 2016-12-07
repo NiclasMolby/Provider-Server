@@ -2,6 +2,7 @@ package domain.database;
 
 import io.swagger.model.*;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,12 +33,9 @@ public class DatabaseDriverTest {
     @After
     public void tearDown() throws Exception {
         List<Post> posts = database.getPosts();
-        for(Post p : posts){
-            if(p.getId() == testPost.getId()){
+            if(posts.contains(testPost)){
                 database.deletePost(testPost);
             }
-        }
-
         database = null;
         testPost = null;
 
@@ -50,7 +48,7 @@ public class DatabaseDriverTest {
     }
 
     @Test
-    public void wrongUser() throws Exception {
+    public void wrongUserTest() throws Exception {
         assertNull(database.getLogin("w","1"));
     }
 
@@ -65,7 +63,7 @@ public class DatabaseDriverTest {
     }
 
     @Test
-    public void getProducts() throws Exception {
+    public void getProductsTest() throws Exception {
         List<Product> p = new ArrayList<>();
         if(database.getProducts("BobSagat").isEmpty()){
             fail();
@@ -75,7 +73,7 @@ public class DatabaseDriverTest {
     }
 
     @Test
-    public void getPosts() throws Exception {
+    public void getPostsTest() throws Exception {
         List<Post> p = new ArrayList<>();
         if(database.getPosts().isEmpty()){
             fail();
@@ -85,16 +83,30 @@ public class DatabaseDriverTest {
     }
 
     @Test
-    public void addPost() throws Exception {
-        //TODO lave den...
+    public void addAndDeletePostTest() throws Exception {
+        addPostTest();
+        deletePostTest();
     }
 
-    @Test
-    public void deletePost() throws Exception {
-        testPost.id(database.addPost("Test",testPost));
+
+    public void addPostTest() throws Exception {
+        List<Post> posts = database.getPosts();
+        if(posts.contains(testPost)){
+            fail("There is already a test post in the database");
+        }
+        testPost.id(database.addPost("Test", testPost));
+        List<Post> p = database.getPosts();
+        if(!p.contains(testPost)){
+            fail("The post was not added to the database!");
+        }
+
+    }
+
+
+    public void deletePostTest() throws Exception {
         List<Post> testposts = database.getPosts();
         if(!testposts.contains(testPost)){
-                fail("Posten was never created in the database");
+                fail("The post was never created in the database");
             }
         database.deletePost(testPost);
         List<Post> posts;
