@@ -1,0 +1,10 @@
+07/12/2016 10:42:34 [INFO] Bruger k er logget ind
+07/12/2016 11:16:44 [INFO] Bruger Niels er logget ind
+07/12/2016 11:19:31 [INFO] Bruger BobSagat er logget ind
+07/12/2016 11:19:55 [INFO] BobSagat har oprettet produktet, Test
+07/12/2016 11:22:36 [INFO] Bruger BobSagat er logget ind
+07/12/2016 11:22:56 [INFO] BobSagat har oprettet produktet, Test1
+07/12/2016 11:25:55 [INFO] Bruger BobSagat er logget ind
+07/12/2016 11:26:20 [INFO] BobSagat har oprettet produktet, Test3
+07/12/2016 11:30:09 [INFO] Bruger BobSagat er logget ind
+07/12/2016 11:30:56 [INFO] BobSagat har oprettet produktet, 444

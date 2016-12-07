@@ -8,6 +8,8 @@ import io.swagger.model.*;
 
 import java.io.File;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller {
 
@@ -29,11 +31,23 @@ public class Controller {
         bulletinboard = new Bulletinboard();
     }
 
+    /**
+     * Deletes the provided post from the database
+     * @param post The post that should be deleted
+     */
     public void deletePost(Post post) {
         bulletinboard.deletePost(post);
     }
 
     public User validate(String username, String password) {
+        new Thread(() -> {
+            if(requestUpdate()) {
+                System.out.println("true");
+            }
+            else {
+                System.out.println("false");
+            }
+        }).start();
         return usermanager.validate(username, password);
     }
 
@@ -70,10 +84,27 @@ public class Controller {
     }
 
     public Product createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
-        return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+        synchronized(updateLock) {
+            updateLock.notifyAll();
+            return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+        }
     }
 
     public File getPDF(int productID) {
         return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
+    }
+    
+    private Object updateLock = new Object();
+    
+    public boolean requestUpdate() {
+        synchronized(updateLock) {
+            try {
+                updateLock.wait();
+            }
+            catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
     }
 }

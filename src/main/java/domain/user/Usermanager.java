@@ -15,8 +15,8 @@ public class Usermanager {
     /**
      * @param username
      * @param password
-     * Kalder metoden getLogin i database klassen. Database klassen vil returnere et User objekt, som denne metode sender videre tilbage. 
-     * @return User som er den User der stemmer overens med brugernavnet og passwordet. 
+     * Kalder metoden getLogin i database klassen. Database klassen vil returnere et User objekt, som denne metode sender videre tilbage.
+     * @return User som er den User der stemmer overens med brugernavnet og passwordet.
      */
     public User validate(String username, String password) {
         try {
