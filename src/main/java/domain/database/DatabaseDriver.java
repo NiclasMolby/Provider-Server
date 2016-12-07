@@ -44,7 +44,7 @@ public class DatabaseDriver {
      * Gets a user from its username and password.
      * @param username Username for the user
      * @param password Password for the user
-     * @return a User if it match a username an password in the database
+     * @return a User if it match a username an password in the database and the users rights.
      */
     public User getLogin(String username, String password) {
         String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE public.user.username = ? AND public.user.password = ?";

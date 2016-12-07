@@ -8,3 +8,6 @@
 07/12/2016 11:26:20 [INFO] BobSagat har oprettet produktet, Test3
 07/12/2016 11:30:09 [INFO] Bruger BobSagat er logget ind
 07/12/2016 11:30:56 [INFO] BobSagat har oprettet produktet, 444
+07/12/2016 15:34:27 [INFO] test
+07/12/2016 15:35:46 [WARNING] Fejl i tilslutningen til databasen.
+org.postgresql.util.PSQLException: The connection attempt failed.
