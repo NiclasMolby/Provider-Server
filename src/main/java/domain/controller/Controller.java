@@ -31,10 +31,7 @@ public class Controller {
         bulletinboard = new Bulletinboard();
     }
 
-    /**
-     * Deletes the provided post from the database
-     * @param post The post that should be deleted
-     */
+
     public void deletePost(Post post) {
         bulletinboard.deletePost(post);
     }
