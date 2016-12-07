@@ -23,6 +23,7 @@ public class DatabaseDriverTest {
     database = DatabaseDriver.getInstance();
         testPost = new Post();
         testPost.type(PostType.OFFER);
+        testPost.title("test");
         testPost.description("testDescription");
         testPost.owner("Test");
         testPost.setDate(new Date().toString());
@@ -89,10 +90,14 @@ public class DatabaseDriverTest {
     }
 
     @Test
-    public void deletePost() throws Exception { //TODO check at post bliver oprettet.
-        List<Post> posts;
+    public void deletePost() throws Exception {
         testPost.id(database.addPost("Test",testPost));
+        List<Post> testposts = database.getPosts();
+        if(!testposts.contains(testPost)){
+                fail("Posten was never created in the database");
+            }
         database.deletePost(testPost);
+        List<Post> posts;
         posts = database.getPosts();
         for(Post p: posts){
             if(p.equals(testPost)){

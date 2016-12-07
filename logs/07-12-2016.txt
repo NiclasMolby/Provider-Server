@@ -185,3 +185,5 @@ org.postgresql.util.PSQLException: The connection attempt failed.
 07/12/2016 16:41:37 [INFO] En eller anden har redigeret productet eeee
 07/12/2016 16:47:35 [INFO] Bruger k er logget ind
 07/12/2016 16:48:01 [INFO] En eller anden har redigeret productet Vand
+07/12/2016 22:12:53 [WARNING] Fejl i tilslutningen til databasen.
+org.postgresql.util.PSQLException: The connection attempt failed.
