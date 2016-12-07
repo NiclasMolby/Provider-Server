@@ -21,6 +21,10 @@ public class Pagemanager {
         database = DatabaseDriver.getInstance();
     }
 
+    /**
+     * Gets all the suppliers pages.
+     * @return a list with all the suppliers.
+     */
     public List<Page> getSuppliers() {
         database.getSuppliers().parallelStream()
                 .map(page -> {
@@ -31,6 +35,12 @@ public class Pagemanager {
         return new ArrayList(pages.values());
     }
 
+    /**
+     * Adds or edit a note in the database
+     * @param supplierName The name of the supplier which note will be edited.
+     * @param editor The name of the User who edited the note.
+     * @param text The edited note.
+     */
     public void addNoteToSupplier(String supplierName, String editor, String text) {
         Note note = new Note().text(text).editor(editor).creationDate(Date.valueOf(LocalDate.now()));
         if(pages.get(supplierName).getNote() == null) {
@@ -42,7 +52,11 @@ public class Pagemanager {
         pages.get(supplierName).setNote(note);
         Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
     }
-    
+
+    /**
+     * Deletes a product from the database.
+     * @param product The product that will be deleted.
+     */
     public void deleteProduct(Product product) {
         database.deleteProduct(product);
     }
@@ -52,6 +66,18 @@ public class Pagemanager {
         Logger.get().log(Logger.LogType.INFO, page + " har ændret sine informationer");
     }
 
+    /**
+     * Edit a already existing product and saves it in the database. The database updates the product in the
+     * database with the same product ID.
+     * @param product The product that will be updated.
+     * @param newProductName Product name.
+     * @param newChemicalName Chemical name.
+     * @param newMolWeight MolWeight.
+     * @param newDescription Description.
+     * @param newPrice Price.
+     * @param newPackaging Packaging.
+     * @param newDeliveryTime Delivery time.
+     */
     public void editProduct(Product product, String newProductName, String newChemicalName, double newMolWeight, String newDescription, double newPrice, String newPackaging, String newDeliveryTime) {
         product.setProductName(newProductName);
         product.setChemicalName(newChemicalName);
@@ -64,6 +90,18 @@ public class Pagemanager {
         Logger.get().log(Logger.LogType.INFO, "En eller anden har redigeret productet " + product.getProductName());
     }
 
+    /**
+     * Creates a new Product.
+     * @param productName
+     * @param chemicalName
+     * @param molWeight
+     * @param description
+     * @param price
+     * @param packaging
+     * @param deliveryTime
+     * @param producer
+     * @return The new product.
+     */
     public Product createProduct(String productName, String chemicalName, double molWeight, String description, double price, String packaging, String deliveryTime, String producer) {
         Product product = new Product().productName(productName).chemicalName(chemicalName).molWeight(molWeight).description(description).price(price).packaging(packaging).deliveryTime(deliveryTime).producer(producer);
         product.setId(DatabaseDriver.getInstance().addProduct(product));

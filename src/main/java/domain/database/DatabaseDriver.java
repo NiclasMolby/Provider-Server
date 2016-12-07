@@ -325,8 +325,8 @@ public class DatabaseDriver {
     }
 
     /**
-     * Updates a product.
-     * @param product The product that will be updated.
+     * Updates a product from the product ID.
+     * @param product The updated product.
      */
     public void updateProduct(Product product) {
         String query = "UPDATE public.product SET chemicalname = ?, productname = ?, description = ?, deliverytime = ?, price = ?, packaging = ?, density = ?  WHERE id = ?;";
