@@ -44,7 +44,7 @@ public class DatabaseDriver {
      * Gets a user from its username and password.
      * @param username Username for the user
      * @param password Password for the user
-     * @return a User if it match a username an password in the database
+     * @return a User if it match a username an password in the database and the users rights.
      */
     public User getLogin(String username, String password) {
         String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
@@ -92,10 +92,10 @@ public class DatabaseDriver {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
             Page page;
-            while (result.next()) { //gets the suppliers from the result set
+            while (result.next()) { //gets the suppliers from the results.
                 if (result.getString(2) == null && result.getDate(3) == null) {
                     page = new Page().owner(result.getString(1));
-                    //Get
+                    //Gets a supplier with a empty note
                 }
                 else {
                     page = new Page().owner(result.getString(1)).note(new Note()
@@ -113,7 +113,12 @@ public class DatabaseDriver {
         return pageList;
     }
 
-    public List<Product> getProducts(String page) {
+    /**
+     * Gets the all the products from the database
+     * @param pageSupplier the product owner name
+     * @return a List of alle the products for a owner.
+     */
+    public List<Product> getProducts(String pageSupplier) {
         String query = "SELECT public.product.id, public.product.productname, public.product.description, "
                 + "public.product.price, public.product.packaging, public.product.chemicalname, public.product.density, "
                 + "public.product.deliverytime FROM public.product "
@@ -121,7 +126,7 @@ public class DatabaseDriver {
         List<Product> productList = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, page);
+            preparedStatement.setString(1, pageSupplier);
 
             result = preparedStatement.executeQuery();
             while (result.next()) {
@@ -129,7 +134,7 @@ public class DatabaseDriver {
                         .productName(result.getString(2)).description(result.getString(3))
                         .price(result.getDouble(4)).packaging(result.getString(5))
                         .chemicalName(result.getString(6)).molWeight(result.getDouble(7))
-                        .deliveryTime(result.getString(8)).producer(page));
+                        .deliveryTime(result.getString(8)).producer(pageSupplier));
             }
         }
         catch (SQLException e) {
@@ -138,6 +143,10 @@ public class DatabaseDriver {
         return productList;
     }
 
+    /**
+     * Gets all the Posts from the database
+     * @return a List with all Posts
+     */
     public List<Post> getPosts() {
         String query = "SELECT * FROM public.post";
         List<Post> postList = new ArrayList<>();
@@ -171,6 +180,11 @@ public class DatabaseDriver {
         return postList;
     }
 
+    /**
+     * Adds a note to a supplier to the database.
+     * @param supplierName The name of the supplier.
+     * @param note the note that will be added to the supplier.
+     */
     public void addNoteToSupplier(String supplierName, Note note) {
         String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES (?, ?, ?, ?);";
         try {
@@ -186,6 +200,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Edits a already existing note.
+     * @param supplierName The supplier which note will be edited.
+     * @param note The edited note.
+     */
     public void editNoteOnSupplier(String supplierName, Note note) {
         String query = "UPDATE public.note SET text = ?, date = ?, lasteditor = ? WHERE public.note.supplier = ?;";
         try {
@@ -201,6 +220,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     *Updates a Post in the database.
+     * @param owner The owner of the post.
+     * @param post The Edited post.
+     */
     public void updatePost(String owner, Post post) {
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
         try {
@@ -216,6 +240,12 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Adds a post to a Owner and returns the ID of the new post.
+     * @param owner The owner where the post will be added.
+     * @param post The new post.
+     * @return The ID of the post.
+     */
     public int addPost(String owner, Post post) {
         String query = "INSERT INTO public.post(username, type, text, date, title) "
                 + "VALUES(?, ?, ?, ?, ?) "
@@ -240,6 +270,10 @@ public class DatabaseDriver {
         return id;
     }
 
+    /**
+     * Deletes a Post in the database.
+     * @param post The post which will be deleted.
+     */
     public void deletePost(Post post) {
         String query = "DELETE FROM public.post WHERE id = ?;";
         try {
@@ -252,6 +286,10 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Deletes a Product in the database.
+     * @param product The product which will be deleted.
+     */
     public void deleteProduct(Product product) {
         String query = "DELETE FROM public.product WHERE id = ?;";
         try {
@@ -264,6 +302,13 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Updates a entire Page.
+     * @param page The supplier which page will be updated.
+     * @param description The new Supplier description.
+     * @param location The new supplier location.
+     * @param contactInformation the new supplier contact information.
+     */
     public void updatePage(String page, String description, String location, String contactInformation) {
         String query = "UPDATE public.page SET description = ?, location = ?, contactinformation = ? WHERE supplier = ?";
         try {
@@ -279,6 +324,10 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Updates a product from the product ID.
+     * @param product The updated product.
+     */
     public void updateProduct(Product product) {
         String query = "UPDATE public.product SET chemicalname = ?, productname = ?, description = ?, deliverytime = ?, price = ?, packaging = ?, density = ?  WHERE id = ?;";
         try {
@@ -298,6 +347,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Adds a product to the database.
+     * @param product The product that will be added to the database.
+     * @return The ID of the product.
+     */
     public int addProduct(Product product) {
         String query = "INSERT INTO public.product(chemicalname, description, deliverytime, price, packaging, density, productname) "
                 + "VALUES(?, ?, ?, ?, ?, ?, ?) "
@@ -324,6 +378,11 @@ public class DatabaseDriver {
         return id;
     }
 
+    /**
+     * Gets the PDF file path from the database.
+     * @param productID The id of the product which PDF path will be returned.
+     * @return The file path to the PDF on the server.
+     */
     public String getPDFFilePath(int productID) {
         String query = "SELECT pdfpath FROM public.product WHERE id = ?";
         String productFilePath = null;
@@ -342,13 +401,17 @@ public class DatabaseDriver {
         return productFilePath;
     }
 
+    /**
+     * Links a product ID to a product producer and saves it in the database.
+     * @param product the product that will be linked.
+     */
     public void addProductToPage(Product product) {
         String query = "INSERT INTO public.pageproducts(page, product) "
                 + "VALUES(?, ?);";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(2, product.getId());
-            preparedStatement.setString(1, product.getProducer());
+            preparedStatement.setString(1, product.getProducer());//gets the name of the product producer
             preparedStatement.execute();
         }
         catch (SQLException e) {

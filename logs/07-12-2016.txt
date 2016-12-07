@@ -8,6 +8,9 @@
 07/12/2016 11:26:20 [INFO] BobSagat har oprettet produktet, Test3
 07/12/2016 11:30:09 [INFO] Bruger BobSagat er logget ind
 07/12/2016 11:30:56 [INFO] BobSagat har oprettet produktet, 444
+07/12/2016 15:34:27 [INFO] test
+07/12/2016 15:35:46 [WARNING] Fejl i tilslutningen til databasen.
+org.postgresql.util.PSQLException: The connection attempt failed.
 07/12/2016 12:23:17 [INFO] Bruger BobSagat er logget ind
 07/12/2016 12:23:54 [INFO] Bruger k er logget ind
 07/12/2016 12:30:48 [INFO] Bruger BobSagat er logget ind
@@ -31,7 +34,7 @@
 07/12/2016 13:12:39 [INFO] Niels har oprettet en ny opslag med titlen: Niels
 07/12/2016 13:14:08 [INFO] Bruger Niels er logget ind
 07/12/2016 13:14:45 [INFO] Niels har oprettet en ny opslag med titlen: 12332123
-07/12/2016 13:15:01 [INFO] Niels har oprettet en ny opslag med titlen: ØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØ
+07/12/2016 13:15:01 [INFO] Niels har oprettet en ny opslag med titlen: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 07/12/2016 13:15:42 [INFO] Niels har oprettet en ny opslag med titlen: 11111111111
 07/12/2016 13:19:45 [INFO] Bruger Niels er logget ind
 07/12/2016 13:20:17 [INFO] Niels har oprettet en ny opslag med titlen: 333333333333333
@@ -92,8 +95,8 @@
 07/12/2016 14:31:02 [INFO] Niels har oprettet en ny opslag med titlen: 44
 07/12/2016 15:00:59 [INFO] Bruger k er logget ind
 07/12/2016 15:01:01 [INFO] Bruger Niels er logget ind
-07/12/2016 15:01:30 [INFO] Niels har ændret noten på BobSagat
-07/12/2016 15:01:39 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:01:30 [INFO] Niels har ï¿½ndret noten pï¿½ BobSagat
+07/12/2016 15:01:39 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 15:05:21 [INFO] Bruger Niels er logget ind
 07/12/2016 15:05:45 [INFO] Bruger k er logget ind
 07/12/2016 15:06:47 [INFO] Bruger BobSagat er logget ind
@@ -128,55 +131,57 @@
 07/12/2016 15:38:59 [INFO] BobSagat har oprettet produktet, 1212312
 07/12/2016 15:44:25 [INFO] Bruger BobSagat er logget ind
 07/12/2016 15:45:25 [INFO] Bruger k er logget ind
-07/12/2016 15:45:40 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:45:40 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 15:50:57 [INFO] Bruger BobSagat er logget ind
-07/12/2016 15:51:21 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:51:21 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 15:51:39 [INFO] Bruger k er logget ind
 07/12/2016 15:57:45 [INFO] Bruger BobSagat er logget ind
 07/12/2016 15:57:58 [INFO] Bruger k er logget ind
-07/12/2016 15:58:10 [INFO] BobSagat har ændret sine informationer
-07/12/2016 15:59:35 [INFO] BobSagat har ændret sine informationer
-07/12/2016 15:59:44 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:00 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:06 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:13 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:20 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:24 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:28 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:40 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:50 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:00:56 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:01:00 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:58:10 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 15:59:35 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 15:59:44 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:00 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:06 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:13 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:20 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:24 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:28 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:40 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:50 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:00:56 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:01:00 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 16:03:31 [WARNING] Der gik noget galt under login af k
 07/12/2016 16:03:33 [INFO] Bruger k er logget ind
 07/12/2016 16:03:49 [INFO] Bruger BobSagat er logget ind
-07/12/2016 16:03:50 [INFO] k har ændret noten på BobSagat
-07/12/2016 16:03:58 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:04:05 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:03:50 [INFO] k har ï¿½ndret noten pï¿½ BobSagat
+07/12/2016 16:03:58 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:04:05 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 16:08:52 [INFO] Bruger BobSagat er logget ind
 07/12/2016 16:09:02 [INFO] Bruger k er logget ind
-07/12/2016 16:09:12 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:09:18 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:09:25 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:09:32 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:09:39 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:09:44 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:09:50 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:12 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:09:18 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:09:25 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:09:32 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:09:39 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:09:44 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:09:50 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 16:11:58 [INFO] Bruger k er logget ind
 07/12/2016 16:12:18 [INFO] Bruger BobSagat er logget ind
-07/12/2016 16:12:34 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:12:40 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:12:46 [INFO] BobSagat har ændret sine informationer
-07/12/2016 16:12:52 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:12:34 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:12:40 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:12:46 [INFO] BobSagat har ï¿½ndret sine informationer
+07/12/2016 16:12:52 [INFO] BobSagat har ï¿½ndret sine informationer
 07/12/2016 16:13:00 [INFO] Bruger Niels er logget ind
-07/12/2016 16:13:14 [INFO] k har ændret noten på BobSagat
-07/12/2016 16:13:47 [INFO] Niels har ændret noten på BobSagat
-07/12/2016 16:13:55 [INFO] k har ændret noten på BobSagat
-07/12/2016 16:15:38 [INFO] k har ændret noten på BobSagat
+07/12/2016 16:13:14 [INFO] k har ï¿½ndret noten pï¿½ BobSagat
+07/12/2016 16:13:47 [INFO] Niels har ï¿½ndret noten pï¿½ BobSagat
+07/12/2016 16:13:55 [INFO] k har ï¿½ndret noten pï¿½ BobSagat
+07/12/2016 16:15:38 [INFO] k har ï¿½ndret noten pï¿½ BobSagat
 07/12/2016 16:25:26 [INFO] Bruger Niels er logget ind
 07/12/2016 16:26:26 [INFO] Bruger k er logget ind
-07/12/2016 16:30:56 [INFO] Niels har ændret noten på BobSagat
-07/12/2016 16:31:07 [INFO] Niels har ændret noten på BobSagat
+07/12/2016 16:30:56 [INFO] Niels har ï¿½ndret noten pï¿½ BobSagat
+07/12/2016 16:31:07 [INFO] Niels har ï¿½ndret noten pï¿½ BobSagat
 07/12/2016 16:40:14 [INFO] Bruger BobSagat er logget ind
 07/12/2016 16:40:22 [INFO] Bruger k er logget ind
 07/12/2016 16:41:37 [INFO] En eller anden har redigeret productet eeee
+07/12/2016 16:47:35 [INFO] Bruger k er logget ind
+07/12/2016 16:48:01 [INFO] En eller anden har redigeret productet Vand
