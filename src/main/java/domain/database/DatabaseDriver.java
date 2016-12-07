@@ -202,8 +202,8 @@ public class DatabaseDriver {
 
     /**
      * Edits a already existing note.
-     * @param supplierName the supplier which note will be edited.
-     * @param note the edited note.
+     * @param supplierName The supplier which note will be edited.
+     * @param note The edited note.
      */
     public void editNoteOnSupplier(String supplierName, Note note) {
         String query = "UPDATE public.note SET text = ?, date = ?, lasteditor = ? WHERE public.note.supplier = ?;";
@@ -221,9 +221,9 @@ public class DatabaseDriver {
     }
 
     /**
-     *
-     * @param owner
-     * @param post
+     *Updates a Post in the database.
+     * @param owner The owner of the post.
+     * @param post The Edited post.
      */
     public void updatePost(String owner, Post post) {
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
@@ -240,6 +240,12 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Adds a post to a Owner and returns the ID of the new post.
+     * @param owner The owner where the post will be added.
+     * @param post The new post.
+     * @return The ID of the post.
+     */
     public int addPost(String owner, Post post) {
         String query = "INSERT INTO public.post(username, type, text, date, title) "
                 + "VALUES(?, ?, ?, ?, ?) "
@@ -264,6 +270,10 @@ public class DatabaseDriver {
         return id;
     }
 
+    /**
+     * Deletes a Post in the database.
+     * @param post The post which will be deleted.
+     */
     public void deletePost(Post post) {
         String query = "DELETE FROM public.post WHERE id = ?;";
         try {
@@ -276,6 +286,10 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Deletes a Product in the database.
+     * @param product The product which will be deleted.
+     */
     public void deleteProduct(Product product) {
         String query = "DELETE FROM public.product WHERE id = ?;";
         try {
@@ -288,6 +302,13 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Updates a entire Page.
+     * @param page The supplier which page will be updated.
+     * @param description The new Supplier description.
+     * @param location The new supplier location.
+     * @param contactInformation the new supplier contact information.
+     */
     public void updatePage(String page, String description, String location, String contactInformation) {
         String query = "UPDATE public.page SET description = ?, location = ?, contactinformation = ? WHERE supplier = ?";
         try {
@@ -303,6 +324,10 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Updates a product.
+     * @param product The product that will be updated.
+     */
     public void updateProduct(Product product) {
         String query = "UPDATE public.product SET chemicalname = ?, productname = ?, description = ?, deliverytime = ?, price = ?, packaging = ?, density = ?  WHERE id = ?;";
         try {
@@ -322,6 +347,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Adds a product to the database.
+     * @param product The product that will be added to the database.
+     * @return The ID of the product.
+     */
     public int addProduct(Product product) {
         String query = "INSERT INTO public.product(chemicalname, description, deliverytime, price, packaging, density, productname) "
                 + "VALUES(?, ?, ?, ?, ?, ?, ?) "
@@ -348,6 +378,11 @@ public class DatabaseDriver {
         return id;
     }
 
+    /**
+     * Gets the PDF file path from the database.
+     * @param productID The id of the product which PDF path will be returned.
+     * @return The file path to the PDF on the server.
+     */
     public String getPDFFilePath(int productID) {
         String query = "SELECT pdfpath FROM public.product WHERE id = ?";
         String productFilePath = null;
@@ -366,6 +401,10 @@ public class DatabaseDriver {
         return productFilePath;
     }
 
+    /**
+     *
+     * @param product
+     */
     public void addProductToPage(Product product) {
         String query = "INSERT INTO public.pageproducts(page, product) "
                 + "VALUES(?, ?);";
