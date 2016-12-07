@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
-
 import java.util.List;
 
 public class DatabaseDriver {
@@ -17,6 +16,10 @@ public class DatabaseDriver {
     private PreparedStatement preparedStatement;
     private ResultSet result;
 
+    /**
+     * Gets the current instants of the DatabaseDriver.
+     * @return The instants of database driver.
+     */
     public static DatabaseDriver getInstance() {
         if (instance == null) {
             instance = new DatabaseDriver();
@@ -24,6 +27,9 @@ public class DatabaseDriver {
         return instance;
     }
 
+    /**
+     * creates a connection to the database.
+     */
     private DatabaseDriver() {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", 
@@ -33,16 +39,15 @@ public class DatabaseDriver {
             Logger.get().log(Logger.LogType.WARNING, "Fejl i tilslutningen til databasen.\n" + e);
         }
     }
-    
+
     /**
-     * 
-     * @param username
-     * @param password
-     * Henter brugeren på databasen. 
-     * @return User som svarer overens med username og password
-     * @throws NullPointerException 
+     * Gets a user from its username and password.
+     * @param username Username for the user
+     * @param password Password for the user
+     * @return a User if it match a username an password in the database
+     * @throws NullPointerException
      */
-    public User getLogin(String username, String password) throws NullPointerException {
+    public User getLogin(String username, String password) {
         String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -71,6 +76,10 @@ public class DatabaseDriver {
         return null;
     }
 
+    /**
+     * returns a List of all the supplier.
+     * @return all the suppliers
+     */
     public List<Page> getSuppliers() {
         List<Page> pageList = new ArrayList<>();
         String query = "SELECT public.user.username, public.note.text, public.note.date, "
@@ -84,9 +93,10 @@ public class DatabaseDriver {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
             Page page;
-            while (result.next()) {
+            while (result.next()) { //gets the suppliers from the result set
                 if (result.getString(2) == null && result.getDate(3) == null) {
                     page = new Page().owner(result.getString(1));
+                    //Get
                 }
                 else {
                     page = new Page().owner(result.getString(1)).note(new Note()
