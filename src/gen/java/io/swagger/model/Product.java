@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Informations about a product
  */
 @ApiModel(description = "Informations about a product")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T13:07:01.183Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-07T10:59:42.816Z")
 public class Product   {
   @JsonProperty("id")
   private Integer id = null;
@@ -50,13 +50,13 @@ public class Product   {
   private String chemicalName = null;
 
   @JsonProperty("molWeight")
-  private String molWeight = null;
+  private Double molWeight = null;
 
   @JsonProperty("description")
   private String description = null;
 
   @JsonProperty("price")
-  private String price = null;
+  private Double price = null;
 
   @JsonProperty("packaging")
   private String packaging = null;
@@ -136,7 +136,7 @@ public class Product   {
     this.chemicalName = chemicalName;
   }
 
-  public Product molWeight(String molWeight) {
+  public Product molWeight(Double molWeight) {
     this.molWeight = molWeight;
     return this;
   }
@@ -146,11 +146,11 @@ public class Product   {
    * @return molWeight
   **/
   @ApiModelProperty(value = "The mol weight of the product")
-  public String getMolWeight() {
+  public Double getMolWeight() {
     return molWeight;
   }
 
-  public void setMolWeight(String molWeight) {
+  public void setMolWeight(Double molWeight) {
     this.molWeight = molWeight;
   }
 
@@ -172,7 +172,7 @@ public class Product   {
     this.description = description;
   }
 
-  public Product price(String price) {
+  public Product price(Double price) {
     this.price = price;
     return this;
   }
@@ -182,11 +182,11 @@ public class Product   {
    * @return price
   **/
   @ApiModelProperty(value = "The price of the product")
-  public String getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(String price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 

@@ -52,7 +52,7 @@ public class Pagemanager {
         Logger.get().log(Logger.LogType.INFO, page + " har ændret sine informationer");
     }
 
-    public void editProduct(Product product, String newProductName, String newChemicalName, String newMolWeight, String newDescription, String newPrice, String newPackaging, String newDeliveryTime) {
+    public void editProduct(Product product, String newProductName, String newChemicalName, double newMolWeight, String newDescription, double newPrice, String newPackaging, String newDeliveryTime) {
         product.setProductName(newProductName);
         product.setChemicalName(newChemicalName);
         product.setMolWeight(newMolWeight);
@@ -64,7 +64,7 @@ public class Pagemanager {
         Logger.get().log(Logger.LogType.INFO, "En eller anden har redigeret productet " + product.getProductName());
     }
 
-    public Product createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
+    public Product createProduct(String productName, String chemicalName, double molWeight, String description, double price, String packaging, String deliveryTime, String producer) {
         Product product = new Product().productName(productName).chemicalName(chemicalName).molWeight(molWeight).description(description).price(price).packaging(packaging).deliveryTime(deliveryTime).producer(producer);
         product.setId(DatabaseDriver.getInstance().addProduct(product));
         DatabaseDriver.getInstance().addProductToPage(product);

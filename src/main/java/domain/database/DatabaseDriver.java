@@ -126,15 +126,15 @@ public class DatabaseDriver {
         List<Product> productList = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, pageSupplier);
+            preparedStatement.setString(1, page);
 
             result = preparedStatement.executeQuery();
             while (result.next()) {
                 productList.add(new Product().id(result.getInt(1))
                         .productName(result.getString(2)).description(result.getString(3))
-                        .price(result.getString(4)).packaging(result.getString(5))
-                        .chemicalName(result.getString(6)).molWeight(result.getString(7))
-                        .deliveryTime(result.getString(8)).producer(pageSupplier));
+                        .price(result.getDouble(4)).packaging(result.getString(5))
+                        .chemicalName(result.getString(6)).molWeight(result.getDouble(7))
+                        .deliveryTime(result.getString(8)).producer(page));
             }
         }
         catch (SQLException e) {
@@ -311,9 +311,9 @@ public class DatabaseDriver {
             preparedStatement.setString(2, product.getProductName());
             preparedStatement.setString(3, product.getDescription());
             preparedStatement.setString(4, product.getDeliveryTime()); //// TODO: 05-12-2016 Look at datatypes so we avoid having to parse types
-            preparedStatement.setDouble(5, Double.parseDouble(product.getPrice()));
+            preparedStatement.setDouble(5, product.getPrice());
             preparedStatement.setString(6, product.getPackaging());
-            preparedStatement.setDouble(7, Double.parseDouble(product.getMolWeight()));
+            preparedStatement.setDouble(7, product.getMolWeight());
             preparedStatement.setInt(8, product.getId());
             preparedStatement.execute();
         }
@@ -332,9 +332,9 @@ public class DatabaseDriver {
             preparedStatement.setString(1, product.getChemicalName());
             preparedStatement.setString(2, product.getDescription());
             preparedStatement.setString(3, product.getDeliveryTime());
-            preparedStatement.setDouble(4, Double.parseDouble(product.getPrice()));
+            preparedStatement.setDouble(4, product.getPrice());
             preparedStatement.setString(5, product.getPackaging());
-            preparedStatement.setDouble(6, Double.parseDouble(product.getMolWeight()));
+            preparedStatement.setDouble(6, product.getMolWeight());
             preparedStatement.setString(7, product.getProductName());
             preparedStatement.executeUpdate();
             result = preparedStatement.getGeneratedKeys();

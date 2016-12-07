@@ -8,6 +8,8 @@ import io.swagger.model.*;
 
 import java.io.File;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller {
 
@@ -38,6 +40,14 @@ public class Controller {
     }
 
     public User validate(String username, String password) {
+        new Thread(() -> {
+            if(requestUpdate()) {
+                System.out.println("true");
+            }
+            else {
+                System.out.println("false");
+            }
+        }).start();
         return usermanager.validate(username, password);
     }
 
@@ -69,15 +79,32 @@ public class Controller {
         pagemanager.updatePage(page, description, location, contactInformation);
     }
 
-    public void editProduct(Product product, String newProductName, String newChemicalName, String newMolWeight, String newDescription, String newPrice, String newPackaging, String newDeliveryTime) {
+    public void editProduct(Product product, String newProductName, String newChemicalName, double newMolWeight, String newDescription, double newPrice, String newPackaging, String newDeliveryTime) {
         pagemanager.editProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
     }
 
-    public Product createProduct(String productName, String chemicalName, String molWeight, String description, String price, String packaging, String deliveryTime, String producer) {
-        return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+    public Product createProduct(String productName, String chemicalName, double molWeight, String description, double price, String packaging, String deliveryTime, String producer) {
+        synchronized(updateLock) {
+            updateLock.notifyAll();
+            return pagemanager.createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer);
+        }
     }
 
     public File getPDF(int productID) {
         return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
+    }
+    
+    private Object updateLock = new Object();
+    
+    public boolean requestUpdate() {
+        synchronized(updateLock) {
+            try {
+                updateLock.wait();
+            }
+            catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
     }
 }

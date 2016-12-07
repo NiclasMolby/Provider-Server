@@ -235,7 +235,8 @@ paths:
         - name: MolWeight
           in: query
           required: true
-          type: string
+          type: number
+          format: double
         - name: Description
           in: query
           required: true
@@ -243,7 +244,8 @@ paths:
         - name: Price
           in: query
           required: true
-          type: string
+          type: number
+          format: double
         - name: Packaging
           in: query
           required: true
@@ -289,7 +291,8 @@ paths:
         - name: newMolWeight
           in: query
           required: true
-          type: string
+          type: number
+          format: double
         - name: newDescription
           in: query
           required: true
@@ -297,7 +300,8 @@ paths:
         - name: newPrice
           in: query
           required: true
-          type: string
+          type: number
+          format: double
         - name: newPackaging
           in: query
           required: true
@@ -356,6 +360,22 @@ paths:
           description: ok
           schema:
             type: file
+            
+  /Controller/RequestUpdate:
+    post:
+      tags:
+        - Controller
+      summary: Send a request to the server to get any updates
+      operationId: requestUpdate
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      responses:
+        '200':
+          description: ok
+          schema:
+            type: boolean
 
 definitions:
   User:
@@ -387,13 +407,15 @@ definitions:
         type: string
       molWeight:
         description: The mol weight of the product
-        type: string
+        type: number
+        format: double
       description:
         description: The description about the product
         type: string
       price:
         description: The price of the product
-        type: string
+        type: number
+        format: double
       packaging:
         description: The packaging of the product
         type: string
