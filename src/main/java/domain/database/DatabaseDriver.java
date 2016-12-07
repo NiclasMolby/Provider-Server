@@ -402,8 +402,8 @@ public class DatabaseDriver {
     }
 
     /**
-     *
-     * @param product
+     * Links a product ID to a product producer and saves it in the database.
+     * @param product the product that will be linked.
      */
     public void addProductToPage(Product product) {
         String query = "INSERT INTO public.pageproducts(page, product) "
@@ -411,7 +411,7 @@ public class DatabaseDriver {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(2, product.getId());
-            preparedStatement.setString(1, product.getProducer());
+            preparedStatement.setString(1, product.getProducer());//gets the name of the product producer
             preparedStatement.execute();
         }
         catch (SQLException e) {
