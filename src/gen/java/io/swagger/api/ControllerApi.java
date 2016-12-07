@@ -31,7 +31,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T13:07:01.183Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-07T10:59:42.816Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -73,9 +73,9 @@ public class ControllerApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Product.class) })
     public Response createProduct(@ApiParam(value = "",required=true) @QueryParam("ProductName") String productName
 ,@ApiParam(value = "",required=true) @QueryParam("ChemicalName") String chemicalName
-,@ApiParam(value = "",required=true) @QueryParam("MolWeight") String molWeight
+,@ApiParam(value = "",required=true) @QueryParam("MolWeight") Double molWeight
 ,@ApiParam(value = "",required=true) @QueryParam("Description") String description
-,@ApiParam(value = "",required=true) @QueryParam("Price") String price
+,@ApiParam(value = "",required=true) @QueryParam("Price") Double price
 ,@ApiParam(value = "",required=true) @QueryParam("Packaging") String packaging
 ,@ApiParam(value = "",required=true) @QueryParam("DeliveryTime") String deliveryTime
 ,@ApiParam(value = "",required=true) @QueryParam("Producer") String producer
@@ -131,9 +131,9 @@ public class ControllerApi  {
     public Response editProduct(@ApiParam(value = "" ,required=true) Product product
 ,@ApiParam(value = "",required=true) @QueryParam("newProductName") String newProductName
 ,@ApiParam(value = "",required=true) @QueryParam("newChemicalName") String newChemicalName
-,@ApiParam(value = "",required=true) @QueryParam("newMolWeight") String newMolWeight
+,@ApiParam(value = "",required=true) @QueryParam("newMolWeight") Double newMolWeight
 ,@ApiParam(value = "",required=true) @QueryParam("newDescription") String newDescription
-,@ApiParam(value = "",required=true) @QueryParam("newPrice") String newPrice
+,@ApiParam(value = "",required=true) @QueryParam("newPrice") Double newPrice
 ,@ApiParam(value = "",required=true) @QueryParam("newPackaging") String newPackaging
 ,@ApiParam(value = "",required=true) @QueryParam("newDeliveryTime") String newDeliveryTime
 ,@Context SecurityContext securityContext)
@@ -173,6 +173,17 @@ public class ControllerApi  {
     public Response getSuppliers(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.getSuppliers(securityContext);
+    }
+    @POST
+    @Path("/RequestUpdate")
+    
+    @Produces({ "application/json", "text/json", "application/json-patch+json" })
+    @io.swagger.annotations.ApiOperation(value = "Send a request to the server to get any updates", notes = "", response = Boolean.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Boolean.class) })
+    public Response requestUpdate(@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.requestUpdate(securityContext);
     }
     @POST
     @Path("/UpdatePage")

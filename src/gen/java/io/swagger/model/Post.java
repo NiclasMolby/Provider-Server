@@ -36,7 +36,7 @@ import io.swagger.model.PostType;
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-05T13:07:01.183Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-07T10:59:42.816Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;
