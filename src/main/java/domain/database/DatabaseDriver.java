@@ -92,10 +92,10 @@ public class DatabaseDriver {
             stmt = connection.createStatement();
             result = stmt.executeQuery(query);
             Page page;
-            while (result.next()) { //gets the suppliers from the result set
+            while (result.next()) { //gets the suppliers from the results.
                 if (result.getString(2) == null && result.getDate(3) == null) {
                     page = new Page().owner(result.getString(1));
-                    //Get
+                    //Gets a supplier with a empty note
                 }
                 else {
                     page = new Page().owner(result.getString(1)).note(new Note()
@@ -113,7 +113,12 @@ public class DatabaseDriver {
         return pageList;
     }
 
-    public List<Product> getProducts(String page) {
+    /**
+     * Gets the all the products from the database
+     * @param pageSupplier the product owner name
+     * @return a List of alle the products for a owner.
+     */
+    public List<Product> getProducts(String pageSupplier) {
         String query = "SELECT public.product.id, public.product.productname, public.product.description, "
                 + "public.product.price, public.product.packaging, public.product.chemicalname, public.product.density, "
                 + "public.product.deliverytime FROM public.product "
@@ -121,7 +126,7 @@ public class DatabaseDriver {
         List<Product> productList = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, page);
+            preparedStatement.setString(1, pageSupplier);
 
             result = preparedStatement.executeQuery();
             while (result.next()) {
@@ -129,7 +134,7 @@ public class DatabaseDriver {
                         .productName(result.getString(2)).description(result.getString(3))
                         .price(result.getString(4)).packaging(result.getString(5))
                         .chemicalName(result.getString(6)).molWeight(result.getString(7))
-                        .deliveryTime(result.getString(8)).producer(page));
+                        .deliveryTime(result.getString(8)).producer(pageSupplier));
             }
         }
         catch (SQLException e) {
@@ -138,6 +143,10 @@ public class DatabaseDriver {
         return productList;
     }
 
+    /**
+     * Gets all the Posts from the database
+     * @return a List with all Posts
+     */
     public List<Post> getPosts() {
         String query = "SELECT * FROM public.post";
         List<Post> postList = new ArrayList<>();
@@ -171,6 +180,11 @@ public class DatabaseDriver {
         return postList;
     }
 
+    /**
+     * Adds a note to a supplier to the database.
+     * @param supplierName The name of the supplier.
+     * @param note the note that will be added to the supplier.
+     */
     public void addNoteToSupplier(String supplierName, Note note) {
         String query = "INSERT INTO public.note(supplier, text, date, lasteditor) VALUES (?, ?, ?, ?);";
         try {
@@ -186,6 +200,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     * Edits a already existing note.
+     * @param supplierName the supplier which note will be edited.
+     * @param note the edited note.
+     */
     public void editNoteOnSupplier(String supplierName, Note note) {
         String query = "UPDATE public.note SET text = ?, date = ?, lasteditor = ? WHERE public.note.supplier = ?;";
         try {
@@ -201,6 +220,11 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     *
+     * @param owner
+     * @param post
+     */
     public void updatePost(String owner, Post post) {
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
         try {
