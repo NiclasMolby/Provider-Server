@@ -31,18 +31,10 @@ public class Controller {
     }
 
     public User validate(String username, String password) {
-        new Thread(() -> {
-            if(requestUpdate()) {
-                System.out.println("true");
-            }
-            else {
-                System.out.println("false");
-            }
-        }).start();
         return usermanager.validate(username, password);
     }
 
-    public List<Page> getSuppliers() {
+    public synchronized List<Page> getSuppliers() {
         return pagemanager.getSuppliers();
     }
 
@@ -71,8 +63,9 @@ public class Controller {
 
     public Post createPost(String owner, String title, String description, PostType type) {
         synchronized (updateLock) {
+            Post newPost = bulletinboard.createPost(owner, title, description, type);
             updateLock.notifyAll();
-            return bulletinboard.createPost(owner, title, description, type);
+            return newPost;
         }
     }
 

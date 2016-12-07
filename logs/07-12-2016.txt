@@ -8,3 +8,175 @@
 07/12/2016 11:26:20 [INFO] BobSagat har oprettet produktet, Test3
 07/12/2016 11:30:09 [INFO] Bruger BobSagat er logget ind
 07/12/2016 11:30:56 [INFO] BobSagat har oprettet produktet, 444
+07/12/2016 12:23:17 [INFO] Bruger BobSagat er logget ind
+07/12/2016 12:23:54 [INFO] Bruger k er logget ind
+07/12/2016 12:30:48 [INFO] Bruger BobSagat er logget ind
+07/12/2016 12:31:44 [INFO] Bruger k er logget ind
+07/12/2016 12:32:49 [INFO] En eller anden har redigeret productet 444eeee
+07/12/2016 12:33:57 [INFO] Bruger k er logget ind
+07/12/2016 12:54:23 [INFO] Bruger Niels er logget ind
+07/12/2016 12:55:14 [INFO] Bruger Niels er logget ind
+07/12/2016 12:56:11 [INFO] Bruger Niels er logget ind
+07/12/2016 12:56:40 [INFO] Bruger k er logget ind
+07/12/2016 12:57:12 [INFO] k har oprettet en ny opslag med titlen: Test
+07/12/2016 12:58:30 [INFO] Bruger Niels er logget ind
+07/12/2016 12:58:45 [INFO] Bruger k er logget ind
+07/12/2016 12:58:57 [INFO] k har oprettet en ny opslag med titlen: Niels
+07/12/2016 13:00:51 [INFO] Bruger Niels er logget ind
+07/12/2016 13:00:55 [INFO] Bruger k er logget ind
+07/12/2016 13:01:28 [INFO] k har oprettet en ny opslag med titlen: 123
+07/12/2016 13:11:26 [INFO] Bruger k er logget ind
+07/12/2016 13:12:00 [INFO] Bruger Niels er logget ind
+07/12/2016 13:12:14 [INFO] Niels har oprettet en ny opslag med titlen: 321321123
+07/12/2016 13:12:39 [INFO] Niels har oprettet en ny opslag med titlen: Niels
+07/12/2016 13:14:08 [INFO] Bruger Niels er logget ind
+07/12/2016 13:14:45 [INFO] Niels har oprettet en ny opslag med titlen: 12332123
+07/12/2016 13:15:01 [INFO] Niels har oprettet en ny opslag med titlen: ØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØØ
+07/12/2016 13:15:42 [INFO] Niels har oprettet en ny opslag med titlen: 11111111111
+07/12/2016 13:19:45 [INFO] Bruger Niels er logget ind
+07/12/2016 13:20:17 [INFO] Niels har oprettet en ny opslag med titlen: 333333333333333
+07/12/2016 13:23:04 [INFO] Bruger Niels er logget ind
+07/12/2016 13:23:15 [INFO] Bruger k er logget ind
+07/12/2016 13:23:18 [INFO] Niels har oprettet en ny opslag med titlen: ewqu8ds7
+07/12/2016 13:24:04 [INFO] Bruger k er logget ind
+07/12/2016 13:24:30 [INFO] Niels har oprettet en ny opslag med titlen: AAAAA
+07/12/2016 13:24:39 [INFO] Niels har oprettet en ny opslag med titlen: BBBBBBB
+07/12/2016 13:26:41 [INFO] Bruger k er logget ind
+07/12/2016 13:27:04 [INFO] Bruger Niels er logget ind
+07/12/2016 13:27:15 [INFO] Niels har oprettet en ny opslag med titlen: 44444444
+07/12/2016 13:27:25 [INFO] Niels har oprettet en ny opslag med titlen: 5555555
+07/12/2016 13:27:35 [INFO] Niels har oprettet en ny opslag med titlen: 0100000
+07/12/2016 13:28:08 [INFO] Bruger Niels er logget ind
+07/12/2016 13:28:18 [INFO] Niels har oprettet en ny opslag med titlen: wq
+07/12/2016 13:28:28 [INFO] Niels har oprettet en ny opslag med titlen: 44444
+07/12/2016 13:28:36 [INFO] Niels har oprettet en ny opslag med titlen: 55555
+07/12/2016 13:28:43 [INFO] Niels har oprettet en ny opslag med titlen: 32132213
+07/12/2016 13:29:46 [INFO] Bruger Niels er logget ind
+07/12/2016 13:29:49 [INFO] Bruger k er logget ind
+07/12/2016 13:30:11 [INFO] Niels har oprettet en ny opslag med titlen: khafksjfsa
+07/12/2016 13:30:25 [INFO] Niels har oprettet en ny opslag med titlen: nfhafeahfhkfs
+07/12/2016 13:32:08 [INFO] Bruger k er logget ind
+07/12/2016 13:32:26 [INFO] Niels har oprettet en ny opslag med titlen: 123456789
+07/12/2016 13:32:45 [INFO] Niels har oprettet en ny opslag med titlen: 09876543
+07/12/2016 13:36:41 [INFO] Bruger k er logget ind
+07/12/2016 13:36:43 [INFO] Bruger Niels er logget ind
+07/12/2016 13:36:58 [INFO] Niels har oprettet en ny opslag med titlen: 32132
+07/12/2016 13:37:07 [INFO] Niels har oprettet en ny opslag med titlen: 3421wqe
+07/12/2016 13:37:18 [INFO] Niels har oprettet en ny opslag med titlen: 321wqe
+07/12/2016 13:37:24 [INFO] Niels har oprettet en ny opslag med titlen: 3412weq
+07/12/2016 13:40:53 [INFO] Bruger Niels er logget ind
+07/12/2016 13:40:54 [INFO] Bruger k er logget ind
+07/12/2016 13:41:14 [INFO] Niels har oprettet en ny opslag med titlen: 12321231
+07/12/2016 13:41:30 [INFO] Niels har oprettet en ny opslag med titlen: 432ew
+07/12/2016 13:41:46 [INFO] Niels har oprettet en ny opslag med titlen: fff
+07/12/2016 13:57:47 [INFO] Bruger Niels er logget ind
+07/12/2016 13:58:20 [INFO] Bruger k er logget ind
+07/12/2016 13:58:28 [INFO] Niels har oprettet en ny opslag med titlen: jiiiiiiiiiiiiiiiiiiiiiiiii
+07/12/2016 13:58:38 [INFO] Niels har oprettet en ny opslag med titlen: loooooooooooo
+07/12/2016 13:58:49 [INFO] Niels har oprettet en ny opslag med titlen: jjjjjjjjjjjjjjj
+07/12/2016 14:02:00 [INFO] Bruger k er logget ind
+07/12/2016 14:02:08 [INFO] Bruger Niels er logget ind
+07/12/2016 14:02:24 [INFO] Niels har oprettet en ny opslag med titlen: jiiiiiiiiii
+07/12/2016 14:02:34 [INFO] Niels har oprettet en ny opslag med titlen: 4444444444444
+07/12/2016 14:02:46 [INFO] Niels har oprettet en ny opslag med titlen: 33333333333333
+07/12/2016 14:05:34 [INFO] Bruger Niels er logget ind
+07/12/2016 14:07:04 [INFO] Bruger Niels er logget ind
+07/12/2016 14:07:17 [INFO] Bruger k er logget ind
+07/12/2016 14:07:22 [INFO] Niels har oprettet en ny opslag med titlen: eeeeeeee
+07/12/2016 14:07:49 [INFO] Niels har oprettet en ny opslag med titlen: rrrrrr
+07/12/2016 14:07:59 [INFO] Niels har oprettet en ny opslag med titlen: ddd
+07/12/2016 14:28:51 [INFO] Bruger Niels er logget ind
+07/12/2016 14:29:44 [INFO] Bruger BobSagat er logget ind
+07/12/2016 14:30:44 [INFO] Niels har oprettet en ny opslag med titlen: weqweqweq
+07/12/2016 14:30:54 [INFO] Niels har oprettet en ny opslag med titlen: 33333333
+07/12/2016 14:31:02 [INFO] Niels har oprettet en ny opslag med titlen: 44
+07/12/2016 15:00:59 [INFO] Bruger k er logget ind
+07/12/2016 15:01:01 [INFO] Bruger Niels er logget ind
+07/12/2016 15:01:30 [INFO] Niels har ændret noten på BobSagat
+07/12/2016 15:01:39 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:05:21 [INFO] Bruger Niels er logget ind
+07/12/2016 15:05:45 [INFO] Bruger k er logget ind
+07/12/2016 15:06:47 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:07:06 [INFO] BobSagat har oprettet produktet, 1
+07/12/2016 15:18:11 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:18:17 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:18:39 [INFO] Bruger k er logget ind
+07/12/2016 15:18:48 [INFO] BobSagat har oprettet produktet, 88
+07/12/2016 15:23:39 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:23:54 [INFO] BobSagat har oprettet produktet, Produkt navn
+07/12/2016 15:24:24 [INFO] Bruger k er logget ind
+07/12/2016 15:24:30 [INFO] Bruger k er logget ind
+07/12/2016 15:24:53 [INFO] BobSagat har oprettet produktet, Karim
+07/12/2016 15:25:30 [INFO] BobSagat har oprettet produktet, 12
+07/12/2016 15:25:38 [INFO] Bruger k er logget ind
+07/12/2016 15:25:50 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:26:06 [INFO] Bruger k er logget ind
+07/12/2016 15:26:14 [INFO] BobSagat har oprettet produktet, 777
+07/12/2016 15:27:02 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:27:21 [INFO] BobSagat har oprettet produktet, 3
+07/12/2016 15:27:45 [INFO] BobSagat har oprettet produktet, 99999
+07/12/2016 15:28:01 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:28:14 [INFO] BobSagat har oprettet produktet, Jebisan
+07/12/2016 15:34:37 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:34:53 [INFO] BobSagat har oprettet produktet, 0
+07/12/2016 15:35:12 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:35:14 [INFO] BobSagat har oprettet produktet, 000
+07/12/2016 15:35:38 [INFO] BobSagat har oprettet produktet, 333
+07/12/2016 15:38:21 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:38:33 [INFO] BobSagat har oprettet produktet, 2
+07/12/2016 15:38:47 [INFO] BobSagat har oprettet produktet, 1212
+07/12/2016 15:38:59 [INFO] BobSagat har oprettet produktet, 1212312
+07/12/2016 15:44:25 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:45:25 [INFO] Bruger k er logget ind
+07/12/2016 15:45:40 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:50:57 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:51:21 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:51:39 [INFO] Bruger k er logget ind
+07/12/2016 15:57:45 [INFO] Bruger BobSagat er logget ind
+07/12/2016 15:57:58 [INFO] Bruger k er logget ind
+07/12/2016 15:58:10 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:59:35 [INFO] BobSagat har ændret sine informationer
+07/12/2016 15:59:44 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:00 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:06 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:13 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:20 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:24 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:28 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:40 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:50 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:00:56 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:01:00 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:03:31 [WARNING] Der gik noget galt under login af k
+07/12/2016 16:03:33 [INFO] Bruger k er logget ind
+07/12/2016 16:03:49 [INFO] Bruger BobSagat er logget ind
+07/12/2016 16:03:50 [INFO] k har ændret noten på BobSagat
+07/12/2016 16:03:58 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:04:05 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:08:52 [INFO] Bruger BobSagat er logget ind
+07/12/2016 16:09:02 [INFO] Bruger k er logget ind
+07/12/2016 16:09:12 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:18 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:25 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:32 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:39 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:44 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:09:50 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:11:58 [INFO] Bruger k er logget ind
+07/12/2016 16:12:18 [INFO] Bruger BobSagat er logget ind
+07/12/2016 16:12:34 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:12:40 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:12:46 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:12:52 [INFO] BobSagat har ændret sine informationer
+07/12/2016 16:13:00 [INFO] Bruger Niels er logget ind
+07/12/2016 16:13:14 [INFO] k har ændret noten på BobSagat
+07/12/2016 16:13:47 [INFO] Niels har ændret noten på BobSagat
+07/12/2016 16:13:55 [INFO] k har ændret noten på BobSagat
+07/12/2016 16:15:38 [INFO] k har ændret noten på BobSagat
+07/12/2016 16:25:26 [INFO] Bruger Niels er logget ind
+07/12/2016 16:26:26 [INFO] Bruger k er logget ind
+07/12/2016 16:30:56 [INFO] Niels har ændret noten på BobSagat
+07/12/2016 16:31:07 [INFO] Niels har ændret noten på BobSagat
+07/12/2016 16:40:14 [INFO] Bruger BobSagat er logget ind
+07/12/2016 16:40:22 [INFO] Bruger k er logget ind
+07/12/2016 16:41:37 [INFO] En eller anden har redigeret productet eeee
