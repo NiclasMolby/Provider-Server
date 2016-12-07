@@ -126,7 +126,7 @@ public class DatabaseDriver {
         List<Product> productList = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, page);
+            preparedStatement.setString(1, pageSupplier);
 
             result = preparedStatement.executeQuery();
             while (result.next()) {
@@ -134,7 +134,7 @@ public class DatabaseDriver {
                         .productName(result.getString(2)).description(result.getString(3))
                         .price(result.getDouble(4)).packaging(result.getString(5))
                         .chemicalName(result.getString(6)).molWeight(result.getDouble(7))
-                        .deliveryTime(result.getString(8)).producer(page));
+                        .deliveryTime(result.getString(8)).producer(pageSupplier));
             }
         }
         catch (SQLException e) {
