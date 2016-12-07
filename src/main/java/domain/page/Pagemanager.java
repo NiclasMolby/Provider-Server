@@ -87,7 +87,7 @@ public class Pagemanager {
         product.setPackaging(newPackaging);
         product.setDeliveryTime(newDeliveryTime);
         DatabaseDriver.getInstance().updateProduct(product);
-        Logger.get().log(Logger.LogType.INFO, "En eller anden har redigeret productet " + product.getProductName());
+        Logger.get().log(Logger.LogType.INFO, "Produktet " + product.getProductName() + " er blevet ændret");
     }
 
     /**
@@ -107,7 +107,7 @@ public class Pagemanager {
         product.setId(DatabaseDriver.getInstance().addProduct(product));
         DatabaseDriver.getInstance().addProductToPage(product);
 
-        Logger.get().log(Logger.LogType.INFO, product.getProducer() + " har oprettet produktet, " + product.getProductName());
+        Logger.get().log(Logger.LogType.INFO, product.getProducer() + " har oprettet et produkt med navnet " + product.getProductName());
         return product;
     }
 }
