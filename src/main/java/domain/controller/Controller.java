@@ -1,5 +1,6 @@
 package domain.controller;
 
+import common.*;
 import domain.bulletinboard.Bulletinboard;
 import domain.database.DatabaseDriver;
 import domain.page.Pagemanager;
@@ -114,7 +115,7 @@ public class Controller {
                 updateLock.wait();
             }
             catch(InterruptedException e) {
-                e.printStackTrace();
+                Logger.log(LogType.WARNING, "Update-låsen blev uafbrudt\n" + e);
             }
             return true;
         }

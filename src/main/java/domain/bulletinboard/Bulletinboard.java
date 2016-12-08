@@ -1,6 +1,6 @@
 package domain.bulletinboard;
 
-import common.Logger;
+import common.*;
 import domain.database.DatabaseDriver;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class Bulletinboard {
     public Post createPost(String owner, String title, String description, PostType type) {
         Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
         post.setId(DatabaseDriver.getInstance().addPost(owner, post));
-        Logger.get().log(Logger.LogType.INFO, post.getOwner() + " har oprettet et ny opslag med titlen " + post.getTitle());
+        Logger.log(LogType.INFO, post.getOwner() + " har oprettet et ny opslag med titlen " + post.getTitle());
         return post;
     }
 
@@ -34,7 +34,7 @@ public class Bulletinboard {
      */
     public void deletePost(Post post) {
         DatabaseDriver.getInstance().deletePost(post);
-        Logger.get().log(Logger.LogType.INFO, post.getOwner() + " har slettet opslaget med titlen " + post.getTitle());
+        Logger.log(LogType.INFO, post.getOwner() + " har slettet opslaget med titlen " + post.getTitle());
     }
 
     /**
@@ -47,7 +47,7 @@ public class Bulletinboard {
         post.setDescription(newDescription);
         post.setTitle(newTitle);
         DatabaseDriver.getInstance().updatePost(post.getOwner(), post);
-        Logger.get().log(Logger.LogType.INFO, post.getOwner() + " har ændret opslaget med titlen " + post.getTitle());
+        Logger.log(LogType.INFO, post.getOwner() + " har ændret opslaget med titlen " + post.getTitle());
     }
 
     /**

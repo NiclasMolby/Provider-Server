@@ -3,7 +3,7 @@ package domain.page;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
-import common.Logger;
+import common.*;
 import domain.database.DatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
@@ -50,7 +50,7 @@ public class Pagemanager {
             database.editNoteOnSupplier(supplierName, note);
         }
         pages.get(supplierName).setNote(note);
-        Logger.get().log(Logger.LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
+        Logger.log(LogType.INFO, note.getEditor() + " har ændret noten på " + supplierName);
     }
 
     /**
@@ -63,7 +63,7 @@ public class Pagemanager {
 
     public void updatePage(String page, String description, String location, String contactInformation) {
         database.updatePage(page, description, location, contactInformation);
-        Logger.get().log(Logger.LogType.INFO, page + " har ændret sine informationer");
+        Logger.log(LogType.INFO, page + " har ændret sine informationer");
     }
 
     /**
@@ -87,7 +87,7 @@ public class Pagemanager {
         product.setPackaging(newPackaging);
         product.setDeliveryTime(newDeliveryTime);
         DatabaseDriver.getInstance().updateProduct(product);
-        Logger.get().log(Logger.LogType.INFO, "Produktet " + product.getProductName() + " er blevet ændret");
+        Logger.log(LogType.INFO, "Produktet " + product.getProductName() + " er blevet ændret");
     }
 
     /**
@@ -107,7 +107,7 @@ public class Pagemanager {
         product.setId(DatabaseDriver.getInstance().addProduct(product));
         DatabaseDriver.getInstance().addProductToPage(product);
 
-        Logger.get().log(Logger.LogType.INFO, product.getProducer() + " har oprettet et produkt med navnet " + product.getProductName());
+        Logger.log(LogType.INFO, product.getProducer() + " har oprettet et produkt med navnet " + product.getProductName());
         return product;
     }
 }
