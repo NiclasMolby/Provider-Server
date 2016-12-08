@@ -1,17 +1,14 @@
 package domain.bulletinboard;
 
 import common.*;
-import domain.database.DatabaseDriver;
+import database.DatabaseDriver;
 
 import java.util.List;
 import io.swagger.model.*;
 
 import java.util.Date;
 
-public class Bulletinboard {
-
-    public Bulletinboard() {
-    }
+public class Bulletinboard implements IBulletinboard {
 
     /**
      * Creates a new post and adds it database and logs it.

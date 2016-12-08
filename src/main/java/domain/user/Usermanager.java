@@ -1,10 +1,10 @@
 package domain.user;
 
 import common.*;
-import domain.database.DatabaseDriver;
+import database.DatabaseDriver;
 import io.swagger.model.*;
 
-public class Usermanager {
+public class Usermanager implements IUsermanager {
 
     private DatabaseDriver database;
 

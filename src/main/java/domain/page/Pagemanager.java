@@ -4,20 +4,21 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 import common.*;
-import domain.database.DatabaseDriver;
+import database.DatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.Product;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Pagemanager {
+public class Pagemanager implements IPagemanager {
 
     private DatabaseDriver database;
-    private Map<String, Page> pages = new HashMap<>();
+    private Map<String, Page> pages;
 
     public Pagemanager() {
         database = DatabaseDriver.getInstance();
+        pages = new HashMap<>();
     }
 
     /**

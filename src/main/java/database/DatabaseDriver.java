@@ -1,4 +1,4 @@
-package domain.database;
+package database;
 
 import common.*;
 import java.sql.*;
@@ -7,7 +7,7 @@ import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
 import java.util.List;
 
-public class DatabaseDriver {
+public class DatabaseDriver implements IDatabaseDriver {
 
     private static DatabaseDriver instance;
     private Connection connection;

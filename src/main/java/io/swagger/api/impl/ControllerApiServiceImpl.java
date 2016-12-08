@@ -14,15 +14,18 @@ public class ControllerApiServiceImpl extends ControllerApiService {
         Controller.getController().addNoteToSupplier(supplierName, editor, text);
         return Response.ok().build();
     }
+    
     @Override
     public Response editPost(Post post, String newDescription, String newTitle, SecurityContext securityContext) throws NotFoundException {
         Controller.getController().editPost(post, newDescription, newTitle);
         return Response.ok().build();
     }
+    
     @Override
     public Response getAllPosts(SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().getAllPosts()).build();
     }
+    
     @Override
     public Response getSuppliers(SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().getSuppliers()).build();
@@ -43,13 +46,12 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     public Response validate(String username, String password, SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().validate(username, password)).build();
     }
+    
     @Override
     public Response createPost(String owner, String title, String description, PostType type, SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().createPost(owner, title, description, type)).build();
     }
-
-
-
+    
     @Override
     public Response deletePost(Post post, SecurityContext securityContext) throws NotFoundException {
         Controller.getController().deletePost(post);
@@ -63,7 +65,8 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     }
 
     @Override
-    public Response editProduct(Product product, String newProductName, String newChemicalName, Double newMolWeight, String newDescription, Double newPrice, String newPackaging, String newDeliveryTime, SecurityContext securityContext) throws NotFoundException {
+    public Response editProduct(Product product, String newProductName, String newChemicalName, 
+            Double newMolWeight, String newDescription, Double newPrice, String newPackaging, String newDeliveryTime, SecurityContext securityContext) throws NotFoundException {
         Controller.getController().editProduct(product, newProductName, newChemicalName, newMolWeight, newDescription, newPrice, newPackaging, newDeliveryTime);
         return Response.ok().build();
     }
@@ -74,8 +77,8 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     }
 
     @Override
-    public Response createProduct(String productName, String chemicalName, Double molWeight, String description, Double price, String packaging, String deliveryTime, String producer, SecurityContext securityContext) throws NotFoundException {
-       
+    public Response createProduct(String productName, String chemicalName, Double molWeight,
+            String description, Double price, String packaging, String deliveryTime, String producer, SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().createProduct(productName, chemicalName, molWeight, description, price, packaging, deliveryTime, producer)).build();
     }
 }

@@ -1,25 +1,25 @@
 package domain.controller;
 
 import common.*;
-import domain.bulletinboard.Bulletinboard;
-import domain.database.DatabaseDriver;
-import domain.page.Pagemanager;
-import domain.user.Usermanager;
+import domain.bulletinboard.*;
+import domain.page.*;
+import domain.user.*;
+import database.*;
 import io.swagger.model.*;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller {
+public class Controller implements IController {
 
-    private static Controller instance;
-    private Usermanager usermanager;
-    private Pagemanager pagemanager;
-    private Bulletinboard bulletinboard;
+    private static IController instance;
+    private IUsermanager usermanager;
+    private IPagemanager pagemanager;
+    private IBulletinboard bulletinboard;
     private final Object updateLock = new Object();
 
-    public static Controller getController() {
+    public static IController getController() {
         if(instance == null) {
             instance = new Controller();
         }
