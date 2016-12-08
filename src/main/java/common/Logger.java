@@ -8,32 +8,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Logger {
+    
+    private static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    private static final File LOG_FOLDER = new File("logs");
 
-    public static enum LogType {
-        INFO,
-        WARNING
-    }
-    private static Logger instance;
-    private final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    private final File LOG_FOLDER = new File("logs");
-
-    public static Logger get() {
-        if(instance == null) {
-            instance = new Logger();
-        }
-        return instance;
-    }
-
-    private Logger() {
-    }
-
-    public void log(LogType type, String message) {
+    public static void log(LogType type, String message) {
         String msg = FORMAT.format(new Date()) + " [" + type.toString() + "] " + message;
         System.out.println(msg);
         saveToLogFile(msg);
     }
 
-    private void saveToLogFile(String message) {
+    private static void saveToLogFile(String message) {
         LOG_FOLDER.mkdirs();
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(LOG_FOLDER + "/" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + ".txt", true))) {
             writer.append(message).append("\r\n");
