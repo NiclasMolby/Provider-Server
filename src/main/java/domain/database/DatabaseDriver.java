@@ -46,7 +46,7 @@ public class DatabaseDriver {
      * @return a User if it match a username an password in the database and the users rights.
      */
     public User getLogin(String username, String password) {
-        String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE public.user.username = ? AND public.user.password = ?";
+        String query = "SELECT public.user.username, public.user.rights FROM public.user WHERE UPPER(public.user.username) = UPPER(?) AND public.user.password = ?";
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
