@@ -13,9 +13,9 @@ public class Usermanager {
     }
 
     /**
-     * calls the database and findes a user if the login is valid.
-     * @param username
-     * @param password
+     * Calls the database and finds a user if the login is valid.
+     * @param username the user Name.
+     * @param password The password.
      * @return The user that matches the login.
      */
     public User validate(String username, String password) {

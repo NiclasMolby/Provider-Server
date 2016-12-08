@@ -91,14 +91,14 @@ public class Pagemanager {
 
     /**
      * Creates a new Product.
-     * @param productName
-     * @param chemicalName
-     * @param molWeight
-     * @param description
-     * @param price
-     * @param packaging
-     * @param deliveryTime
-     * @param producer
+     * @param productName The product name.
+     * @param chemicalName The chemicalName.
+     * @param molWeight The mol weight.
+     * @param description The description.
+     * @param price The Price.
+     * @param packaging The packaging.
+     * @param deliveryTime The expected delivery time.
+     * @param producer The producer of the product.
      * @return The new product.
      */
     public Product createProduct(String productName, String chemicalName, double molWeight, String description, double price, String packaging, String deliveryTime, String producer) {
