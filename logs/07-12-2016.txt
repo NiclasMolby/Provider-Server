@@ -187,3 +187,9 @@ org.postgresql.util.PSQLException: The connection attempt failed.
 07/12/2016 16:48:01 [INFO] En eller anden har redigeret productet Vand
 07/12/2016 22:12:53 [WARNING] Fejl i tilslutningen til databasen.
 org.postgresql.util.PSQLException: The connection attempt failed.
+07/12/2016 23:05:48 [WARNING] Fejl i databasen ved tilføj post.
+org.postgresql.util.PSQLException: ERROR: insert or update on table "post" violates foreign key constraint "fkey"
+  Detail: Key (username)=(test) is not present in table "user".
+07/12/2016 23:06:29 [WARNING] Fejl i databasen ved tilføj post.
+org.postgresql.util.PSQLException: ERROR: insert or update on table "post" violates foreign key constraint "fkey"
+  Detail: Key (username)=(test) is not present in table "user".
