@@ -3,7 +3,6 @@ package domain.database;
 import common.Logger;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.ArrayList;
 import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
 import java.util.List;
@@ -54,20 +53,20 @@ public class DatabaseDriver {
             preparedStatement.setString(2, password);
             result = preparedStatement.executeQuery();
             RightsEnum rights = null;
-            while (result.next()) {
-                switch (result.getString(2)) {
-                    case "Provia":
-                        rights = RightsEnum.PROVIA;
-                        break;
-                    case "Supplier":
-                        rights = RightsEnum.SUPPLIER;
-                        break;
-                    case "Admin":
-                        rights = RightsEnum.ADMIN;
-                        break;
+            result.next();
+            switch (result.getString(2)) {
+                case "Provia":
+                    rights = RightsEnum.PROVIA;
+                    break;
+                case "Supplier":
+                    rights = RightsEnum.SUPPLIER;
+                    break;
+                case "Admin":
+                    rights = RightsEnum.ADMIN;
+                    break;
                 }
                 return new User().username(result.getString(1)).rights(rights);
-            }
+
         }
         catch (SQLException e) {
             Logger.get().log(Logger.LogType.WARNING, "Fejl i database login metoden.\n" + e);

@@ -36,7 +36,7 @@ public class Logger {
     private void saveToLogFile(String message) {
         LOG_FOLDER.mkdirs();
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(LOG_FOLDER + "/" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + ".txt", true))) {
-            writer.append(message + "\r\n");
+            writer.append(message).append("\r\n");
         }
         catch(IOException e) {
             System.out.println(FORMAT.format(new Date()) + " [" + LogType.WARNING.toString() + "] unable to log the message: " + message);

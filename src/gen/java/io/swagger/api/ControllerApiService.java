@@ -3,20 +3,6 @@ package io.swagger.api;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-
-import io.swagger.model.PostType;
-import io.swagger.model.Post;
-import io.swagger.model.Product;
-import java.io.File;
-import io.swagger.model.Page;
-import io.swagger.model.User;
-
-import java.util.List;
-import io.swagger.api.NotFoundException;
-
-import java.io.InputStream;
-
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
