@@ -25,12 +25,13 @@ public class Pagemanager {
      * @return a list with all the suppliers.
      */
     public ArrayList getSuppliers() {
-        database.getSuppliers().parallelStream()
+        database.getSuppliers()
+                .parallelStream()
                 .map(page -> {
                     pages.put(page.getOwner(), page);
                     return page;
-                }).forEach(page -> 
-                        page.products(database.getProducts(page.getOwner())));
+                })
+                .forEach(page -> page.products(database.getProducts(page.getOwner())));
         return new ArrayList(pages.values());
     }
 
