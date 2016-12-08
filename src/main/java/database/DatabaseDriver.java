@@ -84,7 +84,7 @@ public class DatabaseDriver implements IDatabaseDriver {
         String query = "SELECT public.user.username, public.note.text, public.note.date, "
                 + "public.note.lasteditor, public.page.location, public.page.description, "
                 + "public.page.contactinformation FROM public.user "
-                + "JOIN public.note ON "
+                + "LEFT JOIN public.note ON "
                 + "public.user.username = public.note.supplier "
                 + "JOIN public.page ON public.page.supplier = public.user.username "
                 + "WHERE public.user.rights='Supplier'";

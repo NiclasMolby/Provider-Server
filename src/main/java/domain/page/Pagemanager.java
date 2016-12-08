@@ -60,6 +60,7 @@ public class Pagemanager implements IPagemanager {
      */
     public void deleteProduct(Product product) {
         database.deleteProduct(product);
+        Logger.log(LogType.INFO, "Produktet med titlen " + product.getProductName() + " er blevet slettet");
     }
 
     public void updatePage(String page, String description, String location, String contactInformation) {
