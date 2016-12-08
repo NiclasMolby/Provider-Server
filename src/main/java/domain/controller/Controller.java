@@ -15,7 +15,7 @@ public class Controller {
     private Usermanager usermanager;
     private Pagemanager pagemanager;
     private Bulletinboard bulletinboard;
-    private Object updateLock = new Object();
+    private final Object updateLock = new Object();
 
     public static Controller getController() {
         if(instance == null) {
