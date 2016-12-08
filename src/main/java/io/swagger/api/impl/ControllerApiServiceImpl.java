@@ -4,20 +4,6 @@ import domain.controller.Controller;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-import io.swagger.model.PostType;
-import io.swagger.model.Post;
-import io.swagger.model.Page;
-import io.swagger.model.User;
-
-import java.util.Date;
-import java.util.List;
-import io.swagger.api.NotFoundException;
-
-import java.io.InputStream;
-
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-
-import javax.naming.ldap.Control;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 

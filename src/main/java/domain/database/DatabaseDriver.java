@@ -53,7 +53,7 @@ public class DatabaseDriver {
             preparedStatement.setString(2, password);
             result = preparedStatement.executeQuery();
             RightsEnum rights = null;
-            while (result.next()) {
+            if(result.next()) {
                 switch (result.getString(2)) {
                     case "Provia":
                         rights = RightsEnum.PROVIA;
@@ -67,6 +67,7 @@ public class DatabaseDriver {
                 }
                 return new User().username(result.getString(1)).rights(rights);
             }
+
         }
         catch (SQLException e) {
             Logger.log(LogType.WARNING, "Fejl i database login metoden.\n" + e);

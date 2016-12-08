@@ -8,6 +8,7 @@ import domain.user.Usermanager;
 import io.swagger.model.*;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
@@ -35,7 +36,7 @@ public class Controller {
         return usermanager.validate(username, password);
     }
 
-    public synchronized List<Page> getSuppliers() {
+    public synchronized ArrayList getSuppliers() {
         return pagemanager.getSuppliers();
     }
 

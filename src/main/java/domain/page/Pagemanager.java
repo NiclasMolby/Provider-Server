@@ -9,7 +9,6 @@ import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.Product;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class Pagemanager {
@@ -25,7 +24,7 @@ public class Pagemanager {
      * Gets all the suppliers pages.
      * @return a list with all the suppliers.
      */
-    public List<Page> getSuppliers() {
+    public ArrayList getSuppliers() {
         database.getSuppliers().parallelStream()
                 .map(page -> {
                     pages.put(page.getOwner(), page);
