@@ -53,19 +53,20 @@ public class DatabaseDriver {
             preparedStatement.setString(2, password);
             result = preparedStatement.executeQuery();
             RightsEnum rights = null;
-            result.next();
-            switch (result.getString(2)) {
-                case "Provia":
-                    rights = RightsEnum.PROVIA;
-                    break;
-                case "Supplier":
-                    rights = RightsEnum.SUPPLIER;
-                    break;
-                case "Admin":
-                    rights = RightsEnum.ADMIN;
-                    break;
+            if(result.next()) {
+                switch (result.getString(2)) {
+                    case "Provia":
+                        rights = RightsEnum.PROVIA;
+                        break;
+                    case "Supplier":
+                        rights = RightsEnum.SUPPLIER;
+                        break;
+                    case "Admin":
+                        rights = RightsEnum.ADMIN;
+                        break;
                 }
                 return new User().username(result.getString(1)).rights(rights);
+            }
 
         }
         catch (SQLException e) {
