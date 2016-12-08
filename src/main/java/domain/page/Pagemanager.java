@@ -35,7 +35,7 @@ public class Pagemanager {
     }
 
     /**
-     * Adds or edit a note in the database
+     * Adds or edit a note in the database and logs it.
      * @param supplierName The name of the supplier which note will be edited.
      * @param editor The name of the User who edited the note.
      * @param text The edited note.
@@ -53,7 +53,7 @@ public class Pagemanager {
     }
 
     /**
-     * Deletes a product from the database.
+     * Deletes a product from the database and logs it.
      * @param product The product that will be deleted.
      */
     public void deleteProduct(Product product) {
@@ -66,7 +66,7 @@ public class Pagemanager {
     }
 
     /**
-     * Edit a already existing product and saves it in the database. The database updates the product in the
+     * Edit a already existing product and saves it in the database and logs it. The database updates the product in the
      * database with the same product ID.
      * @param product The product that will be updated.
      * @param newProductName Product name.
@@ -90,7 +90,7 @@ public class Pagemanager {
     }
 
     /**
-     * Creates a new Product.
+     * Creates a new Product and logs it.
      * @param productName The product name.
      * @param chemicalName The chemicalName.
      * @param molWeight The mol weight.
