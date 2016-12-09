@@ -21,7 +21,7 @@ public interface IDatabaseDriver {
     
     void editNoteOnSupplier(String supplierName, Note note);
     
-    void updatePost(String owner, Post post);
+    void updatePost(Post post);
     
     int addPost(String owner, Post post);
     
