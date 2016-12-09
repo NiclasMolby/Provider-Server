@@ -222,10 +222,9 @@ public class DatabaseDriver implements IDatabaseDriver {
 
     /**
      *Updates a Post in the database.
-     * @param owner The owner of the post.
      * @param post The Edited post.
      */
-    public void updatePost(String owner, Post post) {
+    public void updatePost(Post post) {
         String query = "UPDATE public.post SET text = ?, title = ?, date = ? WHERE id = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);

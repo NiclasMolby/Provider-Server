@@ -43,7 +43,7 @@ public class Bulletinboard implements IBulletinboard {
     public void editPost(Post post, String newDescription, String newTitle) {
         post.setDescription(newDescription);
         post.setTitle(newTitle);
-        DatabaseDriver.getInstance().updatePost(post.getOwner(), post);
+        DatabaseDriver.getInstance().updatePost(post);
         Logger.log(LogType.INFO, post.getOwner() + " har ændret opslaget med titlen " + post.getTitle());
     }
 
