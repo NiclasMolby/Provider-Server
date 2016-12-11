@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DatabaseDriver implements IDatabaseDriver {
 
-    private static DatabaseDriver instance;
+    private static IDatabaseDriver instance;
     private Connection connection;
     private Statement stmt;
     private PreparedStatement preparedStatement;
@@ -19,7 +19,7 @@ public class DatabaseDriver implements IDatabaseDriver {
      * Gets the current instants of the DatabaseDriver.
      * @return The instants of database driver.
      */
-    public static DatabaseDriver getInstance() {
+    public static IDatabaseDriver getInstance() {
         if (instance == null) {
             instance = new DatabaseDriver();
         }

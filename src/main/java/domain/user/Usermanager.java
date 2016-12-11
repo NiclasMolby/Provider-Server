@@ -2,11 +2,12 @@ package domain.user;
 
 import common.*;
 import database.DatabaseDriver;
+import database.IDatabaseDriver;
 import io.swagger.model.*;
 
 public class Usermanager implements IUsermanager {
 
-    private DatabaseDriver database;
+    private IDatabaseDriver database;
 
     public Usermanager() {
         database = DatabaseDriver.getInstance();

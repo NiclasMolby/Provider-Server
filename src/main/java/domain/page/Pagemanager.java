@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import common.*;
 import database.DatabaseDriver;
+import database.IDatabaseDriver;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.Product;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 public class Pagemanager implements IPagemanager {
 
-    private DatabaseDriver database;
+    private IDatabaseDriver database;
     private Map<String, Page> pages;
 
     public Pagemanager() {
