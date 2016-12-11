@@ -116,7 +116,7 @@ public class Controller implements IController {
                 updateLock.wait();
             }
             catch(InterruptedException e) {
-                Logger.log(LogType.WARNING, "Update-låsen blev uafbrudt\n" + e);
+                Logger.log(LogType.WARNING, "Update-låsen blev afbrudt\n" + e);
             }
             return true;
         }
