@@ -376,7 +376,22 @@ paths:
           description: ok
           schema:
             type: boolean
-
+  /Controller/RequestPublicKey:
+    post:
+      tags:
+        - Controller
+      summary: Send the public key to a client
+      operationId: requestPublicKey
+      produces:
+        - application/json
+        - text/json
+        - application/json-patch+json
+      responses:
+        '200':
+          description: ok
+          schema:
+            $ref: '#/definitions/PublicKey'
+            
 definitions:
   User:
     description: Information about the user
@@ -479,6 +494,16 @@ definitions:
       - Request
       - Offer
       - NotAvailable
+  PublicKey:
+    description: An object to hold the publickey
+    type: object
+    properties:
+      n:
+        type: number
+        format: long
+      e: 
+        type: number
+        format: long
       
                 
         
