@@ -5,10 +5,23 @@ import io.swagger.api.ControllerApiService;
 import io.swagger.api.factories.ControllerApiServiceFactory;
 
 import io.swagger.annotations.ApiParam;
+import io.swagger.jaxrs.*;
 
+import io.swagger.model.PostType;
+import io.swagger.model.Post;
+import io.swagger.model.Product;
 import java.io.File;
+import io.swagger.model.Page;
+import io.swagger.model.PublicKey;
+import io.swagger.model.User;
 
+import java.util.List;
 import io.swagger.api.NotFoundException;
+
+import java.io.InputStream;
+
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -19,7 +32,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-07T10:59:42.816Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T13:53:13.813Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -161,6 +174,17 @@ public class ControllerApi  {
     public Response getSuppliers(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.getSuppliers(securityContext);
+    }
+    @POST
+    @Path("/RequestPublicKey")
+    
+    @Produces({ "application/json", "text/json", "application/json-patch+json" })
+    @io.swagger.annotations.ApiOperation(value = "Send the public key to a client", notes = "", response = PublicKey.class, tags={ "Controller", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = PublicKey.class) })
+    public Response requestPublicKey(@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.requestPublicKey(securityContext);
     }
     @POST
     @Path("/RequestUpdate")

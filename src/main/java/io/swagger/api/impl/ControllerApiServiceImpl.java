@@ -32,6 +32,11 @@ public class ControllerApiServiceImpl extends ControllerApiService {
     }
 
     @Override
+    public Response requestPublicKey(SecurityContext securityContext) throws NotFoundException {
+        return Response.ok().entity(Controller.getController().getPublicKey()).build();
+    }
+
+    @Override
     public Response requestUpdate(SecurityContext securityContext) throws NotFoundException {
         return Response.ok().entity(Controller.getController().requestUpdate()).build();
     }

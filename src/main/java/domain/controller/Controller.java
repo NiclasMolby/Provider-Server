@@ -6,6 +6,7 @@ import domain.page.*;
 import domain.user.*;
 import database.*;
 import io.swagger.model.*;
+import security.RSA;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,7 +18,9 @@ public class Controller implements IController {
     private IUsermanager usermanager;
     private IPagemanager pagemanager;
     private IBulletinboard bulletinboard;
+    private RSA rsa;
     private final Object updateLock = new Object();
+    private PublicKey publicKey;
 
     public static IController getController() {
         if(instance == null) {
@@ -27,6 +30,8 @@ public class Controller implements IController {
     }
 
     private Controller() {
+        rsa = new RSA();
+        publicKey = rsa.getPublicKey();
         usermanager = new Usermanager();
         pagemanager = new Pagemanager();
         bulletinboard = new Bulletinboard();
@@ -58,7 +63,7 @@ public class Controller implements IController {
 
     public void addNoteToSupplier(String supplierName, String editor, String text) {
         synchronized (updateLock) {
-            pagemanager.addNoteToSupplier(supplierName, editor, text);
+            pagemanager.addNoteToSupplier(supplierName, editor, "gg");
             updateLock.notifyAll();
         }
     }
@@ -120,5 +125,9 @@ public class Controller implements IController {
             }
             return true;
         }
+    }
+
+    public PublicKey getPublicKey() {
+        return publicKey;
     }
 }
