@@ -32,7 +32,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T13:53:13.813Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T14:39:30.259Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -45,7 +45,7 @@ public class ControllerApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response addNoteToSupplier(@ApiParam(value = "",required=true) @QueryParam("supplierName") String supplierName
 ,@ApiParam(value = "",required=true) @QueryParam("editor") String editor
-,@ApiParam(value = "",required=true) @QueryParam("text") String text
+,@ApiParam(value = "",required=true) @QueryParam("text") byte[] text
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.addNoteToSupplier(supplierName,editor,text,securityContext);

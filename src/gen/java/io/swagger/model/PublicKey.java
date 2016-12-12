@@ -36,7 +36,7 @@ import java.math.BigDecimal;
  * An object to hold the publickey
  */
 @ApiModel(description = "An object to hold the publickey")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T13:53:13.813Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T14:39:30.259Z")
 public class PublicKey   {
   @JsonProperty("n")
   private BigDecimal n = null;

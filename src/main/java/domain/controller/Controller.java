@@ -61,9 +61,10 @@ public class Controller implements IController {
         }
     }
 
-    public void addNoteToSupplier(String supplierName, String editor, String text) {
+    public void addNoteToSupplier(String supplierName, String editor, byte[] text) {
         synchronized (updateLock) {
-            pagemanager.addNoteToSupplier(supplierName, editor, "gg");
+            String newText = new String(rsa.decrypt(text));
+            pagemanager.addNoteToSupplier(supplierName, editor, newText);
             updateLock.notifyAll();
         }
     }

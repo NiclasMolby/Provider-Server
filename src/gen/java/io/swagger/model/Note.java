@@ -36,7 +36,7 @@ import java.util.Date;
  * A note on the supplier page
  */
 @ApiModel(description = "A note on the supplier page")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T13:53:13.813Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T14:39:30.259Z")
 public class Note   {
   @JsonProperty("text")
   private String text = null;
