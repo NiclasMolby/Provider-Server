@@ -499,12 +499,10 @@ definitions:
     type: object
     properties:
       n:
-        type: number
-        format: long
+        type: string
       e: 
-        type: number
-        format: long
-      
+        type: string
+
                 
         
 securityDefinitions: {}
