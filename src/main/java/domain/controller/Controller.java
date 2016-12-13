@@ -37,9 +37,7 @@ public class Controller implements IController {
         bulletinboard = new Bulletinboard();
     }
 
-    public User validate(String username, String password) {
-        return usermanager.validate(username, password);
-    }
+    public User validate(String username, String password) { return usermanager.validate(username, new String(rsa.decrypt(password))); }
 
     public synchronized ArrayList getSuppliers() {
         return pagemanager.getSuppliers();
