@@ -16,7 +16,7 @@ public interface IController {
     
     void deletePost(Post post);
 
-    void addNoteToSupplier(String supplierName, String editor, byte[] text);
+    void addNoteToSupplier(String supplierName, String editor, String text);
 
     Post createPost(String owner, String title, String description, PostType type);
 

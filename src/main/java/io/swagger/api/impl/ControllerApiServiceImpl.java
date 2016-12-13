@@ -10,7 +10,7 @@ import javax.ws.rs.core.SecurityContext;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-02T13:49:11.596Z")
 public class ControllerApiServiceImpl extends ControllerApiService {
     @Override
-    public Response addNoteToSupplier(String supplierName, String editor, byte[] text, SecurityContext securityContext) throws NotFoundException {
+    public Response addNoteToSupplier(String supplierName, String editor, String text, SecurityContext securityContext) throws NotFoundException {
         Controller.getController().addNoteToSupplier(supplierName, editor, text);
         return Response.ok().build();
     }

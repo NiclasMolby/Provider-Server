@@ -30,21 +30,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 
 /**
  * An object to hold the publickey
  */
 @ApiModel(description = "An object to hold the publickey")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-12T14:39:30.259Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-13T11:41:30.529Z")
 public class PublicKey   {
   @JsonProperty("n")
-  private BigDecimal n = null;
+  private String n = null;
 
   @JsonProperty("e")
-  private BigDecimal e = null;
+  private String e = null;
 
-  public PublicKey n(BigDecimal n) {
+  public PublicKey n(String n) {
     this.n = n;
     return this;
   }
@@ -54,15 +53,15 @@ public class PublicKey   {
    * @return n
   **/
   @ApiModelProperty(value = "")
-  public BigDecimal getN() {
+  public String getN() {
     return n;
   }
 
-  public void setN(BigDecimal n) {
+  public void setN(String n) {
     this.n = n;
   }
 
-  public PublicKey e(BigDecimal e) {
+  public PublicKey e(String e) {
     this.e = e;
     return this;
   }
@@ -72,11 +71,11 @@ public class PublicKey   {
    * @return e
   **/
   @ApiModelProperty(value = "")
-  public BigDecimal getE() {
+  public String getE() {
     return e;
   }
 
-  public void setE(BigDecimal e) {
+  public void setE(String e) {
     this.e = e;
   }
 

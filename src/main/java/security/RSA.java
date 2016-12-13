@@ -2,104 +2,81 @@ package security;
 
 import io.swagger.model.PublicKey;
 
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Random;
 
 public class RSA {
-
+    // A random generated big prime number
     private BigInteger p;
 
+    // A random generated big prime number
     private BigInteger q;
 
+    // The product of the two prime numbers as well as part of the public and private key
     private BigInteger N;
 
+    // The phi to compute e and d
     private BigInteger phi;
 
+    // Part of the public key
     private BigInteger e;
 
+    // Part of the private key
     private BigInteger d;
 
-    private int bitlength = 32;
+    // The lenght of the key
+    private int bitlength = 1024;
 
-    private Random r;
+    private Random random;
 
     private PublicKey publicKey;
 
+
     public RSA() {
 
-        r = new Random();
+        // Create a random number generator
+        random = new Random();
 
-        p = BigInteger.probablePrime(bitlength, r);
+        // Gets a random big prime number
+        p = BigInteger.probablePrime(bitlength, random);
 
-        q = BigInteger.probablePrime(bitlength, r);
+        // Gets a random big prime number
+        q = BigInteger.probablePrime(bitlength, random);
 
+        // Calculate the product of the prime numbers
         N = p.multiply(q);
 
+        // Compute the phi as (p-1) * (q-1)
         phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
 
-        e = BigInteger.probablePrime(bitlength/2, r);
+        // Gets a random prime number
+        e = BigInteger.probablePrime(bitlength/2, random);
 
+        // e has to be coprime to phi                   e has to be 1 < e < phi
+        // So their gcd have to be 1
         while (phi.gcd(e).compareTo(BigInteger.ONE) > 0 && e.compareTo(phi) < 0 ) {
 
             e.add(BigInteger.ONE);
 
         }
 
+        // Compute the d as e^-1 % phi
         d = e.modInverse(phi);
 
-        publicKey = new PublicKey().e(new BigDecimal(e)).n(new BigDecimal(N));
-
-    }
-
-    public static void main (String[] args) throws IOException {
-
-        RSA rsa = new RSA();
-
-        String teststring="Test streng";
-
-        // encrypt
-
-        byte[] encrypted = rsa.encrypt(teststring.getBytes());
-
-        //System.out.println("Encrypted String in Bytes: " + bytesToString(encrypted));
-
-        // decrypt
-
-        //byte[] decrypted = rsa.decrypt(encrypted);
-
-        //System.out.println("Decrypted String in Bytes: " +  bytesToString(decrypted));
-
-        //System.out.println("Decrypted String: " + new String(decrypted));
-
-    }
-
-    private static byte[] bytesToString(String encrypted) {
-
-        String[] bytesString = encrypted.split("-");
-        byte[] bytes = new byte[bytesString.length];
-        for(int i = 0 ; i < bytes.length ; ++i) {
-           // bytes[i] = Byte.parseByte(bytesString[i]); Byte.parseByte();
-        }
-        return bytes;
-
-    }
-
-    //Encrypt message
-
-    public byte[] encrypt(byte[] message) {
-
-        return (new BigInteger(message)).modPow(e, N).toByteArray();
+        // Compute the public key
+        publicKey = new PublicKey().e(e.toString()).n(N.toString());
 
     }
 
     // Decrypt message
 
-    public byte[] decrypt(byte[] message) {
+    public byte[] decrypt(String message) {
 
+        // Converts the message to a BigInteger to do the decrypt algorithm
+        BigInteger messageAsBigInt = new BigInteger(message);
 
-        return (new BigInteger(message)).modPow(d, N).toByteArray();
+        // Do the decrypt algorithm and return as a byte array
+        return messageAsBigInt.modPow(d, N).toByteArray();
 
     }
 
