@@ -7,21 +7,21 @@ import io.swagger.model.*;
 import io.swagger.model.User.RightsEnum;
 import java.util.List;
 
-public class DatabaseDriver implements IDatabaseDriver {
+public class DatabaseFacade implements IDatabaseFacade {
 
-    private static IDatabaseDriver instance;
+    private static IDatabaseFacade instance;
     private Connection connection;
     private Statement stmt;
     private PreparedStatement preparedStatement;
     private ResultSet result;
 
     /**
-     * Gets the current instants of the DatabaseDriver.
+     * Gets the current instants of the DatabaseFacade.
      * @return The instants of database driver.
      */
-    public static IDatabaseDriver getInstance() {
+    public static IDatabaseFacade getInstance() {
         if (instance == null) {
-            instance = new DatabaseDriver();
+            instance = new DatabaseFacade();
         }
         return instance;
     }
@@ -29,7 +29,7 @@ public class DatabaseDriver implements IDatabaseDriver {
     /**
      * creates a connection to the database.
      */
-    private DatabaseDriver() {
+    private DatabaseFacade() {
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk:5432/group_2_db", 
                     "group_2", "MDI5NTli");

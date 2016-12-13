@@ -113,7 +113,7 @@ public class Controller implements IController {
     }
 
     public File getPDF(int productID) {
-        return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
+        return new File(DatabaseFacade.getInstance().getPDFFilePath(productID));
     }
 
     public boolean requestUpdate() {
