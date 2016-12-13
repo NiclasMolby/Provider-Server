@@ -3,14 +3,17 @@ package domain.user;
 import common.*;
 import database.DatabaseFacade;
 import database.IDatabaseFacade;
+import domain.security.Hash;
 import io.swagger.model.*;
 
 public class Usermanager implements IUsermanager {
 
     private IDatabaseFacade database;
+    private Hash hash;
 
     public Usermanager() {
         database = DatabaseFacade.getInstance();
+        hash = new Hash();
     }
 
     /**
@@ -21,8 +24,11 @@ public class Usermanager implements IUsermanager {
      */
     public User validate(String username, String password) {
         try {
-            Logger.log(LogType.INFO, "Bruger " + database.getLogin(username, password).getUsername() + " er logget ind");
-            return database.getLogin(username, password);
+            byte[] salt = database.getSalt(username);
+            password = hash.getHashedPassword(password, salt);
+            User user = database.getLogin(username, password);
+            Logger.log(LogType.INFO, "Bruger " + user.getUsername() + " er logget ind");
+            return user;
         }
         catch (NullPointerException e) {
             Logger.log(LogType.WARNING, "Der gik noget galt under login af " + username);

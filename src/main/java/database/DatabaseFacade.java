@@ -25,7 +25,6 @@ public class DatabaseFacade implements IDatabaseFacade {
         }
         return instance;
     }
-
     /**
      * creates a connection to the database.
      */
@@ -71,6 +70,21 @@ public class DatabaseFacade implements IDatabaseFacade {
         }
         catch (SQLException e) {
             Logger.log(LogType.WARNING, "Fejl i database login metoden.\n" + e);
+        }
+        return null;
+    }
+
+    public byte[] getSalt(String username) {
+        String query = "SELECT public.user.salt FROM public.user WHERE UPPER(public.user.username) = UPPER(?)";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            result = preparedStatement.executeQuery();
+            result.next();
+            return result.getBytes(1);
+        }
+        catch (SQLException e) {
+            Logger.log(LogType.WARNING, "Fejl i getSalt metode.\n" + e);
         }
         return null;
     }

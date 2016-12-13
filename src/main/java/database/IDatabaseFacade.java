@@ -10,7 +10,9 @@ import java.util.List;
 public interface IDatabaseFacade {
     
     User getLogin(String username, String password);
-    
+
+    byte[] getSalt(String username);
+
     List<Page> getSuppliers();
     
     List<Product> getProducts(String pageSupplier);

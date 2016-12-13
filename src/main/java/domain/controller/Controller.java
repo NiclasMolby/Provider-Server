@@ -6,7 +6,7 @@ import domain.page.*;
 import domain.user.*;
 import database.*;
 import io.swagger.model.*;
-import security.RSA;
+import domain.security.RSA;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,7 +20,6 @@ public class Controller implements IController {
     private IBulletinboard bulletinboard;
     private RSA rsa;
     private final Object updateLock = new Object();
-    private PublicKey publicKey;
 
     public static IController getController() {
         if(instance == null) {
@@ -31,7 +30,6 @@ public class Controller implements IController {
 
     private Controller() {
         rsa = new RSA();
-        publicKey = rsa.getPublicKey();
         usermanager = new Usermanager();
         pagemanager = new Pagemanager();
         bulletinboard = new Bulletinboard();
@@ -127,6 +125,6 @@ public class Controller implements IController {
     }
 
     public PublicKey getPublicKey() {
-        return publicKey;
+        return rsa.getPublicKey();
     }
 }
