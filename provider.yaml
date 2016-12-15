@@ -5,10 +5,10 @@ info:
   termsOfService: None
 basePath: /
 paths:
-  /Controller/Validate:
+  /UserManager/Validate:
     post:
       tags:
-        - Controller
+        - UserManager
       summary: Validate information
       operationId: validate
       consumes:
@@ -36,10 +36,10 @@ paths:
           schema:
             $ref: '#/definitions/User'
 
-  /Controller/GetSuppliers:
+  /PageManager/GetSuppliers:
     post:
-      tags: 
-        - Controller
+      tags:
+        - PageManager
       summary: Gets all suppliers
       operationId: getSuppliers
       produces:
@@ -54,10 +54,10 @@ paths:
             items:
               $ref: '#/definitions/Page'
               
-  /Controller/UpdatePage:
+  /PageManager/UpdatePage:
     post:
       tags:
-        - Controller
+        - PageManager
       summary: Update a supplier page
       operationId: updatePage
       consumes:
@@ -85,10 +85,10 @@ paths:
         '200':
           description: ok
               
-  /Controller/GetAllPosts:
+  /Bulletinboard/GetAllPosts:
     post:
-      tags: 
-        - Controller
+      tags:
+        - Bulletinboard
       summary: Gets all posts
       operationId: getAllPosts
       produces:
@@ -103,10 +103,10 @@ paths:
             items:
               $ref: '#/definitions/Post'
             
-  /Controller/AddNoteToSupplier:
+  /PageManager/AddNoteToSupplier:
     post:
       tags:
-        - Controller
+        - PageManager
       summary: Adds a note to a supplier
       operationId: addNoteToSupplier
       consumes:
@@ -130,10 +130,10 @@ paths:
         '200':
           description: ok
           
-  /Controller/CreatePost:
+  /Bulletinboard/CreatePost:
     post:
       tags:
-        - Controller
+        - Bulletinboard
       summary: Creates a post
       operationId: createPost
       consumes:
@@ -164,10 +164,10 @@ paths:
           schema:
             $ref: '#/definitions/Post'
           
-  /Controller/EditPost:
+  /Bulletinboard/EditPost:
     post:
       tags:
-        - Controller
+        - Bulletinboard
       summary: Edits a posts
       operationId: editPost
       consumes:
@@ -192,10 +192,10 @@ paths:
         '200':
           description: ok
   
-  /Controller/DeletePost:
+  /Bulletinboard/DeletePost:
     post:
-      tags:
-        - Controller
+      tags: 
+        - Bulletinboard
       summary: Deletes a post
       operationId: deletePost
       consumes:
@@ -213,10 +213,10 @@ paths:
           description: ok
           
           
-  /Controller/CreateProduct:
+  /PageManager/CreateProduct:
     post:
       tags:
-        - Controller
+        - PageManager
       summary: Creates a product.
       operationId: createProduct
       consumes:
@@ -264,10 +264,10 @@ paths:
           schema:
             $ref: '#/definitions/Product'
          
-  /Controller/EditProduct:
+  /PageManager/EditProduct:
     post:
       tags:
-        - Controller
+        - PageManager
       summary: Edits an existing product. 
       operationId: editProduct
       consumes:
@@ -315,10 +315,10 @@ paths:
           description: ok
 
 
-  /Controller/DeleteProduct:
+  /PageManager/DeleteProduct:
     post:
       tags:
-        - Controller
+        - PageManager
       summary: Deletes an existing product. 
       operationId: deleteProduct
       consumes:
@@ -376,6 +376,7 @@ paths:
           description: ok
           schema:
             type: boolean
+            
   /Controller/RequestPublicKey:
     post:
       tags:
