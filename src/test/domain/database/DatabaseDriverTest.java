@@ -16,15 +16,18 @@ import static org.junit.Assert.*;
 
 public class DatabaseDriverTest {
 
+
     private IDatabaseDriver database;
     private Post testPost;
     private Product testProduct;
+    private Note testNote;
 
     @Before
     public void setUp() throws Exception {
         database = (IDatabaseDriver) DatabaseDriver.getInstance();
         testPost = new Post().type(PostType.OFFER).title("test").description("testDescription").owner("Test").date(new Date().toString());
         testProduct = new Product().productName("Test").chemicalName("Test").deliveryTime("Test").description("Test").producer("BobSagat").price(4.20).molWeight(4.20).packaging("test");
+        testNote = new Note().creationDate(new Date()).editor("Test supplier").text("Test");
     }
 
     @After
@@ -60,12 +63,37 @@ public class DatabaseDriverTest {
             assertEquals(p.getClass(), database.getSuppliers().getClass());
         }
     }
+    @Test
+    public void addNoteToSupplier() throws Exception {
+        String supplier = "Test supplier";
+        Page testpage = null;
+        List<Page> testpages = database.getSuppliers();
+        for (Page p : testpages) {
+            if(p.getOwner().equals(supplier)){
+                testpage = p;
+            }
+        }
+        Note testnote = testpage.getNote();
+        if(testpage.getNote() == null){
+            database.addNoteToSupplier("Test Supplier", testnote);
+            testpages = null;
+            testpages = database.getSuppliers();
+            for (Page p : testpages) {
+                if(p.getOwner().equals(supplier)){
+                    testpage = p;
+                }
+            }
+        } else {
+            database.editNoteOnSupplier();
+        }
+
+    }
 
     @Test
     public void getProductsTest() throws Exception {
         List<Product> p = new ArrayList<>();
         if (database.getProducts("BobSagat").isEmpty()) {
-            fail();
+            fail("Der er ikke nogen produkter i databasen");
         } else {
             assertEquals(p.getClass(), database.getSuppliers().getClass());
         }
