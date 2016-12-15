@@ -31,8 +31,9 @@ public class RSA {
 
     private PublicKey publicKey;
 
+    private static RSA instance;
 
-    public RSA() {
+    private RSA() {
 
         // Create a random number generator
         random = new Random();
@@ -66,6 +67,13 @@ public class RSA {
         // Compute the public key
         publicKey = new PublicKey().e(e.toString()).n(N.toString());
 
+    }
+
+    public static RSA getRSA(){
+        if(instance == null) {
+            instance = new RSA();
+        }
+        return instance;
     }
 
     // Decrypt message

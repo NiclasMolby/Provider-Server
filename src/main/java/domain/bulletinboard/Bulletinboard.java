@@ -5,11 +5,28 @@ import database.DatabaseFacade;
 
 import java.util.List;
 
+import database.IDatabaseFacade;
+import domain.controller.Controller;
 import io.swagger.model.*;
 
 import java.util.Date;
 
 public class Bulletinboard implements IBulletinboard {
+
+    private IDatabaseFacade database;
+    private static IBulletinboard instance;
+    private Object updateLock = Controller.updateLock;
+
+    private Bulletinboard() {
+        database = DatabaseFacade.getInstance();
+    }
+
+    public static IBulletinboard getBulletinboard() {
+        if(instance == null) {
+            instance = new Bulletinboard();
+        }
+        return instance;
+    }
 
     /**
      * Creates a new post and adds it database and logs it.
@@ -20,10 +37,13 @@ public class Bulletinboard implements IBulletinboard {
      * @return returns the new post.
      */
     public Post createPost(String owner, String title, String description, PostType type) {
-        Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
-        post.setId(DatabaseFacade.getInstance().addPost(owner, post));
-        Logger.log(LogType.INFO, post.getOwner() + " har oprettet et ny opslag med titlen " + post.getTitle());
-        return post;
+        synchronized (updateLock) {
+            Post post = new Post().owner(owner).date(new Date().toString()).title(title).description(description).type(type);
+            post.setId(database.addPost(owner, post));
+            Logger.log(LogType.INFO, post.getOwner() + " har oprettet et ny opslag med titlen " + post.getTitle());
+            updateLock.notifyAll();
+            return post;
+        }
     }
 
     /**
@@ -31,8 +51,11 @@ public class Bulletinboard implements IBulletinboard {
      * @param post The post that will be deleted.
      */
     public void deletePost(Post post) {
-        DatabaseFacade.getInstance().deletePost(post);
-        Logger.log(LogType.INFO, post.getOwner() + " har slettet opslaget med titlen " + post.getTitle());
+        synchronized (updateLock) {
+            database.deletePost(post);
+            Logger.log(LogType.INFO, post.getOwner() + " har slettet opslaget med titlen " + post.getTitle());
+            updateLock.notifyAll();
+        }
     }
 
     /**
@@ -42,10 +65,13 @@ public class Bulletinboard implements IBulletinboard {
      * @param newTitle The new title.
      */
     public void editPost(Post post, String newDescription, String newTitle) {
-        post.setDescription(newDescription);
-        post.setTitle(newTitle);
-        DatabaseFacade.getInstance().updatePost(post);
-        Logger.log(LogType.INFO, post.getOwner() + " har ændret opslaget med titlen " + post.getTitle());
+        synchronized (updateLock) {
+            post.setDescription(newDescription);
+            post.setTitle(newTitle);
+            database.updatePost(post);
+            Logger.log(LogType.INFO, post.getOwner() + " har ændret opslaget med titlen " + post.getTitle());
+            updateLock.notifyAll();
+        }
     }
 
     /**
@@ -53,6 +79,6 @@ public class Bulletinboard implements IBulletinboard {
      * @return a list of products.
      */
     public List<Post> getAllPosts() {
-        return DatabaseFacade.getInstance().getPosts();
+        return database.getPosts();
     }
 }

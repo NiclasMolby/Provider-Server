@@ -3,17 +3,27 @@ package domain.user;
 import common.*;
 import database.DatabaseFacade;
 import database.IDatabaseFacade;
+import domain.controller.Controller;
 import domain.security.Hash;
+import domain.security.RSA;
 import io.swagger.model.*;
 
 public class UserManager implements IUserManager {
 
     private IDatabaseFacade database;
+    private static IUserManager instance;
     private Hash hash;
 
-    public UserManager() {
+    private UserManager() {
         database = DatabaseFacade.getInstance();
         hash = new Hash();
+    }
+
+    public static IUserManager getUserManager() {
+        if(instance == null) {
+            instance = new UserManager();
+        }
+        return instance;
     }
 
     /**
@@ -24,6 +34,7 @@ public class UserManager implements IUserManager {
      */
     public User validate(String username, String password) {
         try {
+            password = new String(RSA.getRSA().decrypt(password));
             byte[] salt = database.getSalt(username);
             password = hash.getHashedPassword(password, salt);
             User user = database.getLogin(username, password);
