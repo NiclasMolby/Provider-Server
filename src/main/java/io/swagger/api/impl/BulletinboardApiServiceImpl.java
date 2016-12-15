@@ -1,5 +1,6 @@
 package io.swagger.api.impl;
 
+import domain.bulletinboard.Bulletinboard;
 import domain.controller.Controller;
 import io.swagger.api.*;
 import io.swagger.model.*;
@@ -21,20 +22,20 @@ import javax.ws.rs.core.SecurityContext;
 public class BulletinboardApiServiceImpl extends BulletinboardApiService {
     @Override
     public Response createPost(String owner, String title, String description, PostType type, SecurityContext securityContext) throws NotFoundException {
-        return Response.ok().entity(Controller.getController().createPost(owner, title, description, type)).build();
+        return Response.ok().entity(Bulletinboard.getBulletinboard().createPost(owner, title, description, type)).build();
     }
     @Override
     public Response deletePost(Post post, SecurityContext securityContext) throws NotFoundException {
-        Controller.getController().deletePost(post);
+        Bulletinboard.getBulletinboard().deletePost(post);
         return Response.ok().build();
     }
     @Override
     public Response editPost(Post post, String newDescription, String newTitle, SecurityContext securityContext) throws NotFoundException {
-        Controller.getController().editPost(post, newDescription, newTitle);
+        Bulletinboard.getBulletinboard().editPost(post, newDescription, newTitle);
         return Response.ok().build();
     }
     @Override
     public Response getAllPosts(SecurityContext securityContext) throws NotFoundException {
-        return Response.ok().entity(Controller.getController().getAllPosts()).build();
+        return Response.ok().entity(Bulletinboard.getBulletinboard().getAllPosts()).build();
     }
 }

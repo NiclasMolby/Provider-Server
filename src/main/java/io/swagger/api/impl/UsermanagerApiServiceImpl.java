@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import domain.controller.Controller;
+import domain.user.UserManager;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
@@ -17,9 +18,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:16:30.225Z")
-public class UsermanagerApiServiceImpl extends UsermanagerApiService {
+public class UserManagerApiServiceImpl extends UserManagerApiService {
     @Override
     public Response validate(String username, String password, SecurityContext securityContext) throws NotFoundException {
-        return Response.ok().entity(Controller.getController().validate(username, password)).build();
+        return Response.ok().entity(UserManager.getUserManager().validate(username, password)).build();
     }
 }
