@@ -4,21 +4,21 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 import common.*;
-import database.DatabaseDriver;
-import database.IDatabaseDriver;
+import database.DatabaseFacade;
+import database.IDatabaseFacade;
 import io.swagger.model.Note;
 import io.swagger.model.Page;
 import io.swagger.model.Product;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Pagemanager implements IPagemanager {
+public class PageManager implements IPageManager {
 
-    private IDatabaseDriver database;
+    private IDatabaseFacade database;
     private Map<String, Page> pages;
 
-    public Pagemanager() {
-        database = DatabaseDriver.getInstance();
+    public PageManager() {
+        database = DatabaseFacade.getInstance();
         pages = new HashMap<>();
     }
 
@@ -89,7 +89,7 @@ public class Pagemanager implements IPagemanager {
         product.setPrice(newPrice);
         product.setPackaging(newPackaging);
         product.setDeliveryTime(newDeliveryTime);
-        DatabaseDriver.getInstance().updateProduct(product);
+        DatabaseFacade.getInstance().updateProduct(product);
         Logger.log(LogType.INFO, "Produktet " + product.getProductName() + " er blevet ændret");
     }
 
@@ -107,8 +107,8 @@ public class Pagemanager implements IPagemanager {
      */
     public Product createProduct(String productName, String chemicalName, double molWeight, String description, double price, String packaging, String deliveryTime, String producer) {
         Product product = new Product().productName(productName).chemicalName(chemicalName).molWeight(molWeight).description(description).price(price).packaging(packaging).deliveryTime(deliveryTime).producer(producer);
-        product.setId(DatabaseDriver.getInstance().addProduct(product));
-        DatabaseDriver.getInstance().addProductToPage(product);
+        product.setId(DatabaseFacade.getInstance().addProduct(product));
+        DatabaseFacade.getInstance().addProductToPage(product);
 
         Logger.log(LogType.INFO, product.getProducer() + " har oprettet et produkt med navnet " + product.getProductName());
         return product;

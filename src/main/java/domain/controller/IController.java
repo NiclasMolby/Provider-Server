@@ -1,9 +1,7 @@
 package domain.controller;
 
-import io.swagger.model.Post;
-import io.swagger.model.PostType;
-import io.swagger.model.Product;
-import io.swagger.model.User;
+import io.swagger.model.*;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,5 +35,7 @@ public interface IController {
     File getPDF(int productID);
 
     boolean requestUpdate();
+
+    PublicKey getPublicKey();
     
 }

@@ -1,7 +1,7 @@
 package domain.database;
 
-import database.DatabaseDriver;
-import database.IDatabaseDriver;
+import database.DatabaseFacade;
+import database.IDatabaseFacade;
 import io.swagger.model.*;
 import org.junit.After;
 import org.junit.Before;
@@ -14,17 +14,16 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class DatabaseDriverTest {
+public class DatabaseFacadeTest {
 
-
-    private IDatabaseDriver database;
+    private IDatabaseFacade database;
     private Post testPost;
     private Product testProduct;
     private Note testNote;
 
     @Before
     public void setUp() throws Exception {
-        database = (IDatabaseDriver) DatabaseDriver.getInstance();
+        database = (IDatabaseFacade) DatabaseFacade.getInstance();
         testPost = new Post().type(PostType.OFFER).title("test").description("testDescription").owner("Test").date(new Date().toString());
         testProduct = new Product().productName("Test").chemicalName("Test").deliveryTime("Test").description("Test").producer("BobSagat").price(4.20).molWeight(4.20).packaging("test");
         testNote = new Note().creationDate(new Date()).editor("Test supplier").text("Test");

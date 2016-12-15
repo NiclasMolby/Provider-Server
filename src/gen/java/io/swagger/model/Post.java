@@ -27,6 +27,7 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.PostType;
@@ -35,7 +36,7 @@ import io.swagger.model.PostType;
  * A short description of the post.
  */
 @ApiModel(description = "A short description of the post.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-07T10:59:42.816Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
 public class Post   {
   @JsonProperty("id")
   private Integer id = null;

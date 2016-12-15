@@ -2,7 +2,7 @@ package domain.user;
 
 import io.swagger.model.User;
 
-public interface IUsermanager {
+public interface IUserManager {
     
     User validate(String username, String password);
     

@@ -6,6 +6,7 @@ import domain.page.*;
 import domain.user.*;
 import database.*;
 import io.swagger.model.*;
+import domain.security.RSA;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,9 +15,10 @@ import java.util.List;
 public class Controller implements IController {
 
     private static IController instance;
-    private IUsermanager usermanager;
-    private IPagemanager pagemanager;
+    private IUserManager usermanager;
+    private IPageManager pagemanager;
     private IBulletinboard bulletinboard;
+    private RSA rsa;
     private final Object updateLock = new Object();
 
     public static IController getController() {
@@ -27,14 +29,13 @@ public class Controller implements IController {
     }
 
     private Controller() {
-        usermanager = new Usermanager();
-        pagemanager = new Pagemanager();
+        rsa = new RSA();
+        usermanager = new UserManager();
+        pagemanager = new PageManager();
         bulletinboard = new Bulletinboard();
     }
 
-    public User validate(String username, String password) {
-        return usermanager.validate(username, password);
-    }
+    public User validate(String username, String password) { return usermanager.validate(username, new String(rsa.decrypt(password))); }
 
     public synchronized ArrayList getSuppliers() {
         return pagemanager.getSuppliers();
@@ -58,7 +59,8 @@ public class Controller implements IController {
 
     public void addNoteToSupplier(String supplierName, String editor, String text) {
         synchronized (updateLock) {
-            pagemanager.addNoteToSupplier(supplierName, editor, text);
+            String newText = new String(rsa.decrypt(text));
+            pagemanager.addNoteToSupplier(supplierName, editor, newText);
             updateLock.notifyAll();
         }
     }
@@ -107,7 +109,7 @@ public class Controller implements IController {
     }
 
     public File getPDF(int productID) {
-        return new File(DatabaseDriver.getInstance().getPDFFilePath(productID));
+        return new File(DatabaseFacade.getInstance().getPDFFilePath(productID));
     }
 
     public boolean requestUpdate() {
@@ -120,5 +122,9 @@ public class Controller implements IController {
             }
             return true;
         }
+    }
+
+    public PublicKey getPublicKey() {
+        return rsa.getPublicKey();
     }
 }

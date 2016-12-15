@@ -28,89 +28,55 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Information about the user
+ * An object to hold the publickey
  */
-@ApiModel(description = "Information about the user")
+@ApiModel(description = "An object to hold the publickey")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
-public class User   {
-  @JsonProperty("username")
-  private String username = null;
+public class PublicKey   {
+  @JsonProperty("n")
+  private String n = null;
 
-  /**
-   * The rights of the user
-   */
-  public enum RightsEnum {
-    ADMIN("Admin"),
-    
-    PROVIA("Provia"),
-    
-    SUPPLIER("Supplier");
+  @JsonProperty("e")
+  private String e = null;
 
-    private String value;
-
-    RightsEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static RightsEnum fromValue(String text) {
-      for (RightsEnum b : RightsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("rights")
-  private RightsEnum rights = null;
-
-  public User username(String username) {
-    this.username = username;
+  public PublicKey n(String n) {
+    this.n = n;
     return this;
   }
 
    /**
-   * The username of the user
-   * @return username
+   * Get n
+   * @return n
   **/
-  @ApiModelProperty(value = "The username of the user")
-  public String getUsername() {
-    return username;
+  @ApiModelProperty(value = "")
+  public String getN() {
+    return n;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setN(String n) {
+    this.n = n;
   }
 
-  public User rights(RightsEnum rights) {
-    this.rights = rights;
+  public PublicKey e(String e) {
+    this.e = e;
     return this;
   }
 
    /**
-   * The rights of the user
-   * @return rights
+   * Get e
+   * @return e
   **/
-  @ApiModelProperty(value = "The rights of the user")
-  public RightsEnum getRights() {
-    return rights;
+  @ApiModelProperty(value = "")
+  public String getE() {
+    return e;
   }
 
-  public void setRights(RightsEnum rights) {
-    this.rights = rights;
+  public void setE(String e) {
+    this.e = e;
   }
 
 
@@ -122,24 +88,24 @@ public class User   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return Objects.equals(this.username, user.username) &&
-        Objects.equals(this.rights, user.rights);
+    PublicKey publicKey = (PublicKey) o;
+    return Objects.equals(this.n, publicKey.n) &&
+        Objects.equals(this.e, publicKey.e);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, rights);
+    return Objects.hash(n, e);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
+    sb.append("class PublicKey {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
+    sb.append("    n: ").append(toIndentedString(n)).append("\n");
+    sb.append("    e: ").append(toIndentedString(e)).append("\n");
     sb.append("}");
     return sb.toString();
   }
