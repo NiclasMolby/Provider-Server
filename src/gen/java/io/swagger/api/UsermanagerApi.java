@@ -1,8 +1,8 @@
 package io.swagger.api;
 
 import io.swagger.model.*;
-import io.swagger.api.UsermanagerApiService;
-import io.swagger.api.factories.UsermanagerApiServiceFactory;
+import io.swagger.api.UserManagerApiService;
+import io.swagger.api.factories.UserManagerApiServiceFactory;
 
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
@@ -22,19 +22,19 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.*;
 
-@Path("/Usermanager")
+@Path("/UserManager")
 
 
-@io.swagger.annotations.Api(description = "the Usermanager API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
-public class UsermanagerApi  {
-   private final UsermanagerApiService delegate = UsermanagerApiServiceFactory.getUsermanagerApi();
+@io.swagger.annotations.Api(description = "the UserManager API")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
+public class UserManagerApi  {
+   private final UserManagerApiService delegate = UserManagerApiServiceFactory.getUserManagerApi();
 
     @POST
     @Path("/Validate")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Validate information", notes = "", response = User.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Validate information", notes = "", response = User.class, tags={ "UserManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = User.class) })
     public Response validate(@ApiParam(value = "Username to login",required=true) @QueryParam("username") String username

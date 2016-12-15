@@ -3,7 +3,7 @@ package domain.page;
 import io.swagger.model.Product;
 import java.util.ArrayList;
 
-public interface IPagemanager {
+public interface IPageManager {
     
     ArrayList getSuppliers();
     

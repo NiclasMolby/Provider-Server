@@ -1,8 +1,8 @@
 package io.swagger.api;
 
 import io.swagger.model.*;
-import io.swagger.api.PagemanagerApiService;
-import io.swagger.api.factories.PagemanagerApiServiceFactory;
+import io.swagger.api.PageManagerApiService;
+import io.swagger.api.factories.PageManagerApiServiceFactory;
 
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
@@ -23,19 +23,19 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.*;
 
-@Path("/Pagemanager")
+@Path("/PageManager")
 
 
-@io.swagger.annotations.Api(description = "the Pagemanager API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
-public class PagemanagerApi  {
-   private final PagemanagerApiService delegate = PagemanagerApiServiceFactory.getPagemanagerApi();
+@io.swagger.annotations.Api(description = "the PageManager API")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
+public class PageManagerApi  {
+   private final PageManagerApiService delegate = PageManagerApiServiceFactory.getPageManagerApi();
 
     @POST
     @Path("/AddNoteToSupplier")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Adds a note to a supplier", notes = "", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Adds a note to a supplier", notes = "", response = void.class, tags={ "PageManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response addNoteToSupplier(@ApiParam(value = "",required=true) @QueryParam("supplierName") String supplierName
@@ -49,7 +49,7 @@ public class PagemanagerApi  {
     @Path("/CreateProduct")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Creates a product.", notes = "", response = Product.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Creates a product.", notes = "", response = Product.class, tags={ "PageManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Product.class) })
     public Response createProduct(@ApiParam(value = "",required=true) @QueryParam("ProductName") String productName
@@ -68,7 +68,7 @@ public class PagemanagerApi  {
     @Path("/DeleteProduct")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Deletes an existing product.", notes = "", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Deletes an existing product.", notes = "", response = void.class, tags={ "PageManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response deleteProduct(@ApiParam(value = "" ,required=true) Product product
@@ -80,7 +80,7 @@ public class PagemanagerApi  {
     @Path("/EditProduct")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Edits an existing product.", notes = "", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Edits an existing product.", notes = "", response = void.class, tags={ "PageManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response editProduct(@ApiParam(value = "" ,required=true) Product product
@@ -99,7 +99,7 @@ public class PagemanagerApi  {
     @Path("/GetSuppliers")
     
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Gets all suppliers", notes = "", response = Page.class, responseContainer = "List", tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Gets all suppliers", notes = "", response = Page.class, responseContainer = "List", tags={ "PageManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Page.class, responseContainer = "List") })
     public Response getSuppliers(@Context SecurityContext securityContext)
@@ -110,7 +110,7 @@ public class PagemanagerApi  {
     @Path("/UpdatePage")
     @Consumes({ "text/plain", "application/json", "text/json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Update a supplier page", notes = "", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Update a supplier page", notes = "", response = void.class, tags={ "PageManager", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response updatePage(@ApiParam(value = "",required=true) @QueryParam("page") String page

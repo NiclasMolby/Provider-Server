@@ -6,12 +6,12 @@ import database.IDatabaseFacade;
 import domain.security.Hash;
 import io.swagger.model.*;
 
-public class Usermanager implements IUsermanager {
+public class UserManager implements IUserManager {
 
     private IDatabaseFacade database;
     private Hash hash;
 
-    public Usermanager() {
+    public UserManager() {
         database = DatabaseFacade.getInstance();
         hash = new Hash();
     }

@@ -15,8 +15,8 @@ import java.util.List;
 public class Controller implements IController {
 
     private static IController instance;
-    private IUsermanager usermanager;
-    private IPagemanager pagemanager;
+    private IUserManager usermanager;
+    private IPageManager pagemanager;
     private IBulletinboard bulletinboard;
     private RSA rsa;
     private final Object updateLock = new Object();
@@ -30,8 +30,8 @@ public class Controller implements IController {
 
     private Controller() {
         rsa = new RSA();
-        usermanager = new Usermanager();
-        pagemanager = new Pagemanager();
+        usermanager = new UserManager();
+        pagemanager = new PageManager();
         bulletinboard = new Bulletinboard();
     }
 

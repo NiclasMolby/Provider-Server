@@ -16,8 +16,8 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
-public abstract class PagemanagerApiService {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
+public abstract class PageManagerApiService {
     public abstract Response addNoteToSupplier(String supplierName,String editor,String text,SecurityContext securityContext) throws NotFoundException;
     public abstract Response createProduct(String productName,String chemicalName,Double molWeight,String description,Double price,String packaging,String deliveryTime,String producer,SecurityContext securityContext) throws NotFoundException;
     public abstract Response deleteProduct(Product product,SecurityContext securityContext) throws NotFoundException;

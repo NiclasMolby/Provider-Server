@@ -15,7 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
-public abstract class UsermanagerApiService {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
+public abstract class UserManagerApiService {
     public abstract Response validate(String username,String password,SecurityContext securityContext) throws NotFoundException;
 }

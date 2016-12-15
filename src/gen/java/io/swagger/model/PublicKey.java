@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiModelProperty;
  * An object to hold the publickey
  */
 @ApiModel(description = "An object to hold the publickey")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
 public class PublicKey   {
   @JsonProperty("n")
   private String n = null;

@@ -1,13 +1,13 @@
 package io.swagger.api.factories;
 
-import io.swagger.api.UsermanagerApiService;
-import io.swagger.api.impl.UsermanagerApiServiceImpl;
+import io.swagger.api.UserManagerApiService;
+import io.swagger.api.impl.UserManagerApiServiceImpl;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
-public class UsermanagerApiServiceFactory {
-    private final static UsermanagerApiService service = new UsermanagerApiServiceImpl();
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
+public class UserManagerApiServiceFactory {
+    private final static UserManagerApiService service = new UserManagerApiServiceImpl();
 
-    public static UsermanagerApiService getUsermanagerApi() {
+    public static UserManagerApiService getUserManagerApi() {
         return service;
     }
 }

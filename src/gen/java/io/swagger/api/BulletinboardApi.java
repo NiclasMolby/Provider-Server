@@ -27,7 +27,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Bulletinboard API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
 public class BulletinboardApi  {
    private final BulletinboardApiService delegate = BulletinboardApiServiceFactory.getBulletinboardApi();
 
@@ -35,7 +35,7 @@ public class BulletinboardApi  {
     @Path("/CreatePost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Creates a post", notes = "", response = Post.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Creates a post", notes = "", response = Post.class, tags={ "Bulletinboard", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class) })
     public Response createPost(@ApiParam(value = "",required=true) @QueryParam("owner") String owner
@@ -50,7 +50,7 @@ public class BulletinboardApi  {
     @Path("/DeletePost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Deletes a post", notes = "", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Deletes a post", notes = "", response = void.class, tags={ "Bulletinboard", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response deletePost(@ApiParam(value = "" ,required=true) Post post
@@ -62,7 +62,7 @@ public class BulletinboardApi  {
     @Path("/EditPost")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     
-    @io.swagger.annotations.ApiOperation(value = "Edits a posts", notes = "", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Edits a posts", notes = "", response = void.class, tags={ "Bulletinboard", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = void.class) })
     public Response editPost(@ApiParam(value = "" ,required=true) Post post
@@ -76,7 +76,7 @@ public class BulletinboardApi  {
     @Path("/GetAllPosts")
     
     @Produces({ "text/plain", "application/json", "text/json" })
-    @io.swagger.annotations.ApiOperation(value = "Gets all posts", notes = "", response = Post.class, responseContainer = "List", tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Gets all posts", notes = "", response = Post.class, responseContainer = "List", tags={ "Bulletinboard", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Post.class, responseContainer = "List") })
     public Response getAllPosts(@Context SecurityContext securityContext)

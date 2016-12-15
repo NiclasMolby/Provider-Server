@@ -27,7 +27,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the Controller API")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-14T14:23:21.947Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2016-12-15T10:29:50.305Z")
 public class ControllerApi  {
    private final ControllerApiService delegate = ControllerApiServiceFactory.getControllerApi();
 
@@ -35,7 +35,7 @@ public class ControllerApi  {
     @Path("/GetPDF")
     @Consumes({ "application/json", "text/json", "application/json-patch+json" })
     @Produces({ "text/plain", "application/json", "text/json", "multipart/form-data" })
-    @io.swagger.annotations.ApiOperation(value = "Get the specific PDF for the product", notes = "", response = File.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Get the specific PDF for the product", notes = "", response = File.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = File.class) })
     public Response getPDF(@ApiParam(value = "",required=true) @QueryParam("productId") Integer productId
@@ -47,7 +47,7 @@ public class ControllerApi  {
     @Path("/RequestPublicKey")
     
     @Produces({ "application/json", "text/json", "application/json-patch+json" })
-    @io.swagger.annotations.ApiOperation(value = "Send the public key to a client", notes = "", response = PublicKey.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Send the public key to a client", notes = "", response = PublicKey.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = PublicKey.class) })
     public Response requestPublicKey(@Context SecurityContext securityContext)
@@ -58,7 +58,7 @@ public class ControllerApi  {
     @Path("/RequestUpdate")
     
     @Produces({ "application/json", "text/json", "application/json-patch+json" })
-    @io.swagger.annotations.ApiOperation(value = "Send a request to the server to get any updates", notes = "", response = Boolean.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Send a request to the server to get any updates", notes = "", response = Boolean.class, tags={ "Controller", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "ok", response = Boolean.class) })
     public Response requestUpdate(@Context SecurityContext securityContext)

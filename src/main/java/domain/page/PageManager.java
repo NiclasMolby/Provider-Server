@@ -12,12 +12,12 @@ import io.swagger.model.Product;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Pagemanager implements IPagemanager {
+public class PageManager implements IPageManager {
 
     private IDatabaseFacade database;
     private Map<String, Page> pages;
 
-    public Pagemanager() {
+    public PageManager() {
         database = DatabaseFacade.getInstance();
         pages = new HashMap<>();
     }
