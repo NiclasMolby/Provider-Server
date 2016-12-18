@@ -2,6 +2,7 @@ package domain.database;
 
 import database.DatabaseFacade;
 import database.IDatabaseFacade;
+import domain.security.Hash;
 import io.swagger.model.*;
 import org.junit.After;
 import org.junit.Before;
@@ -12,10 +13,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import static org.junit.Assert.*;
 
 public class DatabaseFacadeTest {
-
     private IDatabaseFacade database;
     private Post testPost;
     private Product testProduct;
@@ -23,10 +24,10 @@ public class DatabaseFacadeTest {
 
     @Before
     public void setUp() throws Exception {
-        database = (IDatabaseFacade) DatabaseFacade.getInstance();
+        database = DatabaseFacade.getInstance();
         testPost = new Post().type(PostType.OFFER).title("test").description("testDescription").owner("Test").date(new Date().toString());
         testProduct = new Product().productName("Test").chemicalName("Test").deliveryTime("Test").description("Test").producer("BobSagat").price(4.20).molWeight(4.20).packaging("test");
-        testNote = new Note().creationDate(new Date()).editor("Test supplier").text("Test");
+        testNote = new Note().creationDate(new java.sql.Date(420)).editor("Test supplier").text("Test");
     }
 
     @After
@@ -45,7 +46,11 @@ public class DatabaseFacadeTest {
     @Test
     public void getLoginTest() throws Exception {
         User k = new User().username("k").rights(User.RightsEnum.ADMIN);
-        assertEquals(k, database.getLogin("k", "1"));
+        Hash hash = new Hash();
+        String password = "1";
+        byte[] salt = database.getSalt("k");
+        password = hash.getHashedPassword(password, salt);
+        assertEquals(k, database.getLogin("k", password));
     }
 
     @Test
@@ -62,36 +67,42 @@ public class DatabaseFacadeTest {
             assertEquals(p.getClass(), database.getSuppliers().getClass());
         }
     }
+
     @Test
-    public void addNoteToSupplier() throws Exception {
+    public void addNoteToSupplierTest() throws Exception {
         String supplier = "Test supplier";
-        Page testpage = null;
-        List<Page> testpages = database.getSuppliers();
-        for (Page p : testpages) {
-            if(p.getOwner().equals(supplier)){
-                testpage = p;
+        Page testPage = null;
+        for (Page p : database.getSuppliers()) {
+            if (p.getOwner().equalsIgnoreCase(supplier)) {
+                testPage = p;
             }
         }
-        Note testnote = testpage.getNote();
-        if(testpage.getNote() == null){
-            database.addNoteToSupplier("Test Supplier", testnote);
-            testpages = null;
-            testpages = database.getSuppliers();
-            for (Page p : testpages) {
-                if(p.getOwner().equals(supplier)){
-                    testpage = p;
+        if (testPage.getNote() == null) {
+            database.addNoteToSupplier(supplier, testNote);
+            testPage = null;
+            for (Page p : database.getSuppliers()) {
+                if (p.getOwner().equalsIgnoreCase(supplier)) {
+                    testPage = p;
                 }
             }
+            assertNotNull(testPage.getNote());
         } else {
-            database.editNoteOnSupplier();
+            database.editNoteOnSupplier(supplier, testNote);
+            testPage = null;
+            for (Page p : database.getSuppliers()) {
+                if (p.getOwner().equalsIgnoreCase(supplier)) {
+                    testPage = p;
+                }
+            }
+            assertEquals(testNote.getText(), testPage.getNote().getText());
         }
-
     }
+
 
     @Test
     public void getProductsTest() throws Exception {
         List<Product> p = new ArrayList<>();
-        if (database.getProducts("BobSagat").isEmpty()) {
+        if (database.getProducts("Test Supplier").isEmpty()) {
             fail("Der er ikke nogen produkter i databasen");
         } else {
             assertEquals(p.getClass(), database.getSuppliers().getClass());
