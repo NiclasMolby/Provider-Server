@@ -132,10 +132,4 @@ public class DatabaseFacadeTest {
         DatabaseFacade.getInstance().getPDFFilePath(1);
         assertEquals("".getClass(), DatabaseFacade.getInstance().getPDFFilePath(1).getClass());
     }
-
-    @Test
-    public void isFileOnPDFPathTest() throws Exception {
-        DatabaseFacade.getInstance().getPDFFilePath(1);
-        assertTrue(new File(DatabaseFacade.getInstance().getPDFFilePath(1)).exists());
-    }
 }
