@@ -2,11 +2,9 @@ package database;
 
 
 import database.DatabaseFacade;
-import database.IDatabaseFacade;
 import domain.security.Hash;
 import io.swagger.model.*;
 import org.junit.*;
-import java.io.File;
 import java.util.Date;
 
 
@@ -30,8 +28,8 @@ public class DatabaseFacadeTest {
         if (DatabaseFacade.getInstance().getPosts().contains(testPost)) {
             DatabaseFacade.getInstance().deletePost(testPost);
         }
-        if (DatabaseFacade.getInstance().getProducts("Test Supplier").contains(testProduct)) {
-            DatabaseFacade.getInstance().deleteProduct(testProduct);
+        for(Product product : DatabaseFacade.getInstance().getProducts("Test Supplier")) {
+            DatabaseFacade.getInstance().deleteProduct(product);
         }
         testPost = null;
         testProduct = null;
@@ -94,6 +92,7 @@ public class DatabaseFacadeTest {
 
     @Test
     public void getProductsTest() throws Exception {
+        addProduct();
         assertFalse(DatabaseFacade.getInstance().getProducts("Test Supplier").isEmpty());
     }
 
