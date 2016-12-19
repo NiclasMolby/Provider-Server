@@ -223,7 +223,7 @@ public class DatabaseFacade implements IDatabaseFacade {
         String query = "UPDATE public.note SET text = ?, date = ?, lasteditor = ? WHERE public.note.supplier = ?;";
         try {
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, note.getText());
+            preparedStatement.setString(1, note.getText().isEmpty() ? "" : note.getText());
             preparedStatement.setDate(2, (java.sql.Date) note.getCreationDate());
             preparedStatement.setString(3, note.getEditor());
             preparedStatement.setString(4, supplierName);
