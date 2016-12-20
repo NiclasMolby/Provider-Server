@@ -57,7 +57,9 @@ public class PageManager implements IPageManager {
      */
     public void addNoteToSupplier(String supplierName, String editor, String text) {
         synchronized (updateLock) {
-            text = new String(RSA.getRSA().decrypt(text));
+            if(!text.isEmpty()) {
+                text = new String(RSA.getRSA().decrypt(text));
+            }
             Note note = new Note().text(text).editor(editor).creationDate(Date.valueOf(LocalDate.now()));
             if (pages.get(supplierName).getNote() == null) {
                 database.addNoteToSupplier(supplierName, note);
