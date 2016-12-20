@@ -25,7 +25,7 @@ public class RSA {
     private BigInteger d;
 
     // The lenght of the key
-    private int bitlength = 1024;
+    private int bitlength = 2048;
 
     private Random random;
 
