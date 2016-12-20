@@ -1,6 +1,5 @@
 package database;
 
-
 import database.DatabaseFacade;
 import domain.security.Hash;
 import io.swagger.model.*;
