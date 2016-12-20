@@ -3,7 +3,6 @@ package domain.user;
 import common.*;
 import database.DatabaseFacade;
 import database.IDatabaseFacade;
-import domain.controller.Controller;
 import domain.security.Hash;
 import domain.security.RSA;
 import io.swagger.model.*;
