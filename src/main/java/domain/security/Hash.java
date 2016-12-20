@@ -46,7 +46,6 @@ public class Hash {
         byte[] salt = new byte[16];
         SecureRandom sr = new SecureRandom();
         sr.nextBytes(salt);
-
         return salt;
     }
 }

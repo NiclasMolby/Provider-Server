@@ -1,0 +1,2 @@
+20/12/2016 23:57:17 [WARNING] Fejl i tilslutningen til databasen.
+org.postgresql.util.PSQLException: The connection attempt failed.
