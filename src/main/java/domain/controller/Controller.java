@@ -1,16 +1,11 @@
 package domain.controller;
 
 import common.*;
-import domain.bulletinboard.*;
-import domain.page.*;
-import domain.user.*;
 import database.*;
 import io.swagger.model.*;
 import domain.security.RSA;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Controller implements IController {
 
@@ -25,8 +20,6 @@ public class Controller implements IController {
     }
 
     private Controller() { }
-
-
 
     public File getPDF(int productID) {
         return new File(DatabaseFacade.getInstance().getPDFFilePath(productID));
