@@ -38,7 +38,7 @@ public class PageManager implements IPageManager {
      * Gets all the suppliers pages.
      * @return a list with all the suppliers.
      */
-    public ArrayList getSuppliers() {
+    public synchronized ArrayList getSuppliers() {
         database.getSuppliers()
                 .parallelStream()
                 .map(page -> {

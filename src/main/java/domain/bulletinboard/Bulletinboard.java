@@ -78,7 +78,7 @@ public class Bulletinboard implements IBulletinboard {
      *Gets all the posts.
      * @return a list of products.
      */
-    public List<Post> getAllPosts() {
+    public synchronized List<Post> getAllPosts() {
         return database.getPosts();
     }
 }
